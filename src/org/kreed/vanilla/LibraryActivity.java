@@ -492,6 +492,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	private static final int MENU_EDIT = 6;
 	private static final int MENU_RENAME_PLAYLIST = 7;
 	private static final int MENU_SELECT_PLAYLIST = 8;
+	private static final int MENU_EDIT_TAG = 9;
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View listView, ContextMenu.ContextMenuInfo absInfo)
@@ -510,6 +511,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 
 		menu.add(0, MENU_PLAY, 0, R.string.play).setIntent(intent);
 		menu.add(0, MENU_ENQUEUE, 0, R.string.enqueue).setIntent(intent);
+		menu.add(0, MENU_EDIT_TAG, 0, R.string.edittag).setIntent(intent);
 		if (adapter == mPlaylistAdapter) {
 			menu.add(0, MENU_RENAME_PLAYLIST, 0, R.string.rename).setIntent(intent);
 			menu.add(0, MENU_EDIT, 0, R.string.edit).setIntent(intent);
@@ -619,7 +621,11 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 		case MENU_SELECT_PLAYLIST:
 			mHandler.sendMessage(mHandler.obtainMessage(MSG_ADD_TO_PLAYLIST, intent));
 			break;
+		case MENU_EDIT_TAG:
+			
+			break;
 		}
+		
 
 		return true;
 	}

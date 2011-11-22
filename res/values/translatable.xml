@@ -199,4 +199,9 @@ THE SOFTWARE.
 		<item>Clear Queue</item>
 		<item>Toggle Controls</item>
 	</string-array>
+	<string name="edittag">Edit ID3Tag</string>
+	<string name="songtitle">Song Title</string>
+	<string name="artistname">Artist Name</string>
+	<string name="album">Album</string>
+	<string name="savechanges">Save Changes</string>
 </resources>
