@@ -204,4 +204,5 @@ THE SOFTWARE.
 	<string name="artistname">Artist Name</string>
 	<string name="album">Album</string>
 	<string name="savechanges">Save Changes</string>
+	<string name="song_lyrics">Song Lyrics</string>
 </resources>

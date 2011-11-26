@@ -98,6 +98,7 @@ THE SOFTWARE.
 		<meta-data
 			android:name="com.google.android.backup.api_key"
 			android:value="AEdPqrEAAAAIH6Xcxa4hn6sHN1m4jMpi4MFFFMP5sv3XhFuWeA" />
+		<activity android:name="TagEditActivity"></activity>
 	</application>
 	<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="10" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />

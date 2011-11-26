@@ -6,18 +6,16 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/SongTitleLabel"
+        android:id="@+id/TitleLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/songtitle"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/TitleEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
-        <requestFocus />
     </EditText>
 
     <TextView
@@ -28,7 +26,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/ArtistEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -40,9 +38,23 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/AlbumEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/LyricLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/song_lyrics"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/LyricsEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.12"
+        android:inputType="textMultiLine" />
 
     <Button
         android:id="@+id/Savebutton"

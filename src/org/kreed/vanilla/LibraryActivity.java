@@ -621,9 +621,17 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 		case MENU_SELECT_PLAYLIST:
 			mHandler.sendMessage(mHandler.obtainMessage(MSG_ADD_TO_PLAYLIST, intent));
 			break;
-		case MENU_EDIT_TAG:
-			
+		case MENU_EDIT_TAG: {
+			int type = intent.getIntExtra("type", 1);
+			long id = intent.getLongExtra("id", -1);
+			if (type == MediaUtils.TYPE_SONG)
+			{
+				Intent tag = new Intent(this, TagEditActivity.class);
+				tag.putExtra("SongId", id);
+				startActivity(tag);
+			}
 			break;
+		}
 		}
 		
 
