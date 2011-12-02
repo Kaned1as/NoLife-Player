@@ -42,12 +42,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/LyricLabel"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/song_lyrics"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_gravity="right"
+        android:baselineAligned="false" >
+
+        <TextView
+            android:id="@+id/LyricLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/song_lyrics"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/fetchbutton"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="0.75"
+            android:text="@string/fetch_lyrics" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/LyricsEdit"

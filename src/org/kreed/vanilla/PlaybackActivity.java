@@ -22,9 +22,24 @@
 
 package org.kreed.vanilla;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.audio.mp3.MP3File;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagException;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,6 +47,7 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -64,6 +80,7 @@ public class PlaybackActivity extends Activity
 		EnqueueGenre,
 		ClearQueue,
 		ToggleControls,
+		ShowLyrics,
 	}
 
 	private Action mUpAction;
@@ -409,6 +426,45 @@ public class PlaybackActivity extends Activity
 		case ClearQueue:
 			PlaybackService.get(this).clearQueue();
 			Toast.makeText(this, R.string.queue_cleared, Toast.LENGTH_SHORT).show();
+			break;
+		case ShowLyrics:
+			long id = PlaybackService.get(this).getSong(0).id;
+			ContentResolver resolver = getContentResolver();
+			String[] projection = new String [] { MediaStore.Audio.Media._ID, MediaStore.Audio.Media.DATA };
+			Cursor cursor = MediaUtils.buildQuery(MediaUtils.TYPE_SONG, id, projection, null).runQuery(resolver);
+			
+			if (cursor != null) {
+				while (cursor.moveToNext()) {
+					File SongFile = new File(cursor.getString(1));
+					try {
+						MP3File mf = (MP3File)AudioFileIO.read(SongFile);
+						Tag tag = mf.getTag();
+						
+						AlertDialog alertDialog;
+						alertDialog = new AlertDialog.Builder(this).create();
+						alertDialog.setTitle("Song Lyrics");
+						alertDialog.setMessage(tag.getFirst(FieldKey.LYRICS).toString());
+						alertDialog.show();
+						
+					} catch (CannotReadException e) {
+						this.finish();
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (TagException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ReadOnlyFileException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvalidAudioFrameException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				cursor.close();
+			}
 			break;
 		default:
 			throw new IllegalArgumentException("Invalid action: " + action);

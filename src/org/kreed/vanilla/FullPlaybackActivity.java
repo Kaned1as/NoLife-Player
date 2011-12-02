@@ -180,7 +180,7 @@ public class FullPlaybackActivity extends PlaybackActivity
 		}
 
 		mCoverPressAction = getAction(settings, "cover_press_action", Action.ToggleControls);
-		mCoverLongPressAction = getAction(settings, "cover_longpress_action", Action.PlayPause);
+		mCoverLongPressAction = getAction(settings, "cover_longpress_action", Action.ShowLyrics);
 	}
 
 	@Override

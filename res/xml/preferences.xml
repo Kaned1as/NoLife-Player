@@ -105,7 +105,7 @@ THE SOFTWARE.
 			android:summary="@string/cover_longpress_action_summary"
 			android:entries="@array/swipe_action_entries"
 			android:entryValues="@array/swipe_action_values"
-			android:defaultValue="PlayPause" />
+			android:defaultValue="ShowLyrics" />
 		<CheckBoxPreference
 			android:key="disable_cover_art"
 			android:title="@string/disable_cover_art_title"

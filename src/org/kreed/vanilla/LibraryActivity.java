@@ -511,7 +511,8 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 
 		menu.add(0, MENU_PLAY, 0, R.string.play).setIntent(intent);
 		menu.add(0, MENU_ENQUEUE, 0, R.string.enqueue).setIntent(intent);
-		menu.add(0, MENU_EDIT_TAG, 0, R.string.edittag).setIntent(intent);
+		if(adapter == mSongAdapter)
+			menu.add(0, MENU_EDIT_TAG, 0, R.string.edittag).setIntent(intent);
 		if (adapter == mPlaylistAdapter) {
 			menu.add(0, MENU_RENAME_PLAYLIST, 0, R.string.rename).setIntent(intent);
 			menu.add(0, MENU_EDIT, 0, R.string.edit).setIntent(intent);

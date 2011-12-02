@@ -198,6 +198,7 @@ THE SOFTWARE.
 		<item>Enqueue Current Genre</item>
 		<item>Clear Queue</item>
 		<item>Toggle Controls</item>
+		<item >Show Lyrics</item>
 	</string-array>
 	<string name="edittag">Edit ID3Tag</string>
 	<string name="songtitle">Song Title</string>
@@ -205,4 +206,14 @@ THE SOFTWARE.
 	<string name="album">Album</string>
 	<string name="savechanges">Save Changes</string>
 	<string name="song_lyrics">Song Lyrics</string>
+	<string name="fetch_lyrics">Fetch</string>
+	<string name="retrieving_lyrics">Retrieving lyrics...</string>
+	<string name="requesting_server">Requesting server...</string>
+	<string name="cant_write_tag">Cannot write tag to file</string>
+	<string name="unsup_chars_tag">Unsupported characters in song tag</string>
+	<string name="unsup_tag">Unsupported tag type</string>
+	<string name="cant_read_file">Cannot read selected file</string>
+	<string name="readonly">File is read-only</string>
+	<string name="invalid_audioframe">File tag frame is invalid</string>
+	<string name="cant_find_lyrics">Song lyrics not found</string>
 </resources>

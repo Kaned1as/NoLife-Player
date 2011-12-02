@@ -49,5 +49,6 @@ THE SOFTWARE.
 		<item>EnqueueGenre</item>
 		<item>ClearQueue</item>
 		<item>ToggleControls</item>
+		<item>ShowLyrics</item>
 	</string-array>
 </resources>

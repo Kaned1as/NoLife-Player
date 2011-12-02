@@ -25,6 +25,7 @@ THE SOFTWARE.
 	android:versionName="0.9.0"
 	android:versionCode="090"
 	android:installLocation="auto">
+    <uses-permission android:name="android.permission.INTERNET"/>
 	<application
 		android:icon="@drawable/icon"
 		android:label="@string/app_name"
