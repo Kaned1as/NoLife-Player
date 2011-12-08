@@ -33,6 +33,7 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -145,6 +146,12 @@ public final class MediaView extends View {
 		int padding = sTextSize / 2;
 
 		Paint paint = sPaint;
+		
+		if(!mExpandable && mId == PlaybackService.get(getContext()).getSong(0).id) {
+			paint.setColor(Color.DKGRAY);
+			canvas.drawRect(0, 0, width, height, paint);
+			paint.setTypeface(Typeface.DEFAULT_BOLD);
+		}
 
 		if (mExpandable && !mIsHeader) {
 			Bitmap expander = sExpander;
@@ -162,7 +169,7 @@ public final class MediaView extends View {
 		canvas.clipRect(padding, 0, width - padding, height);
 
 		int allocatedHeight;
-
+		
 		if (mSubTitle != null) {
 			allocatedHeight = height / 2 - padding * 3 / 2;
 
@@ -184,6 +191,7 @@ public final class MediaView extends View {
 		paint.setShader(sDividerGradient);
 		canvas.drawLine(0, height - 1, width, height - 1, paint);
 		paint.setShader(null);
+		paint.setTypeface(Typeface.DEFAULT);
 	}
 
 	/**

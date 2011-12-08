@@ -26,7 +26,7 @@ THE SOFTWARE.
 	android:orientation="horizontal"
 	android:layout_marginTop="5dip"
 	android:layout_marginBottom="5dip"
-	android:background="#B2191919">
+	android:background="@drawable/appwidget_bg">
 	<ImageView
 		android:id="@+id/cover"
 		android:layout_width="wrap_content"

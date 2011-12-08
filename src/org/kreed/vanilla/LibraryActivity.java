@@ -22,6 +22,8 @@
 
 package org.kreed.vanilla;
 
+import java.io.File;
+
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -184,6 +186,13 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 		mDefaultAction = Integer.parseInt(settings.getString("default_action_int", "0"));
 		mLastActedId = -2;
 		updateHeaders();
+		
+		setCurrentTab(2);
+		ListView view = (ListView)findViewById(R.id.song_list);
+		long id = PlaybackService.get(this).getSong(0).id;
+		for(int i = 0; i < view.getCount(); i++)
+			if(view.getItemIdAtPosition(i) == id) 
+				view.setSelection(i);
 	}
 
 	@Override
@@ -338,8 +347,10 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			expand(createClickIntent((MediaAdapter)list.getAdapter(), mediaView));
 		else if (id == mLastActedId)
 			startActivity(new Intent(this, FullPlaybackActivity.class));
-		else
+		else {
 			pickSongs(createClickIntent((MediaAdapter)list.getAdapter(), mediaView), mDefaultAction);
+			list.invalidate();
+		}
 	}
 
 	public void afterTextChanged(Editable editable)
@@ -493,6 +504,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	private static final int MENU_RENAME_PLAYLIST = 7;
 	private static final int MENU_SELECT_PLAYLIST = 8;
 	private static final int MENU_EDIT_TAG = 9;
+	private static final int MENU_SEND_TO = 10;
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View listView, ContextMenu.ContextMenuInfo absInfo)
@@ -511,8 +523,6 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 
 		menu.add(0, MENU_PLAY, 0, R.string.play).setIntent(intent);
 		menu.add(0, MENU_ENQUEUE, 0, R.string.enqueue).setIntent(intent);
-		if(adapter == mSongAdapter)
-			menu.add(0, MENU_EDIT_TAG, 0, R.string.edittag).setIntent(intent);
 		if (adapter == mPlaylistAdapter) {
 			menu.add(0, MENU_RENAME_PLAYLIST, 0, R.string.rename).setIntent(intent);
 			menu.add(0, MENU_EDIT, 0, R.string.edit).setIntent(intent);
@@ -522,6 +532,10 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			menu.add(0, MENU_EXPAND, 0, R.string.expand).setIntent(intent);
 		if (!view.isHeader())
 			menu.add(0, MENU_DELETE, 0, R.string.delete).setIntent(intent);
+		if(adapter == mSongAdapter) {
+			menu.add(0, MENU_EDIT_TAG, 0, R.string.edittag).setIntent(intent);
+			menu.add(0, MENU_SEND_TO, 0, R.string.sendto).setIntent(intent);
+		}
 	}
 
 	/**
@@ -633,6 +647,26 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			}
 			break;
 		}
+		case MENU_SEND_TO: {
+			Intent i = new Intent(Intent.ACTION_SEND);
+			i.setType("text/plain"); 
+			ContentResolver resolver = getContentResolver();
+			String[] projection = new String [] { MediaStore.Audio.Media._ID, MediaStore.Audio.Media.DATA };
+			Cursor cursor = MediaUtils.buildQuery(MediaUtils.TYPE_SONG, intent.getLongExtra("id", -1), projection, null).runQuery(resolver);
+			
+			if (cursor != null) 
+				while (cursor.moveToNext()) {
+					File SongFile = new File(cursor.getString(1));
+					i.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(SongFile));
+					
+					try {
+					    startActivity(Intent.createChooser(i, getResources().getString(R.string.sendto)));
+					} catch (android.content.ActivityNotFoundException ex) {
+					    Toast.makeText(LibraryActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+					}
+				}
+			break;
+		}
 		}
 		
 
@@ -701,14 +735,9 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	 */
 	private static final int MSG_RENAME_PLAYLIST = 13;
 	/**
-	 * Called by MediaAdapters to requery their data on the worker thread.
-	 * obj will contain the MediaAdapter.
-	 */
-	private static final int MSG_RUN_QUERY = 14;
-	/**
 	 * Call addToPlaylist with data from the intent in obj.
 	 */
-	private static final int MSG_ADD_TO_PLAYLIST = 15;
+	private static final int MSG_ADD_TO_PLAYLIST = 14;
 
 	@Override
 	public boolean handleMessage(Message message)
@@ -739,19 +768,6 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 				long playlistId = dialog.getIntent().getLongExtra("id", -1);
 				Playlist.renamePlaylist(getContentResolver(), playlistId, dialog.getText());
 			}
-			break;
-		}
-		case MSG_RUN_QUERY: {
-			final MediaAdapter adapter = (MediaAdapter)message.obj;
-			QueryTask query = adapter.buildQuery();
-			final Cursor cursor = query.runQuery(getContentResolver());
-			runOnUiThread(new Runnable() {
-				@Override
-				public void run()
-				{
-					adapter.changeCursor(cursor);
-				}
-			});
 			break;
 		}
 		default:
@@ -785,8 +801,9 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	 */
 	private void runQuery(MediaAdapter adapter)
 	{
-		mHandler.removeMessages(MSG_RUN_QUERY, adapter);
-		mHandler.sendMessage(mHandler.obtainMessage(MSG_RUN_QUERY, adapter));
+		QueryTask query = adapter.buildQuery();
+		final Cursor cursor = query.runQuery(getContentResolver());
+		adapter.changeCursor(cursor);
 	}
 
 	@Override

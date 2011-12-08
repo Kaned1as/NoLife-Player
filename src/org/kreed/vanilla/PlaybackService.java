@@ -810,7 +810,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 	@Override
 	public boolean onError(MediaPlayer player, int what, int extra)
 	{
-		Log.e("VanillaMusic", "MediaPlayer error: " + what + ' ' + extra);
+		Log.e("NoLifePlayer", "MediaPlayer error: " + what + ' ' + extra);
 		return true;
 	}
 

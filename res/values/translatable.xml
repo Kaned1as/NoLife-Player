@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <resources>
-	<string name="app_name">Vanilla Music</string>
+	<string name="app_name">NoLife Player</string>
 
 	<!-- Playback Activity (main screen) -->
 	<string name="no_songs">No songs found on your device.</string>
@@ -216,4 +216,5 @@ THE SOFTWARE.
 	<string name="readonly">File is read-only</string>
 	<string name="invalid_audioframe">File tag frame is invalid</string>
 	<string name="cant_find_lyrics">Song lyrics not found</string>
+	<string name="sendto">Send...</string>
 </resources>
