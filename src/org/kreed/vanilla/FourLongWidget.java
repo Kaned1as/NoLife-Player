@@ -23,11 +23,13 @@
 package org.kreed.vanilla;
 
 import android.app.PendingIntent;
+import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -112,8 +114,15 @@ public class FourLongWidget extends AppWidgetProvider {
 		}
 
 		boolean playing = (state & PlaybackService.FLAG_PLAYING) != 0;
+		boolean shuffle = (state & PlaybackService.MASK_SHUFFLE) != 0;
+		boolean repeat = (((state & PlaybackService.MASK_FINISH) >> PlaybackService.SHIFT_FINISH) & SongTimeline.FINISH_REPEAT_CURRENT) != 0;
+		AudioManager am = (AudioManager)context.getApplicationContext().getSystemService(Service.AUDIO_SERVICE);
+		
 		views.setImageViewResource(R.id.play_pause, playing ? R.drawable.pause : R.drawable.play);
-
+		views.setImageViewResource(R.id.shuffle_ind, shuffle ? R.drawable.shuffle_active : R.drawable.shuffle_inactive);
+		views.setImageViewResource(R.id.repeat_ind, repeat ? R.drawable.repeat_active : R.drawable.repeat_inactive);
+		views.setProgressBar(R.id.volumebar, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC), am.getStreamVolume(AudioManager.STREAM_MUSIC), false);
+		
 		Intent intent;
 		PendingIntent pendingIntent;
 
@@ -131,6 +140,18 @@ public class FourLongWidget extends AppWidgetProvider {
 		intent = new Intent(PlaybackService.ACTION_NEXT_SONG).setComponent(service);
 		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
 		views.setOnClickPendingIntent(R.id.next, pendingIntent);
+		
+		intent = new Intent(PlaybackService.ACTION_PREVIOUS_SONG).setComponent(service);
+		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+		views.setOnClickPendingIntent(R.id.previous, pendingIntent);
+		
+		intent = new Intent(PlaybackService.ACTION_VOLUME_UP).setComponent(service);
+		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+		views.setOnClickPendingIntent(R.id.adjustvol_up, pendingIntent);
+		
+		intent = new Intent(PlaybackService.ACTION_VOLUME_DOWN).setComponent(service);
+		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+		views.setOnClickPendingIntent(R.id.adjustvol_down, pendingIntent);
 
 		manager.updateAppWidget(new ComponentName(context, FourLongWidget.class), views);
 	}

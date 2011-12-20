@@ -129,6 +129,9 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 	 * when this is called.
 	 */
 	public static final String ACTION_PREVIOUS_SONG_AUTOPLAY = "org.kreed.vanilla.action.PREVIOUS_SONG_AUTOPLAY";
+	
+	public static final String ACTION_VOLUME_UP = "org.kreed.vanilla.action.VOLUME_UP";
+	public static final String ACTION_VOLUME_DOWN = "org.kreed.vanilla.action.VOLUME_DOWN";
 
 	/**
 	 * If set, music will play.
@@ -279,6 +282,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 
 		SharedPreferences settings = getSettings(this);
 		settings.registerOnSharedPreferenceChangeListener(this);
+		MediaButtonReceiver.registerMediaButton(this);
 		mNotificationMode = Integer.parseInt(settings.getString("notification_mode", "1"));
 		mScrobble = settings.getBoolean("scrobble", false);
 		float volume = settings.getFloat("volume", 1.0f);
@@ -295,7 +299,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 		mNotificationAction = createNotificationAction(settings);
 
 		PowerManager powerManager = (PowerManager)getSystemService(POWER_SERVICE);
-		mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "VanillaMusicLock");
+		mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "NoLifeMusicLock");
 
 		mLooper = thread.getLooper();
 		mHandler = new Handler(mLooper, this);
@@ -350,9 +354,16 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 				play();
 			} else if (ACTION_PAUSE.equals(action)) {
 				pause();
+			} else if (ACTION_VOLUME_UP.equals(action)) {
+				if(!intent.getBooleanExtra("triggered", false))
+					mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, 0);
+				updateWidgets();
+			} else if (ACTION_VOLUME_DOWN.equals(action)) {
+				if(!intent.getBooleanExtra("triggered", false))
+					mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, 0);
+				updateWidgets();
+				
 			}
-
-			MediaButtonReceiver.registerMediaButton(this);
 		}
 
 		return START_NOT_STICKY;

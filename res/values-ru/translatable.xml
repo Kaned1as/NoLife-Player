@@ -206,7 +206,7 @@ THE SOFTWARE.
 	<string name="album">Альбом</string>
 	<string name="savechanges">Сохранить изменения</string>
 	<string name="song_lyrics">Текст песни</string>
-	<string name="fetch_lyrics">Получить</string>
+	<string name="fetch_lyrics">Текст песни</string>
 	<string name="retrieving_lyrics">Получение текста...</string>
 	<string name="requesting_server">Запрос сервера..</string>
 	<string name="cant_write_tag">Не могу записать тэг в файл</string>
@@ -216,4 +216,9 @@ THE SOFTWARE.
 	<string name="readonly">Файл только для чтения</string>
 	<string name="invalid_audioframe">Неверный фрейм тэга</string>
 	<string name="cant_find_lyrics">Текст песни не найден</string>
+	<string name="reload_songs">Обновить список</string>
+	<string name="send_no_apps">Для данного действия нет подходящих приложений</string>
+	<string name="more">Еще...</string>
+	<string name="fetch">Получить</string>
+	<string name="saved">Сохранено</string>
 </resources>

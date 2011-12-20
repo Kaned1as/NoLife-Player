@@ -53,7 +53,7 @@ THE SOFTWARE.
 			android:launchMode="singleInstance" />
 		<receiver
 			android:name=".OneCellWidget"
-			android:label="Vanilla Music 1x1">
+			android:label="NoLife Player 1x1">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>
@@ -63,7 +63,7 @@ THE SOFTWARE.
 		</receiver>
 		<receiver
 			android:name=".FourLongWidget"
-			android:label="Vanilla Music 1x4">
+			android:label="NoLife Player 2x4">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>
@@ -73,7 +73,7 @@ THE SOFTWARE.
 		</receiver>
 		<receiver
 			android:name=".FourSquareWidget"
-			android:label="Vanilla Music 2x2">
+			android:label="NoLife Player 2x2">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>
@@ -84,6 +84,7 @@ THE SOFTWARE.
 		<receiver android:name="MediaButtonReceiver" >
 			<intent-filter android:priority="999">
 				<action android:name="android.intent.action.MEDIA_BUTTON" />
+				<action android:name="android.media.VOLUME_CHANGED_ACTION"/>
 			</intent-filter>
 		</receiver>
 		<service android:name="PlaybackService">

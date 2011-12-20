@@ -62,7 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="0.75"
-            android:text="@string/fetch_lyrics" />
+            android:text="@string/fetch" />
     </LinearLayout>
 
     <EditText

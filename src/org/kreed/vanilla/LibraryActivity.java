@@ -34,6 +34,8 @@ import android.graphics.Color;
 import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.text.Editable;
@@ -189,10 +191,12 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 		
 		setCurrentTab(2);
 		ListView view = (ListView)findViewById(R.id.song_list);
-		long id = PlaybackService.get(this).getSong(0).id;
-		for(int i = 0; i < view.getCount(); i++)
-			if(view.getItemIdAtPosition(i) == id) 
-				view.setSelection(i);
+		if(PlaybackService.get(this).getSong(0) != null) {
+			long id = PlaybackService.get(this).getSong(0).id;
+			for(int i = 0; i < view.getCount(); i++)
+				if(view.getItemIdAtPosition(i) == id) 
+					view.setSelection(i);
+		}
 	}
 
 	@Override
@@ -349,7 +353,6 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			startActivity(new Intent(this, FullPlaybackActivity.class));
 		else {
 			pickSongs(createClickIntent((MediaAdapter)list.getAdapter(), mediaView), mDefaultAction);
-			list.invalidate();
 		}
 	}
 
@@ -662,7 +665,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 					try {
 					    startActivity(Intent.createChooser(i, getResources().getString(R.string.sendto)));
 					} catch (android.content.ActivityNotFoundException ex) {
-					    Toast.makeText(LibraryActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+					    Toast.makeText(LibraryActivity.this, getResources().getString(R.string.send_no_apps), Toast.LENGTH_SHORT).show();
 					}
 				}
 			break;
@@ -678,6 +681,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	{
 		menu.add(0, MENU_PLAYBACK, 0, R.string.playback_view).setIcon(R.drawable.ic_menu_gallery);
 		menu.add(0, MENU_SEARCH, 0, R.string.search).setIcon(R.drawable.ic_menu_search);
+		menu.add(0, MENU_RELOAD_SONGS, 0, R.string.reload_songs).setIcon(R.drawable.ic_menu_refresh);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -690,6 +694,10 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			return true;
 		case MENU_PLAYBACK:
 			startActivity(new Intent(this, FullPlaybackActivity.class));
+			return true;
+		case MENU_RELOAD_SONGS:
+			getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, 
+			        Uri.parse("file://" + Environment.getExternalStorageDirectory())));
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -738,7 +746,31 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	 * Call addToPlaylist with data from the intent in obj.
 	 */
 	private static final int MSG_ADD_TO_PLAYLIST = 14;
+	/**
+	 * Call requery on all adapters.
+	 */
+	private static final int CONTENT_CHANGED = 21;
+	/**
+	 * A Handler running on the UI thread, in contrast with mHandler which runs
+	 * on a worker thread.
+	 */
+	protected Handler mUiHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			
+			switch (msg.what) {
+			case CONTENT_CHANGED:
+				for (MediaAdapter adapter : mAdapters)
+					requestRequery(adapter);
+				break;
+				default:
+					break;
+			}
+		}
 
+	};
+
+	
 	@Override
 	public boolean handleMessage(Message message)
 	{
@@ -790,7 +822,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			adapter.requestRequery();
 			// Clear the data for non-visible adapters (so we don't show the old
 			// data briefly when we later switch to that adapter)
-			adapter.changeCursor(null);
+			//adapter.changeCursor(null);
 		}
 	}
 
@@ -809,8 +841,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	@Override
 	public void onMediaChange()
 	{
-		for (MediaAdapter adapter : mAdapters)
-			requestRequery(adapter);
+		mUiHandler.sendEmptyMessage(CONTENT_CHANGED);
 	}
 
 	private void setSearchBoxVisible(boolean visible)

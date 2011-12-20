@@ -22,6 +22,24 @@
 
 package org.kreed.vanilla;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URLEncoder;
+
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.jaudiotagger.audio.exceptions.CannotWriteException;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.tag.FieldDataInvalidException;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.KeyNotFoundException;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagException;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -41,6 +59,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * The primary playback screen with playback controls and large cover display.
@@ -98,6 +117,10 @@ public class FullPlaybackActivity extends PlaybackActivity
 	 * Cached StringBuilder for formatting track position.
 	 */
 	private final StringBuilder mTimeBuilder = new StringBuilder();
+	
+	private ProgressDialog pd;
+	private Tag tag;
+	private AudioFile mf;
 
 	@Override
 	public void onCreate(Bundle icicle)
@@ -321,6 +344,10 @@ public class FullPlaybackActivity extends PlaybackActivity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		menu.add(0, MENU_LIBRARY, 0, R.string.library).setIcon(R.drawable.ic_menu_music_library);
+		if (PlaybackService.get(this).getSong(0) != null) {
+			menu.add(0, MENU_GET_LYRICS, 0, R.string.fetch_lyrics).setIcon(android.R.drawable.ic_input_get);
+			menu.addSubMenu(0, MENU_MORE, 0, R.string.more).setIcon(android.R.drawable.ic_menu_more);
+		}
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -331,9 +358,91 @@ public class FullPlaybackActivity extends PlaybackActivity
 		case MENU_LIBRARY:
 			openLibrary();
 			return true;
+		case MENU_EDIT_SONG:		
+			Intent edit = new Intent(this, TagEditActivity.class);
+			edit.putExtra("SongId", PlaybackService.get(this).getSong(0).id);
+			startActivity(edit);
+			return true;
+		case MENU_GET_LYRICS:
+			File af = new File(PlaybackService.get(this).getSong(0).path);
+			try {
+				mf = AudioFileIO.read(af);
+				tag = mf.getTag();
+				
+				if(tag == null)
+					return false;
+				
+				String lyrics = tag.getFirst(FieldKey.LYRICS);
+				if(!lyrics.equals("")) {
+					AlertDialog alertDialog;
+					alertDialog = new AlertDialog.Builder(FullPlaybackActivity.this).create();
+					alertDialog.setTitle(getResources().getString(R.string.song_lyrics));
+					alertDialog.setMessage(lyrics);
+					alertDialog.show();
+					return true;
+				}
+					
+				String title = tag.getFirst(FieldKey.TITLE).toString();
+				String artist = tag.getFirst(FieldKey.ARTIST).toString();
+				new parseForTag().execute("http://lyrics.wikia.com/api.php?func=getSong&artist="+URLEncoder.encode(artist, "UTF-8")+"&song="+URLEncoder.encode(title, "UTF-8")+"&fmt=html");
+				pd = ProgressDialog.show(FullPlaybackActivity.this, "Fetching...", getResources().getString(R.string.requesting_server), true, true);
+			} catch (CannotReadException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TagException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ReadOnlyFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidAudioFrameException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
+		case MENU_MORE:
+			Menu moreMenu = item.getSubMenu();
+			moreMenu.add(0, MENU_EDIT_SONG, 0, R.string.edit).setIcon(android.R.drawable.ic_menu_agenda);
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	private class parseForTag extends MediaUtils.ParseSite {
+		@Override
+		protected void onProgressUpdate(Integer... Progress) {
+			if (Progress[0] == 1)
+				pd.setMessage(getResources().getString(R.string.retrieving_lyrics));
+			if (Progress[0] == 2)
+				Toast.makeText(FullPlaybackActivity.this, getResources().getString(R.string.cant_find_lyrics), Toast.LENGTH_SHORT).show();
+		}
+		
+		@Override
+		protected void onPostExecute(String output) {
+	        pd.dismiss();
+	        try {
+				tag.setField(FieldKey.LYRICS, output);
+				mf.commit();
+				AlertDialog alertDialog;
+				alertDialog = new AlertDialog.Builder(FullPlaybackActivity.this).create();
+				alertDialog.setTitle(getResources().getString(R.string.song_lyrics));
+				alertDialog.setMessage(tag.getFirst(FieldKey.LYRICS));
+				alertDialog.show();
+			} catch (KeyNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (FieldDataInvalidException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (CannotWriteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
 	}
 
 	@Override

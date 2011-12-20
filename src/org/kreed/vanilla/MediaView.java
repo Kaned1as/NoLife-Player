@@ -30,6 +30,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
@@ -59,6 +60,8 @@ public final class MediaView extends View {
 	 * The cached divider gradient that separates each view from other views.
 	 */
 	private static RadialGradient sDividerGradient;
+	
+	private static LinearGradient sSelectionGradient;
 	/**
 	 * The text size used for the text in all views.
 	 */
@@ -147,11 +150,16 @@ public final class MediaView extends View {
 
 		Paint paint = sPaint;
 		
-		if(!mExpandable && mId == PlaybackService.get(getContext()).getSong(0).id) {
-			paint.setColor(Color.DKGRAY);
-			canvas.drawRect(0, 0, width, height, paint);
-			paint.setTypeface(Typeface.DEFAULT_BOLD);
-		}
+		if (sSelectionGradient == null)
+			sSelectionGradient = new LinearGradient(0, 1, width, 1, 0xFF666666, Color.BLACK, Shader.TileMode.CLAMP);
+		
+		if(PlaybackService.get(getContext()).getSong(0) != null)
+			if(!mIsHeader && !mExpandable && mId == PlaybackService.get(getContext()).getSong(0).id) {
+				paint.setShader(sSelectionGradient);
+				canvas.drawRect(0, 0, width, height, paint);
+				paint.setShader(null);
+				paint.setTypeface(Typeface.DEFAULT_BOLD);
+			}
 
 		if (mExpandable && !mIsHeader) {
 			Bitmap expander = sExpander;
@@ -187,7 +195,7 @@ public final class MediaView extends View {
 
 		if (sDividerGradient == null)
 			sDividerGradient = new RadialGradient(width / 2, 1, width / 2, Color.WHITE, Color.BLACK, Shader.TileMode.CLAMP);
-
+		
 		paint.setShader(sDividerGradient);
 		canvas.drawLine(0, height - 1, width, height - 1, paint);
 		paint.setShader(null);

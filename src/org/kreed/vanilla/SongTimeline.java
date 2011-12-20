@@ -483,6 +483,8 @@ public final class SongTimeline {
 	 */
 	public int addSongs(int mode, Cursor cursor)
 	{
+		boolean song_picked = false;
+		
 		if (cursor == null)
 			return 0;
 		int count = cursor.getCount();
@@ -506,26 +508,46 @@ public final class SongTimeline {
 				timeline.subList(mCurrentPos + 1, timeline.size()).clear();
 				break;
 			case MODE_PLAY:
-				timeline.clear();
-				mCurrentPos = 0;
+				if(count == 1)
+					song_picked = true;
+				else {
+					timeline.clear();
+					mCurrentPos = 0;
+				}
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid mode: " + mode);
 			}
-
-			int start = timeline.size();
-
-			for (int j = 0; j != count; ++j) {
-				cursor.moveToPosition(j);
+			
+			if(song_picked) {
+				cursor.moveToFirst();
 				Song song = new Song(-1);
 				song.populate(cursor);
-				timeline.add(song);
+					
+				// delete song if already exists
+				for(int i = 0; i != timeline.size(); i++)
+					if(timeline.get(i).id == song.id)
+						timeline.remove(i);
+					
+				// add as current playing
+				timeline.add(mCurrentPos, song);	
+				broadcastChangedSongs();
+			} 
+			else {
+				int start = timeline.size();
+
+				for (int j = 0; j != count; ++j) {
+					cursor.moveToPosition(j);
+					Song song = new Song(-1);
+					song.populate(cursor);
+					timeline.add(song);
+				}
+
+				if (mShuffleMode != SHUFFLE_NONE)
+					MediaUtils.shuffle(timeline.subList(start, timeline.size()), mShuffleMode == SHUFFLE_ALBUMS);
+
+				broadcastChangedSongs();
 			}
-
-			if (mShuffleMode != SHUFFLE_NONE)
-				MediaUtils.shuffle(timeline.subList(start, timeline.size()), mShuffleMode == SHUFFLE_ALBUMS);
-
-			broadcastChangedSongs();
 		}
 
 		cursor.close();

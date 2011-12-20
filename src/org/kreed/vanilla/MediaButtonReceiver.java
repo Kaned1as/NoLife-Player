@@ -63,11 +63,7 @@ public class MediaButtonReceiver extends BroadcastReceiver {
 	public static void reloadPreference(Context context)
 	{
 		sUseControls = -1;
-		if (useHeadsetControls(context)) {
-			registerMediaButton(context);
-		} else {
-			unregisterMediaButton(context);
-		}
+		registerMediaButton(context);
 	}
 
 	/**
@@ -170,7 +166,7 @@ public class MediaButtonReceiver extends BroadcastReceiver {
 	 */
 	public static void registerMediaButton(Context context)
 	{
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO || !useHeadsetControls(context))
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO)
 			return;
 
 		AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
@@ -196,11 +192,19 @@ public class MediaButtonReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
+		
 		if (Intent.ACTION_MEDIA_BUTTON.equals(intent.getAction())) {
 			KeyEvent event = intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
 			boolean handled = processKey(context, event);
 			if (handled && isOrderedBroadcast())
 				abortBroadcast();
 		}
+		// a bit hacky and won't work on some devices...
+		if (intent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
+			Intent i = new Intent(context, PlaybackService.class);
+			i.setAction(PlaybackService.ACTION_VOLUME_DOWN);
+			i.putExtra("triggered", true);
+			context.startService(i);
+		}	
 	}
 }

@@ -206,7 +206,7 @@ THE SOFTWARE.
 	<string name="album">Album</string>
 	<string name="savechanges">Save Changes</string>
 	<string name="song_lyrics">Song Lyrics</string>
-	<string name="fetch_lyrics">Fetch</string>
+	<string name="fetch_lyrics">Fetch Lyrics</string>
 	<string name="retrieving_lyrics">Retrieving lyrics...</string>
 	<string name="requesting_server">Requesting server...</string>
 	<string name="cant_write_tag">Cannot write tag to file</string>
@@ -217,4 +217,9 @@ THE SOFTWARE.
 	<string name="invalid_audioframe">File tag frame is invalid</string>
 	<string name="cant_find_lyrics">Song lyrics not found</string>
 	<string name="sendto">Send...</string>
+	<string name="reload_songs">Reload songs</string>
+	<string name="send_no_apps">There are no appropriate applications for this action</string>
+	<string name="more">More...</string>
+	<string name="fetch">Fetch</string>
+	<string name="saved">Saved</string>
 </resources>

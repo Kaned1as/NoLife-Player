@@ -334,8 +334,12 @@ public class PlaybackActivity extends Activity
 
 	static final int MENU_PREFS = 2;
 	static final int MENU_LIBRARY = 3;
+	static final int MENU_GET_LYRICS = 4;
 	static final int MENU_PLAYBACK = 5;
 	static final int MENU_SEARCH = 7;
+	static final int MENU_RELOAD_SONGS = 8;
+	static final int MENU_EDIT_SONG = 9;
+	static final int MENU_MORE = 10;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -442,7 +446,7 @@ public class PlaybackActivity extends Activity
 						
 						AlertDialog alertDialog;
 						alertDialog = new AlertDialog.Builder(this).create();
-						alertDialog.setTitle("Song Lyrics");
+						alertDialog.setTitle(getResources().getString(R.string.song_lyrics));
 						alertDialog.setMessage(tag.getFirst(FieldKey.LYRICS).toString());
 						alertDialog.show();
 						
