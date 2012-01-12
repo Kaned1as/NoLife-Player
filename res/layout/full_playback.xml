@@ -21,48 +21,54 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
-	<org.kreed.vanilla.CoverView
+	<org.adonai.nolife.CoverView
 		android:id="@+id/cover_view"
 		android:layout_height="fill_parent"
 		android:layout_width="fill_parent" />
+
 	<LinearLayout
-		android:id="@+id/controls_top"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:layout_gravity="top"
-		android:background="#a000"
-		android:orientation="horizontal">
-		<TextView
-			android:id="@+id/elapsed"
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:layout_gravity="center"
-			android:text="00:00" />
-		<SeekBar
-			android:id="@+id/seek_bar"
-			android:layout_height="wrap_content"
-			android:layout_width="0px"
-			android:layout_gravity="center"
-			android:paddingTop="5px"
-			android:paddingBottom="5px"
-			android:paddingLeft="15px"
-			android:paddingRight="15px"
-			android:layout_weight="1" />
-		<TextView
-			android:id="@+id/duration"
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:layout_gravity="center"
-			android:text="00:00" />
+	    android:id="@+id/controls_top"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#a000"
+	    android:orientation="horizontal" android:layout_gravity="top|left">
+
+	    <TextView
+	        android:id="@+id/elapsed"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:text="00:00" />
+
+	    <LinearLayout
+	        android:id="@+id/manageLayout"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" android:layout_weight="1" android:layout_gravity="center">
+
+	        <SeekBar
+	            android:id="@+id/seek_bar"
+	            android:layout_width="fill_parent"
+	            android:layout_weight="1"
+	            android:paddingLeft="15px"
+	            android:paddingRight="15px"
+	            android:layout_height="wrap_content" android:progressDrawable="@drawable/progress_horizontal" android:thumb="@drawable/seek_thumb" android:maxHeight="5dip"/>
+
+	    </LinearLayout>
+
+	    <TextView
+	        android:id="@+id/duration"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:text="00:00" />
 	</LinearLayout>
 	<LinearLayout
 		android:id="@+id/controls_bottom"
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
 		android:layout_gravity="bottom|left"
-		android:layout_margin="0dip"
-		android:background="#a000"
-		android:orientation="horizontal">
+		android:orientation="horizontal" android:background="@drawable/appwidget_bg">
 		<ImageButton
 			android:id="@+id/shuffle"
 			android:layout_height="wrap_content"
@@ -70,31 +76,30 @@ THE SOFTWARE.
 			android:layout_weight="1"
 			android:background="@null"
 			android:scaleType="fitCenter"
-			android:src="@drawable/shuffle_inactive" />
+			android:src="@drawable/shuffle_inactive" android:layout_gravity="center"/>
 		<ImageButton
 			android:id="@+id/previous"
 			android:layout_height="wrap_content"
 			android:layout_width="0px"
 			android:layout_weight="1"
-			android:background="@null"
+			android:background="@drawable/btn_default"
 			android:scaleType="fitCenter"
-			android:src="@drawable/previous" />
+			android:src="@drawable/previous" android:layout_gravity="center"/>
 		<ImageButton
 			android:id="@+id/play_pause"
 			android:layout_height="wrap_content"
 			android:layout_width="0px"
 			android:layout_weight="1"
-			android:background="@null"
 			android:scaleType="fitCenter"
-			android:src="@drawable/play" />
+			android:src="@drawable/play" android:layout_gravity="center" android:background="@drawable/btn_default"/>
 		<ImageButton
 			android:id="@+id/next"
 			android:layout_height="wrap_content"
 			android:layout_width="0px"
 			android:layout_weight="1"
-			android:background="@null"
+			android:background="@drawable/btn_default"
 			android:scaleType="fitCenter"
-			android:src="@drawable/next" />
+			android:src="@drawable/next" android:layout_gravity="center"/>
 		<ImageButton
 			android:id="@+id/end_action"
 			android:layout_height="wrap_content"
@@ -102,6 +107,7 @@ THE SOFTWARE.
 			android:layout_weight="1"
 			android:background="@null"
 			android:scaleType="fitCenter"
-			android:src="@drawable/repeat_inactive" />
+			android:src="@drawable/repeat_inactive" android:layout_gravity="center"/>
 	</LinearLayout>
+
 </merge>

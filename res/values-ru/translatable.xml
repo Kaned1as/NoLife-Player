@@ -32,7 +32,7 @@ THE SOFTWARE.
 	<string name="no_shuffle">Без перемешивания</string>
 	<string name="shuffle_songs">Перемешать песни</string>
 	<string name="shuffle_albums">Перемешать альбомы</string>
-	<string name="no_repeat">Без повтора</string>
+	<string name="no_repeat">Без повтора</string><string name="current_playlist">Текущий список воспроизведения</string>
 	<string name="repeat">Повтор</string>
 	<string name="repeat_current_song">Повтор текущей песни</string>
 	<string name="random">Случайная</string><string name="sendto">Отправить...</string>
@@ -123,7 +123,7 @@ THE SOFTWARE.
 	<string name="notification_mode_title">Режим уведомления</string>
 	<string name="notification_mode_summary">Когда показывать уведомления</string>
 	<string name="notification_action_title">Действие на уведомлении</string>
-	<string name="notification_action_summary">Совершаеое действие при нажатии на уведомление</string>
+	<string name="notification_action_summary">Совершаемое действие при нажатии на уведомление</string>
 	<string name="notification_invert_color_title">Инвертировать цвет уведомления</string>
 	<string name="notification_invert_color_summary">Использовать белый текст вместо черного</string>
 
@@ -221,4 +221,8 @@ THE SOFTWARE.
 	<string name="more">Еще...</string>
 	<string name="fetch">Получить</string>
 	<string name="saved">Сохранено</string>
+	<string name="fetching">Получение...</string>
+	<string name="fulldelete">Удалить файл</string>
+	<string name="pllstdelete">Удалить из очереди</string>
+	<string name="cutsong">Проиграть фрагмент</string>
 </resources>

@@ -222,4 +222,9 @@ THE SOFTWARE.
 	<string name="more">More...</string>
 	<string name="fetch">Fetch</string>
 	<string name="saved">Saved</string>
+	<string name="fetching">Fetching...</string>
+	<string name="current_playlist">Current Playlist</string>
+	<string name="fulldelete">Delete file</string>
+	<string name="pllstdelete">Delete from playlist</string>
+	<string name="cutsong">Cut and cycle</string>
 </resources>

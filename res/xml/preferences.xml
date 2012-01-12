@@ -24,7 +24,7 @@ THE SOFTWARE.
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:persistent="true">
 	<PreferenceCategory android:title="@string/pref_output">
-		<org.kreed.vanilla.VolumePreference
+		<org.adonai.nolife.VolumePreference
 			android:key="volume"
 			android:title="@string/volume_title"
 			android:summary="@string/volume_summary" />
@@ -142,7 +142,7 @@ THE SOFTWARE.
 			android:title="@string/use_idle_timeout_title"
 			android:summary="@string/use_idle_timeout_summary"
 			android:defaultValue="false" />
-		<org.kreed.vanilla.IdlePreference
+		<org.adonai.nolife.IdlePreference
 			android:key="idle_timeout"
 			android:title="@string/idle_timeout_title"
 			android:summary="@string/idle_timeout_summary"

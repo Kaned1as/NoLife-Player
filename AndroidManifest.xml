@@ -21,9 +21,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.kreed.vanilla"
-	android:versionName="0.9.0"
-	android:versionCode="090"
+	package="org.adonai.nolife"
+	android:versionName="0.9.5"
+	android:versionCode="095"
 	android:installLocation="auto">
     <uses-permission android:name="android.permission.INTERNET"/>
 	<application
@@ -41,26 +41,16 @@ THE SOFTWARE.
 		<activity
 			android:name="FullPlaybackActivity"
 			android:theme="@style/NoBackground"
-			android:launchMode="singleTop" />
+			android:launchMode="singleInstance" />
 		<activity
 			android:name="LibraryActivity"
-			android:launchMode="singleTop"
+			android:launchMode="singleInstance"
 			android:theme="@android:style/Theme.Black.NoTitleBar" />
 		<activity
 			android:name="MiniPlaybackActivity"
 			android:theme="@android:style/Theme.Dialog"
 			android:excludeFromRecents="true"
 			android:launchMode="singleInstance" />
-		<receiver
-			android:name=".OneCellWidget"
-			android:label="NoLife Player 1x1">
-			<intent-filter>
-				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-			</intent-filter>
-			<meta-data
-				android:name="android.appwidget.provider"
-				android:resource="@xml/one_cell_widget" />
-		</receiver>
 		<receiver
 			android:name=".FourLongWidget"
 			android:label="NoLife Player 2x4">
@@ -71,36 +61,30 @@ THE SOFTWARE.
 				android:name="android.appwidget.provider"
 				android:resource="@xml/four_long_widget" />
 		</receiver>
-		<receiver
-			android:name=".FourSquareWidget"
-			android:label="NoLife Player 2x2">
-			<intent-filter>
+		<receiver android:name=".LyricsWidget" android:label="NoLife Lyrics Widget 4x4"><intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-			</intent-filter>
-			<meta-data
-				android:name="android.appwidget.provider"
-				android:resource="@xml/four_square_widget" />
-		</receiver>
-		<receiver android:name="MediaButtonReceiver" >
+			</intent-filter><meta-data android:name="android.appwidget.provider" android:resource="@xml/lyrics_widget" /></receiver><receiver android:name="org.adonai.nolife.MediaButtonReceiver" >
 			<intent-filter android:priority="999">
 				<action android:name="android.intent.action.MEDIA_BUTTON" />
 				<action android:name="android.media.VOLUME_CHANGED_ACTION"/>
 			</intent-filter>
 		</receiver>
-		<service android:name="PlaybackService">
+		<service android:name="org.adonai.nolife.PlaybackService">
 			<intent-filter>
-				<action android:name="org.kreed.vanilla.action.PLAY" />
-				<action android:name="org.kreed.vanilla.action.PAUSE" />
-				<action android:name="org.kreed.vanilla.action.TOGGLE_PLAYBACK" />
-				<action android:name="org.kreed.vanilla.action.NEXT_SONG" />
-				<action android:name="org.kreed.vanilla.action.PREVIOUS_SONG" />
+				<action android:name="org.adonai.nolife.action.PLAY" />
+				<action android:name="org.adonai.nolife.action.PAUSE" />
+				<action android:name="org.adonai.nolife.action.TOGGLE_PLAYBACK" />
+				<action android:name="org.adonai.nolife.action.NEXT_SONG" />
+				<action android:name="org.adonai.nolife.action.PREVIOUS_SONG" />
 			</intent-filter>
 		</service>
 		<activity android:name="PreferencesActivity" />
-		<meta-data
+		<activity android:name="org.adonai.nolife.TagEditActivity"></activity><meta-data
 			android:name="com.google.android.backup.api_key"
 			android:value="AEdPqrEAAAAIH6Xcxa4hn6sHN1m4jMpi4MFFFMP5sv3XhFuWeA" />
-		<activity android:name="TagEditActivity"></activity>
+		<activity android:name="PlaylistEditor"></activity>
+		
+		
 	</application>
 	<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="10" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
