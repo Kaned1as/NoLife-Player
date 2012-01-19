@@ -227,4 +227,6 @@ THE SOFTWARE.
 	<string name="fulldelete">Delete file</string>
 	<string name="pllstdelete">Delete from playlist</string>
 	<string name="cutsong">Cut and cycle</string>
+	<string name="seek_value">Seek value</string>
+	<string name="seek_summary">Seek interval, secs</string>
 </resources>

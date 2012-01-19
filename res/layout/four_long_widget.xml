@@ -26,13 +26,12 @@ THE SOFTWARE.
     android:layout_marginBottom="5dip"
     android:layout_marginTop="5dip"
     android:baselineAligned="true"
-    android:orientation="vertical" android:background="#0000">
+    android:orientation="vertical" android:background="@drawable/alt_appwidget_bg">
 
     <RelativeLayout
         android:id="@+id/indicators"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@drawable/appwidget_bt"
         android:baselineAligned="false" >
 
         <ImageView
@@ -59,7 +58,7 @@ THE SOFTWARE.
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/shuffle_ind"
             android:scaleType="fitCenter"
-            android:src="@android:drawable/ic_lock_silent_mode" android:background="#0000" android:padding="5dip"/>
+            android:src="@android:drawable/ic_lock_silent_mode" android:background="@drawable/btn_default" android:padding="5dip"/>
 
         <ImageButton
             android:id="@+id/adjustvol_up"
@@ -67,7 +66,7 @@ THE SOFTWARE.
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/repeat_ind"
-            android:background="#0000"
+            android:background="@drawable/btn_default"
             android:padding="5dip"
             android:scaleType="fitCenter"
             android:src="@android:drawable/ic_lock_silent_mode_off" />
@@ -87,7 +86,7 @@ THE SOFTWARE.
     <LinearLayout
         android:id="@+id/info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/appwidget_bt">
+        android:layout_height="wrap_content" android:layout_weight="1">
 
         <ImageView
             android:id="@+id/cover"
@@ -150,7 +149,17 @@ THE SOFTWARE.
             android:layout_weight="1"
             android:background="@drawable/appwidget_bt"
             android:scaleType="center"
-            android:src="@drawable/previous"/>
+            android:src="@drawable/previous" />
+
+        <ImageButton
+            android:id="@+id/seek_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/appwidget_bt"
+            android:scaleType="center"
+            android:src="@drawable/seek_backward"
+            android:visibility="visible" />
 
         <ImageButton
             android:id="@+id/play_pause"
@@ -160,6 +169,16 @@ THE SOFTWARE.
             android:background="@drawable/appwidget_bt"
             android:scaleType="center"
             android:src="@drawable/play"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/seek_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/appwidget_bt"
+            android:scaleType="center"
+            android:src="@drawable/seek_forward"
             android:visibility="visible" />
 
         <ImageButton

@@ -78,11 +78,24 @@ THE SOFTWARE.
 				android:textSize="10sp"
 				android:text="00:00" />
 		</LinearLayout>
-		<SeekBar
-			android:id="@+id/seek_bar"
-			android:layout_height="wrap_content"
-			android:layout_width="fill_parent"
-			android:padding="5px" android:progressDrawable="@drawable/progress_horizontal" android:thumb="@drawable/seek_thumb" android:maxHeight="5dip"/>
+
+		<LinearLayout
+		    android:id="@+id/manageLayout"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" android:layout_gravity="center">
+
+			<SeekBar
+			    android:id="@+id/seek_bar"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:maxHeight="5dip"
+			    android:padding="5px"
+			    android:progressDrawable="@drawable/progress_horizontal"
+			    android:thumb="@drawable/seek_thumb" />
+
+		</LinearLayout>
+
 	</LinearLayout>
 	<LinearLayout
 		android:id="@+id/controls_bottom"
@@ -90,7 +103,7 @@ THE SOFTWARE.
 		android:layout_width="fill_parent"
 		android:layout_gravity="bottom|left"
 		android:layout_margin="0dip"
-		android:background="#a000"
+		android:background="@drawable/appwidget_bg"
 		android:orientation="horizontal">
 		<ImageButton
 			android:id="@+id/shuffle"
@@ -105,24 +118,44 @@ THE SOFTWARE.
 			android:layout_height="wrap_content"
 			android:layout_width="0px"
 			android:layout_weight="1"
-			android:background="@null"
-			android:scaleType="fitCenter"
+			android:background="@drawable/btn_default"
+			android:scaleType="center"
 			android:src="@drawable/previous" android:layout_gravity="center"/>
+
+		<ImageButton
+		    android:id="@+id/seek_back"
+		    android:layout_width="0px"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@null"
+		    android:scaleType="center"
+		    android:src="@drawable/seek_backward" android:layout_gravity="center"/>
+
 		<ImageButton
 			android:id="@+id/play_pause"
 			android:layout_height="wrap_content"
 			android:layout_width="0px"
 			android:layout_weight="1"
-			android:background="@null"
-			android:scaleType="fitCenter"
+			android:background="@drawable/btn_default"
+			android:scaleType="center"
 			android:src="@drawable/play" android:layout_gravity="center"/>
+
+		<ImageButton
+		    android:id="@+id/seek_head"
+		    android:layout_width="0px"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@null"
+		    android:scaleType="center"
+		    android:src="@drawable/seek_forward" android:layout_gravity="center"/>
+
 		<ImageButton
 			android:id="@+id/next"
 			android:layout_height="wrap_content"
 			android:layout_width="0px"
 			android:layout_weight="1"
-			android:background="@null"
-			android:scaleType="fitCenter"
+			android:background="@drawable/btn_default"
+			android:scaleType="center"
 			android:src="@drawable/next" android:layout_gravity="center"/>
 		<ImageButton
 			android:id="@+id/end_action"
@@ -133,4 +166,28 @@ THE SOFTWARE.
 			android:scaleType="fitCenter"
 			android:src="@drawable/repeat_inactive" android:layout_gravity="center"/>
 	</LinearLayout>
+
+	<LinearLayout
+	    android:id="@+id/volume_layout"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" android:layout_gravity="right|center_vertical" android:visibility="visible">
+
+	    <ImageButton
+	        android:id="@+id/adjustvol_up"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="65dip"
+	        android:background="@drawable/btn_default"
+	        android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+	    <ImageButton
+	        android:id="@+id/adjustvol_down"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="65dip"
+	        android:background="@drawable/btn_default"
+	        android:src="@android:drawable/ic_lock_silent_mode" />
+	</LinearLayout>
+
 </merge>

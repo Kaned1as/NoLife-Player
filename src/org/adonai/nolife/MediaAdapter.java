@@ -349,6 +349,12 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 			// Genre is not standard metadata for MediaStore.Audio.Media.
 			// We have to query it through a separate provider. : /
 			return MediaUtils.buildGenreQuery(limiter.id, projection,  selection.toString(), selectionArgs);
+		} else if (limiter != null && limiter.type == MediaUtils.TYPE_PLAYLIST) {
+			Uri uri = MediaStore.Audio.Playlists.Members.getContentUri("external", limiter.id);
+			String sort_pl = MediaStore.Audio.Playlists.Members.PLAY_ORDER;
+			String projection_pl[] = projection.clone();
+			projection_pl[0] = MediaStore.Audio.Playlists.Members.AUDIO_ID + " AS " + BaseColumns._ID;
+			return new QueryTask(uri, projection_pl, null, null, sort_pl);
 		} else {
 			if (limiter != null) {
 				if (selection.length() != 0)
@@ -451,6 +457,10 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 			fields = new String[] { cursor.getString(2), cursor.getString(1) };
 			String field = MediaStore.Audio.Media.ALBUM_ID;
 			selection = String.format("%s=%d", field, id);
+			break;
+		}
+		case MediaUtils.TYPE_PLAYLIST: {
+			fields = new String[] { cursor.getString(1) };
 			break;
 		}
 		case MediaUtils.TYPE_GENRE:

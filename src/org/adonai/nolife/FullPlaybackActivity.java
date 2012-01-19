@@ -92,6 +92,8 @@ public class FullPlaybackActivity extends PlaybackActivity
 	private TextView mTitle;
 	private TextView mAlbum;
 	private TextView mArtist;
+	
+	private LinearLayout mVolumeLayout;
 
 	private ImageButton mShuffleButton;
 	private ImageButton mEndButton;
@@ -178,6 +180,12 @@ public class FullPlaybackActivity extends PlaybackActivity
 		
 		LinearLayout merge = (LinearLayout)findViewById(R.id.manageLayout);
 		merge.addView(mRangeSeekBar);
+		
+		mVolumeLayout =  (LinearLayout)findViewById(R.id.volume_layout);
+		ImageButton adjustvol_up = (ImageButton)mVolumeLayout.findViewById(R.id.adjustvol_up);
+		ImageButton adjustvol_down = (ImageButton)mVolumeLayout.findViewById(R.id.adjustvol_down);
+		adjustvol_up.setOnClickListener(this);
+		adjustvol_down.setOnClickListener(this);
 
 		CoverView coverView = (CoverView)findViewById(R.id.cover_view);
 		coverView.setup(mLooper, this, coverStyle);
@@ -192,6 +200,11 @@ public class FullPlaybackActivity extends PlaybackActivity
 		mPlayPauseButton.setOnClickListener(this);
 		View nextButton = findViewById(R.id.next);
 		nextButton.setOnClickListener(this);
+		
+		View seekBackButton = findViewById(R.id.seek_back);
+		View seekHeadButton = findViewById(R.id.seek_head);
+		seekBackButton.setOnClickListener(this);
+		seekHeadButton.setOnClickListener(this);
 
 		mTitle = (TextView)findViewById(R.id.title);
 		mAlbum = (TextView)findViewById(R.id.album);
@@ -553,6 +566,7 @@ public class FullPlaybackActivity extends PlaybackActivity
 			mUiHandler.removeMessages(MSG_UPDATE_PROGRESS);
 			mUiHandler.sendEmptyMessageDelayed(MSG_UPDATE_PROGRESS, next);
 		}
+		
 	}
 
 	/**
@@ -565,6 +579,7 @@ public class FullPlaybackActivity extends PlaybackActivity
 		mElapsedView.setVisibility(mode);
 		mDurationView.setVisibility(mode);
 		mControlsBottom.setVisibility(mode);
+		mVolumeLayout.setVisibility(mode);
 		mControlsVisible = visible;
 
 		if (visible) {
@@ -643,8 +658,13 @@ public class FullPlaybackActivity extends PlaybackActivity
 			setState(PlaybackService.get(this).setFinishAction(SongTimeline.FINISH_RANDOM));
 			return;
 		}
-
 		switch (view.getId()) {
+		case R.id.adjustvol_up:
+			PlaybackService.get(this).volumeUp(true);
+			break;
+		case R.id.adjustvol_down:
+			PlaybackService.get(this).volumeDown(true);
+			break;
 		case R.id.cover_view:
 			performAction(mCoverPressAction);
 			break;

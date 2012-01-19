@@ -134,7 +134,8 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 	
 	public static final String ACTION_VOLUME_UP = "org.adonai.nolife.action.VOLUME_UP";
 	public static final String ACTION_VOLUME_DOWN = "org.adonai.nolife.action.VOLUME_DOWN";
-
+	public static final String ACTION_SEEK_FORWARD = "org.adonai.nolife.action.SEEK_FORWARD";
+	public static final String ACTION_SEEK_BACKWARD = "org.adonai.nolife.action.SEEK_BACKWARD";
 	/**
 	 * If set, music will play.
 	 */
@@ -265,6 +266,8 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 	 * when fading the volume.
 	 */
 	private float mCurrentVolume = 1.0f;
+	
+	private int mSeekInterval = 10;
 
 	@Override
 	public void onCreate()
@@ -309,6 +312,14 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 		mLooper = thread.getLooper();
 		mHandler = new Handler(mLooper, this);
 		mHandler.sendEmptyMessage(POST_CREATE);
+		
+		try {
+			mSeekInterval = Integer.valueOf(settings.getString("seek_value", "10")); 
+		}
+		catch (NumberFormatException e) {
+			mSeekInterval = 10;
+		}
+			
 
 		initWidgets();
 
@@ -366,11 +377,38 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 				if(!intent.getBooleanExtra("triggered", false))
 					mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, 0);
 				updateWidgets();
-				
-			}
+			} else if (ACTION_SEEK_FORWARD.equals(action)) {
+				seekForward();
+			} else if (ACTION_SEEK_BACKWARD.equals(action)) {
+				seekBackward();
+			} 
 		}
 
 		return START_NOT_STICKY;
+	}
+	
+	public void volumeUp(boolean show)
+	{
+		mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, show ? AudioManager.FLAG_SHOW_UI : 0);
+		updateWidgets();
+	}
+	
+	public void volumeDown(boolean show)
+	{
+		mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, show ? AudioManager.FLAG_SHOW_UI : 0);
+		updateWidgets();
+	}
+	
+	public void seekForward()
+	{
+		if (mMediaPlayerInitialized)
+			mMediaPlayer.seekTo(mMediaPlayer.getCurrentPosition() + 1000 * mSeekInterval);
+	}
+	
+	public void seekBackward()
+	{
+		if (mMediaPlayerInitialized)
+			mMediaPlayer.seekTo(mMediaPlayer.getCurrentPosition() - 1000 * mSeekInterval);
 	}
 
 	@Override
@@ -456,6 +494,13 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 			mStockBroadcast = settings.getBoolean(key, false);
 		} else if ("headset_play".equals(key)) {
 			mHeadsetPlay = settings.getBoolean(key, false);
+		} else if ("seek_value".equals(key)) {
+			try {
+				mSeekInterval = Integer.valueOf(settings.getString("seek_value", "10"));
+			}
+			catch (NumberFormatException e) {
+				mSeekInterval = 10;
+			}
 		}
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO)
@@ -577,6 +622,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 	{
 		AppWidgetManager manager = AppWidgetManager.getInstance(this);
 		FourLongWidget.checkEnabled(this, manager);
+		OneLineWidget.checkEnabled(this, manager);
 		LyricsWidget.checkEnabled(this, manager);
 	}
 
@@ -1017,6 +1063,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 			int state = mState;
 			FourLongWidget.updateWidget(this, manager, song, state);
 			LyricsWidget.updateWidget(this, manager, song, state);
+			OneLineWidget.updateWidget(this, manager, song, state);
 			break;
 		case CUT_NOW:
 			seekToProgress(mCut.mCutStart);

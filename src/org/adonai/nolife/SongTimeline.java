@@ -525,7 +525,8 @@ public final class SongTimeline {
 				song.populate(cursor);
 					
 				// delete song if already exists
-				for(int i = 0; i != timeline.size(); i++)
+				int i = timeline.size();
+				while (--i >= 0)
 					if(timeline.get(i).id == song.id)
 						timeline.remove(i);
 					

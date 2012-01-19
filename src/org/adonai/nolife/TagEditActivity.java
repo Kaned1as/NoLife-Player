@@ -129,9 +129,8 @@ public class TagEditActivity extends Activity implements View.OnClickListener, T
 				break;
 				}
 			case R.id.fetchbutton: {
-				Tag tag = mf.getTag();
-				String title = tag.getFirst(FieldKey.TITLE);
-				String artist = tag.getFirst(FieldKey.ARTIST);
+				String title = TitleEdit.getText().toString();
+				String artist = ArtistEdit.getText().toString();
 				try {
 					new parseForTag().execute("http://lyrics.wikia.com/api.php?func=getSong&artist="+URLEncoder.encode(artist, "UTF-8")+"&song="+URLEncoder.encode(title, "UTF-8")+"&fmt=html");
 					pd = ProgressDialog.show(TagEditActivity.this, getResources().getString(R.string.fetching), getResources().getString(R.string.requesting_server), true, true);

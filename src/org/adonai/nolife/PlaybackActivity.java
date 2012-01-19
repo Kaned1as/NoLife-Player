@@ -229,6 +229,12 @@ public class PlaybackActivity extends Activity
 		case R.id.previous:
 			previousSong(false);
 			break;
+		case R.id.seek_head:
+			PlaybackService.get(this).seekForward();
+			break;
+		case R.id.seek_back:
+			PlaybackService.get(this).seekBackward();
+			break;
 		}
 	}
 

@@ -125,11 +125,16 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			View previous = mControls.findViewById(R.id.previous);
 			mPlayPauseButton = (ImageButton)mControls.findViewById(R.id.play_pause);
 			View next = mControls.findViewById(R.id.next);
+			
+			View seek_forward = mControls.findViewById(R.id.seek_head);
+			View seek_backward = mControls.findViewById(R.id.seek_back);
 
 			mCover.setOnClickListener(this);
 			previous.setOnClickListener(this);
 			mPlayPauseButton.setOnClickListener(this);
 			next.setOnClickListener(this);
+			seek_forward.setOnClickListener(this);
+			seek_backward.setOnClickListener(this);
 		} else {
 			setContentView(R.layout.library_nocontrols);
 		}
@@ -147,7 +152,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 		mArtistAdapter = setupView(R.id.artist_list, MediaUtils.TYPE_ARTIST, true, true, null);
 		mAlbumAdapter = setupView(R.id.album_list, MediaUtils.TYPE_ALBUM, true, true, state == null ? null : (MediaAdapter.Limiter)state.getSerializable("limiter_albums"));
 		mSongAdapter = setupView(R.id.song_list, MediaUtils.TYPE_SONG, false, true, state == null ? null : (MediaAdapter.Limiter)state.getSerializable("limiter_songs"));
-		mPlaylistAdapter = setupView(R.id.playlist_list, MediaUtils.TYPE_PLAYLIST, false, true, null);
+		mPlaylistAdapter = setupView(R.id.playlist_list, MediaUtils.TYPE_PLAYLIST, true, true, null);
 		mPlaylistAdapter.setHeaderText(getResources().getString(R.string.current_playlist));
 		mGenreAdapter = setupView(R.id.genre_list, MediaUtils.TYPE_GENRE, true, false, state == null ? null : (MediaAdapter.Limiter)state.getSerializable("limiter_genres"));
 		// These should be in the same order as MediaUtils.TYPE_*
@@ -323,6 +328,10 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 				mAlbumAdapter.setLimiter(limiter);
 				mSongAdapter.setLimiter(limiter);
 				tab = 1;
+				break;
+			case MediaUtils.TYPE_PLAYLIST:
+				mSongAdapter.setLimiter(limiter);
+				tab = 2;
 				break;
 			case MediaUtils.TYPE_GENRE:
 				mSongAdapter.setLimiter(limiter);

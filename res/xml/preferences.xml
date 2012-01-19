@@ -111,6 +111,11 @@ THE SOFTWARE.
 			android:title="@string/disable_cover_art_title"
 			android:summary="@string/disable_cover_art_summary"
 			android:defaultValue="false" />
+		<EditTextPreference
+			android:key="seek_value"
+			android:numeric="integer"
+			android:title="@string/seek_value"
+			android:summary="@string/seek_summary" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/pref_song_selector">
 		<CheckBoxPreference

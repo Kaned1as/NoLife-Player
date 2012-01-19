@@ -225,4 +225,6 @@ THE SOFTWARE.
 	<string name="fulldelete">Удалить файл</string>
 	<string name="pllstdelete">Удалить из очереди</string>
 	<string name="cutsong">Проиграть фрагмент</string>
+	<string name="seek_value">Скорость перемотки</string>
+	<string name="seek_summary">Ширина прыжка при щелчке на кнопку перемотки, в секундах</string>
 </resources>
