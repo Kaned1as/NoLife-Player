@@ -8,22 +8,32 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class PlaylistEditor extends Activity implements AdapterView.OnItemClickListener {
+public class PlaylistEditor extends Activity implements Callback, View.OnClickListener {
+	
+	static final int MENU_SAVE_AS_PLIST = 1;
+	
+	static final int MSG_NEW_PLAYLIST = 1;
 	
 	private ListView mSongList;
 	private MediaArrayAdapter mAdapter;
 	private long mID;
 	private ArrayList<Song> mSongs;
+	private Handler mHandler;
 
 	@Override
 	public void onCreate(Bundle state) {
@@ -41,14 +51,16 @@ public class PlaylistEditor extends Activity implements AdapterView.OnItemClickL
 		}
 		
 		mSongs = new ArrayList<Song>();
+		mHandler = new Handler(this);
 		mID = id;
 		
 		setContentView(R.layout.playlist_editor);	
 		mSongList = (ListView)findViewById(R.id.SongList);
-		mSongList.setOnItemClickListener(this);
+		Button mSaveButton = (Button)findViewById(R.id.save_plist);
+		mSaveButton.setOnClickListener(this);
 		
 		if(id == -1) {
-			mSongs = PlaybackService.get(this).mTimeline.getAllSongs();
+			mSongs = PlaybackService.get(this).mTimeline.getAllSongsCopy();
 			mAdapter = new MediaArrayAdapter(this, R.layout.playlistitem, R.id.p_title, mSongs);
 			mSongList.setAdapter(mAdapter);
 		} else {
@@ -56,11 +68,6 @@ public class PlaylistEditor extends Activity implements AdapterView.OnItemClickL
 			mAdapter = new MediaArrayAdapter(this, R.layout.playlistitem, R.id.p_title, mSongs);
 			mSongList.setAdapter(mAdapter);	
 		}
-	}
-
-	@Override
-	public void onItemClick(AdapterView<?> list, View view, int pos, long id) {
-		
 	}
 	
 	private ArrayList<Song> getPlaylistSongs(long id)
@@ -98,14 +105,10 @@ public class PlaylistEditor extends Activity implements AdapterView.OnItemClickL
 			TextView artist = (TextView)view.findViewById(R.id.p_artist);
 			TextView album = (TextView)view.findViewById(R.id.p_album);
 			
-			if(mID == -1) {
-				ImageButton up = (ImageButton)view.findViewById(R.id.p_upbutton);
-				ImageButton down = (ImageButton)view.findViewById(R.id.p_downbutton);
-				up.setVisibility(View.VISIBLE);
-				down.setVisibility(View.VISIBLE);
-				up.setOnClickListener(ListItemButtonClickListener);
-				down.setOnClickListener(ListItemButtonClickListener);
-			}
+			ImageButton up = (ImageButton)view.findViewById(R.id.p_upbutton);
+			ImageButton down = (ImageButton)view.findViewById(R.id.p_downbutton);
+			up.setOnClickListener(ListItemButtonClickListener);
+			down.setOnClickListener(ListItemButtonClickListener);
 			
 			delete.setOnClickListener(ListItemButtonClickListener);
 			title.setText(getItem(pos).title);
@@ -147,12 +150,63 @@ public class PlaylistEditor extends Activity implements AdapterView.OnItemClickL
 					mAdapter.insert(song, pos + 1);
 				}
 				break;
-				default:
-					break;
 			}
 		}
-		
-		
 	};
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0, MENU_SAVE_AS_PLIST, 0, R.string.save_as_plist).setIcon(android.R.drawable.ic_menu_save);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch (item.getItemId()) {
+		case MENU_SAVE_AS_PLIST:
+			NewPlaylistDialog dialog = new NewPlaylistDialog(this, null, R.string.create, null);
+			dialog.setDismissMessage(mHandler.obtainMessage(MSG_NEW_PLAYLIST, dialog));
+			dialog.show();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		switch(msg.what) {
+		case MSG_NEW_PLAYLIST: {
+			NewPlaylistDialog dialog = (NewPlaylistDialog)msg.obj;
+			if (dialog.isAccepted()) {
+				String name = dialog.getText();
+				long playlistId = Playlist.createPlaylist(getContentResolver(), name);
+				Playlist.addToPlaylist(getContentResolver(), playlistId, mSongs);
+				return true;
+			}
+			return false;
+		}
+		default:
+			return false;
+		}
+
+	}
+
+	@Override
+	public void onClick(View view) {
+		switch(view.getId()) {
+		case R.id.save_plist:
+			if(mID == -1)
+				PlaybackService.get(getApplicationContext()).mTimeline.convertFromSongArray(mSongs);
+			else
+				Playlist.replacePlaylist(getContentResolver(), mID, mSongs);
+			break;
+		}
+		finish();
+	}
 	
 }

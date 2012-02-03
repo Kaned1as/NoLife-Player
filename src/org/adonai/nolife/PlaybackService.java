@@ -486,7 +486,9 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 			Song.mDisableCoverArt = settings.getBoolean("disable_cover_art", false);
 		} else if ("notification_inverted_color".equals(key)) {
 			updateNotification();
-		} else if ("headset_only".equals(key)) {
+		} else if ("widget_transparency".equals(key)) {
+			updateWidgets();
+		}else if ("headset_only".equals(key)) {
 			mHeadsetOnly = settings.getBoolean(key, false);
 			if (mHeadsetOnly && isSpeakerOn())
 				unsetFlag(FLAG_PLAYING);

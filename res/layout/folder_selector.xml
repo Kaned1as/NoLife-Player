@@ -21,13 +21,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/PlaylistsLayout"
+    android:id="@+id/FoldersLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/PlaylistTitle"
+        android:id="@+id/FoldersTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -39,16 +39,30 @@ THE SOFTWARE.
         android:textStyle="bold" />
 
     <ListView
-        android:id="@+id/SongList"
+        android:id="@+id/FolderList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:fastScrollEnabled="true" android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fastScrollEnabled="true" >
     </ListView>
 
-    <Button
-        android:id="@+id/save_plist"
-        android:layout_width="160dp"
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/savechanges" />
+        android:layout_gravity="clip_horizontal" android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/select"
+            android:layout_height="wrap_content"
+            android:text="@string/select" android:layout_width="match_parent" android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@android:string/cancel" android:layout_weight="1"/>
+
+    </LinearLayout>
 
 </LinearLayout>

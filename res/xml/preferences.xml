@@ -63,7 +63,7 @@ THE SOFTWARE.
 			android:summary="@string/notification_action_summary"
 			android:entries="@array/notification_action_entries"
 			android:entryValues="@array/entry_values"
-			android:defaultValue="0" />
+			android:defaultValue="1" />
 		<CheckBoxPreference
 			android:key="notification_inverted_color"
 			android:title="@string/notification_invert_color_title"
@@ -115,7 +115,8 @@ THE SOFTWARE.
 			android:key="seek_value"
 			android:numeric="integer"
 			android:title="@string/seek_value"
-			android:summary="@string/seek_summary" />
+			android:summary="@string/seek_summary"
+			android:defaultValue="15" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/pref_song_selector">
 		<CheckBoxPreference
@@ -138,6 +139,11 @@ THE SOFTWARE.
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/pref_misc">
 		<CheckBoxPreference
+			android:key="widget_transparency"
+			android:title="@string/widgettransparency"
+			android:summary="@string/widgettransparency_summary"
+			android:defaultValue="true" />
+		<CheckBoxPreference
 			android:key="disable_lockscreen"
 			android:title="@string/disable_lockscreen_title"
 			android:summary="@string/disable_lockscreen_summary"
@@ -152,11 +158,6 @@ THE SOFTWARE.
 			android:title="@string/idle_timeout_title"
 			android:summary="@string/idle_timeout_summary"
 			android:dependency="use_idle_timeout" />
-		<CheckBoxPreference
-			android:key="double_tap"
-			android:title="@string/double_tap_title"
-			android:summary="@string/double_tap_summary"
-			android:defaultValue="false" />
 		<CheckBoxPreference
 			android:key="scrobble"
 			android:title="@string/scrobble_title"

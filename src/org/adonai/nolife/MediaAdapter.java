@@ -115,6 +115,8 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 	 * True if the data is stale and the query should be re-run.
 	 */
 	private boolean mNeedsRequery;
+	
+	public ArrayList<Long> IDs;
 
 	/**
 	 * Construct a MediaAdapter representing the given <code>type</code> of
@@ -140,6 +142,7 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 		mLimiter = limiter;
 		mIndexer = new MusicAlphabetIndexer(1);
 		mNeedsRequery = true;
+		IDs = new ArrayList<Long>();
 
 		switch (type) {
 		case MediaUtils.TYPE_ARTIST:
@@ -498,6 +501,29 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 		else
 			mIndexer.setCursor(cursor);
 		
+	}
+	
+	public void markChecked() {
+		
+		ArrayList<Song> mSongs = PlaybackService.get(mContext).mTimeline.getAllSongsCopy();
+		if(mSongs.isEmpty())
+			return;
+		
+		IDs = new ArrayList<Long>();
+		switch(mType) {
+		case MediaUtils.TYPE_ARTIST:
+			for(int i = 0; i < mSongs.size(); i++)
+				IDs.add(mSongs.get(i).artistId);
+			break;
+		case MediaUtils.TYPE_ALBUM:
+			for(int i = 0; i < mSongs.size(); i++)
+				IDs.add(mSongs.get(i).albumId);
+			break;
+		case MediaUtils.TYPE_SONG:
+			for(int i = 0; i < mSongs.size(); i++)
+				IDs.add(mSongs.get(i).id);
+			break;
+		}
 	}
 
 	@Override

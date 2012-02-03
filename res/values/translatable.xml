@@ -229,4 +229,10 @@ THE SOFTWARE.
 	<string name="cutsong">Cut and cycle</string>
 	<string name="seek_value">Seek value</string>
 	<string name="seek_summary">Seek interval, secs</string>
+	<string name="widgettransparency">Widget Trasparency</string>
+	<string name="widgettransparency_summary">Use transparent background in app widget or not</string>
+	<string name="pick_folder">Pick Folder</string>
+	<string name="select">Select</string>
+	<string name="processing">Processing...</string>
+	<string name="save_as_plist">Save as playlist</string>
 </resources>

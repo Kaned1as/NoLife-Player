@@ -227,4 +227,10 @@ THE SOFTWARE.
 	<string name="cutsong">Проиграть фрагмент</string>
 	<string name="seek_value">Скорость перемотки</string>
 	<string name="seek_summary">Ширина прыжка при щелчке на кнопку перемотки, в секундах</string>
+	<string name="widgettransparency">Прозрачность виджета</string>
+	<string name="widgettransparency_summary">Использовать прозрачный фон у виджета или нет</string>
+	<string name="pick_folder">Выбрать папку</string>
+	<string name="processing">Обработка...</string>
+	<string name="select">Выбрать</string>
+	<string name="save_as_plist">Сохранить как список воспроизведения</string>
 </resources>

@@ -30,6 +30,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -91,6 +92,12 @@ public class OneLineWidget extends AppWidgetProvider {
 			return;
 
 		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.oneline_widget);
+		SharedPreferences settings = PlaybackService.getSettings(context);
+		
+		if(!settings.getBoolean("widget_transparency", true))
+			views.setInt(R.id.widgetLayout, "setBackgroundResource", R.drawable.appwidget_bg);
+		else
+			views.setInt(R.id.widgetLayout, "setBackgroundResource", R.drawable.alt_appwidget_bg);
 
 		if ((state & PlaybackService.FLAG_NO_MEDIA) != 0) {
 			views.setViewVisibility(R.id.buttons, View.GONE);

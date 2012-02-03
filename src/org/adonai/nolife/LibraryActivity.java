@@ -715,7 +715,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	{
 		menu.add(0, MENU_PLAYBACK, 0, R.string.playback_view).setIcon(R.drawable.ic_menu_gallery);
 		menu.add(0, MENU_SEARCH, 0, R.string.search).setIcon(R.drawable.ic_menu_search);
-		menu.add(0, MENU_RELOAD_SONGS, 0, R.string.reload_songs).setIcon(R.drawable.ic_menu_refresh);
+		menu.addSubMenu(0, MENU_MORE, 0, R.string.more).setIcon(android.R.drawable.ic_menu_more);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -723,6 +723,12 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		switch (item.getItemId()) {
+		case MENU_MORE:
+			Menu moreMenu = item.getSubMenu();
+			moreMenu.clear();
+			moreMenu.add(0, MENU_RELOAD_SONGS, 0, R.string.reload_songs);
+			moreMenu.add(0, MENU_PICK_FOLDER, 0, R.string.pick_folder);
+			return true;
 		case MENU_SEARCH:
 			setSearchBoxVisible(!mSearchBoxVisible);
 			return true;
@@ -732,6 +738,9 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 		case MENU_RELOAD_SONGS:
 			getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, 
 			        Uri.parse("file://" + Environment.getExternalStorageDirectory())));
+			return true;
+		case MENU_PICK_FOLDER:
+			startActivity(new Intent(this, FolderSelectActivity.class));
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -818,6 +827,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 						else
 							view.setSelection(k);
 				
+				mCurrentAdapter.markChecked();
 				view.invalidate();
 				break;
 			case MSG_DELETE:

@@ -22,6 +22,8 @@
 
 package org.adonai.nolife;
 
+import java.util.ArrayList;
+
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -141,6 +143,57 @@ public class Playlist {
 		}
 
 		from.close();
+
+		return count;
+	}
+	
+	public static int addToPlaylist(ContentResolver resolver, long playlistId, ArrayList<Song> from)
+	{
+		if (playlistId == -1)
+			return 0;
+
+		// Find the greatest PLAY_ORDER in the playlist
+		Uri uri = MediaStore.Audio.Playlists.Members.getContentUri("external", playlistId);
+		String[] projection = new String[] { MediaStore.Audio.Playlists.Members.PLAY_ORDER };
+		Cursor cursor = resolver.query(uri, projection, null, null, null);
+		int base = 0;
+		if (cursor.moveToLast())
+			base = cursor.getInt(0) + 1;
+		cursor.close();
+
+
+		int count = from.size();
+		if (count > 0) {
+			ContentValues[] values = new ContentValues[count];
+			for (int i = 0; i != count; ++i) {
+				values[i] = new ContentValues(1);
+				values[i].put(MediaStore.Audio.Playlists.Members.PLAY_ORDER, Integer.valueOf(base + i));
+				values[i].put(MediaStore.Audio.Playlists.Members.AUDIO_ID, from.get(i).id);
+			}
+			resolver.bulkInsert(uri, values);
+		}
+
+		return count;
+	}
+	
+	public static int replacePlaylist(ContentResolver resolver, long playlistId, ArrayList<Song> from)
+	{
+		if (playlistId == -1)
+			return 0;
+
+		Uri uri = MediaStore.Audio.Playlists.Members.getContentUri("external", playlistId);
+		resolver.delete(uri, null, null);
+
+		int count = from.size();
+		if (count > 0) {
+			ContentValues[] values = new ContentValues[count];
+			for (int i = 0; i != count; ++i) {
+				values[i] = new ContentValues(1);
+				values[i].put(MediaStore.Audio.Playlists.Members.PLAY_ORDER, i);
+				values[i].put(MediaStore.Audio.Playlists.Members.AUDIO_ID, from.get(i).id);
+			}
+			resolver.bulkInsert(uri, values);
+		}
 
 		return count;
 	}

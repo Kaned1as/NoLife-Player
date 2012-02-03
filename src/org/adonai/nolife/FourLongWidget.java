@@ -31,12 +31,13 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.view.View;
 import android.widget.RemoteViews;
 
 /**
- * 1x4 widget that shows title, artist, album art, a play/pause button, and a
+ * 2x4 widget that shows title, artist, album art, a play/pause button, and a
  * next button.
  */
 public class FourLongWidget extends AppWidgetProvider {
@@ -91,9 +92,15 @@ public class FourLongWidget extends AppWidgetProvider {
 	{
 		if (!sEnabled)
 			return;
-
+		
 		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.four_long_widget);
-
+		SharedPreferences settings = PlaybackService.getSettings(context);
+		
+		if(!settings.getBoolean("widget_transparency", true))
+			views.setInt(R.id.widgetLayout, "setBackgroundResource", R.drawable.appwidget_bg);
+		else
+			views.setInt(R.id.widgetLayout, "setBackgroundResource", R.drawable.alt_appwidget_bg);
+		
 		if ((state & PlaybackService.FLAG_NO_MEDIA) != 0) {
 			views.setViewVisibility(R.id.buttons, View.GONE);
 			views.setViewVisibility(R.id.title, View.GONE);

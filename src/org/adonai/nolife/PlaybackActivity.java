@@ -340,6 +340,7 @@ public class PlaybackActivity extends Activity
 	static final int MENU_PLAYBACK = 5;
 	static final int MENU_SEARCH = 7;
 	static final int MENU_RELOAD_SONGS = 8;
+	static final int MENU_PICK_FOLDER = 6;
 	static final int MENU_CUT_SONG = 9;
 	static final int MENU_MORE = 10;
 	static final int MENU_EDIT_SONG = 11;

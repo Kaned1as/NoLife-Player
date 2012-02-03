@@ -76,6 +76,12 @@ public class TagEditActivity extends Activity implements View.OnClickListener, T
 					mf = AudioFileIO.read(SongFile);
 					Tag tag = mf.getTagOrCreateAndSetDefault();
 					
+					// Commented out for future work
+					// TODO: Edit images
+					//Artwork art = tag.getFirstArtwork();
+					//Bitmap picture = BitmapFactory.decodeByteArray(art.getBinaryData(), 0, art.getBinaryData().length);
+					//LyricsEdit.setBackgroundDrawable(new BitmapDrawable(this.getResources(), picture));
+					
 					TitleEdit.setText(tag.getFirst(FieldKey.TITLE));
 					ArtistEdit.setText(tag.getFirst(FieldKey.ARTIST));
 					AlbumEdit.setText(tag.getFirst(FieldKey.ALBUM));

@@ -65,14 +65,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#0000"
-            android:src="@drawable/up" android:padding="5dip" android:visibility="gone"/>
+            android:src="@drawable/up" android:padding="5dip"/>
 
         <ImageButton
             android:id="@+id/p_downbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#0000"
-            android:src="@drawable/down" android:padding="5dip" android:visibility="gone"/>
+            android:src="@drawable/down" android:padding="5dip"/>
 
     </LinearLayout>
 

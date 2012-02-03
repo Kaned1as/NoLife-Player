@@ -65,6 +65,8 @@ public final class MediaView extends View {
 	private static RadialGradient sDividerGradient;
 	
 	private static LinearGradient sSelectionGradient;
+	
+	private static LinearGradient sPlaylistGradient;
 	/**
 	 * The text size used for the text in all views.
 	 */
@@ -154,7 +156,10 @@ public final class MediaView extends View {
 		Paint paint = sPaint;
 		
 		if (sSelectionGradient == null)
-			sSelectionGradient = new LinearGradient(0, 1, width, 1, 0xFF666666, Color.BLACK, Shader.TileMode.CLAMP);
+			sSelectionGradient = new LinearGradient(0, 1, width, 1, 0xAAAAAAAA, Color.BLACK, Shader.TileMode.CLAMP);
+		
+		if (sPlaylistGradient == null)
+			sPlaylistGradient = new LinearGradient(0, 1, width, 1, 0xAA00BBBB, Color.BLACK, Shader.TileMode.CLAMP);
 		
 		if(!mIsHeader) {
 			MediaAdapter ma = (MediaAdapter)((ListView)getParent()).getAdapter();
@@ -166,7 +171,12 @@ public final class MediaView extends View {
 				canvas.drawRect(0, 0, width, height, paint);
 				paint.setShader(null);
 				paint.setTypeface(Typeface.DEFAULT_BOLD);
+			} else if (ma.IDs.contains(mId)) {
+				paint.setShader(sPlaylistGradient);
+				canvas.drawRect(0, 0, width, height, paint);
+				paint.setShader(null);
 			}
+				
 		}
 
 		if (mExpandable && !mIsHeader) {
@@ -189,7 +199,7 @@ public final class MediaView extends View {
 		if (mSubTitle != null) {
 			allocatedHeight = height / 2 - padding * 3 / 2;
 
-			paint.setColor(Color.GRAY);
+			paint.setColor(0xFFAAAAAA);
 			canvas.drawText(mSubTitle, padding, height / 2 + padding / 2 + (allocatedHeight - sTextSize) / 2 - paint.ascent(), paint);
 		} else {
 			allocatedHeight = height - padding * 2;

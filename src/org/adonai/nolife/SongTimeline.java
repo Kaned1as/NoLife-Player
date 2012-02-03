@@ -115,7 +115,7 @@ public final class SongTimeline {
 	 * All the songs currently contained in the timeline. Each Song object
 	 * should be unique, even if it refers to the same media.
 	 */
-	public ArrayList<Song> mSongs = new ArrayList<Song>(12);
+	private ArrayList<Song> mSongs = new ArrayList<Song>(12);
 	/**
 	 * The position of the current song (i.e. the playing song).
 	 */
@@ -576,6 +576,12 @@ public final class SongTimeline {
 			}
 		}
 	}
+	
+	public void setFromBeginning()
+	{
+		mCurrentPos = 0;
+		broadcastChangedSongs();
+	}
 
 	/**
 	 * Clear the song queue.
@@ -610,7 +616,7 @@ public final class SongTimeline {
 	 *
 	 * @see SongTimeline#saveActiveSongs()
 	 */
-	private void broadcastChangedSongs()
+	public void broadcastChangedSongs()
 	{
 		Song previous = getSong(-1);
 		Song current = getSong(0);
@@ -680,9 +686,16 @@ public final class SongTimeline {
 		}
 	}
 	
-	public ArrayList<Song> getAllSongs()
+	@SuppressWarnings("unchecked")
+	public ArrayList<Song> getAllSongsCopy()
 	{
-		return mSongs;
+		return (ArrayList<Song>) mSongs.clone();
+	}
+
+	public void convertFromSongArray(ArrayList<Song> tempSongs) {
+		mSongs.clear();
+		mSongs.addAll(tempSongs);
+		setFromBeginning();
 	}
 	
 }
