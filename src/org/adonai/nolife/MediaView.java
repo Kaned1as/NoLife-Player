@@ -156,10 +156,10 @@ public final class MediaView extends View {
 		Paint paint = sPaint;
 		
 		if (sSelectionGradient == null)
-			sSelectionGradient = new LinearGradient(0, 1, width, 1, 0xAAAAAAAA, Color.BLACK, Shader.TileMode.CLAMP);
+			sSelectionGradient = new LinearGradient(0, 1, width, 1, 0xAAAAAAAA, Color.TRANSPARENT, Shader.TileMode.CLAMP);
 		
 		if (sPlaylistGradient == null)
-			sPlaylistGradient = new LinearGradient(0, 1, width, 1, 0xAA00BBBB, Color.BLACK, Shader.TileMode.CLAMP);
+			sPlaylistGradient = new LinearGradient(0, 1, width, 1, 0xAA00BBBB, Color.TRANSPARENT, Shader.TileMode.CLAMP);
 		
 		if(!mIsHeader) {
 			MediaAdapter ma = (MediaAdapter)((ListView)getParent()).getAdapter();
