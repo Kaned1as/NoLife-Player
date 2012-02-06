@@ -676,8 +676,8 @@ public class FullPlaybackActivity extends PlaybackActivity
 			break;
 		case R.id.seek_head:
 		case R.id.seek_back:
-			updateProgress();
 			super.onClick(view);
+			updateProgress();
 			break;
 		default:
 			super.onClick(view);
