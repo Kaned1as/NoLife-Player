@@ -403,7 +403,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		params.leftMargin = 5;
-		PaintDrawable background = new PaintDrawable(Color.GRAY);
+		PaintDrawable background = new PaintDrawable(0xAA00BBBB);
 		background.setCornerRadius(5);
 		for (int i = 0; i != limiter.length; ++i) {
 			TextView view = new TextView(this);

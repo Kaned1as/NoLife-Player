@@ -28,6 +28,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FolderSelectActivity extends Activity implements OnClickListener, Handler.Callback  {
 	private ListView mFolderList;
@@ -44,6 +45,7 @@ public class FolderSelectActivity extends Activity implements OnClickListener, H
 	
 	private static final int MSG_FINISH = 0;
 	private static final int MSG_PROGRESS = 1;
+	private static final int MSG_FAIL = 2;
 	
 	@Override
 	public void onCreate(Bundle state)
@@ -212,14 +214,21 @@ public class FolderSelectActivity extends Activity implements OnClickListener, H
 					}
 					cursor.close();
 					
-					PlaybackService.get(getApplicationContext()).mTimeline.convertFromSongArray(tempSongs);
+					if(!tempSongs.isEmpty())
+						PlaybackService.get(getApplicationContext()).mTimeline.convertFromSongArray(tempSongs);
+					else
+						mHandler.sendEmptyMessage(MSG_FAIL);
 					mHandler.sendEmptyMessage(MSG_FINISH);
 				}
 			}.start();
 			break;
 		case R.id.clear:
-			mFolders.clear();
-			mFolderList.invalidateViews();
+			if(mFolders.isEmpty())
+				finish();
+			else {
+				mFolders.clear();
+				mFolderList.invalidateViews();
+			}
 			break;
 		}
 		
@@ -235,6 +244,9 @@ public class FolderSelectActivity extends Activity implements OnClickListener, H
 		case MSG_PROGRESS:
 			String folder = (String)msg.obj;
 			pd.setMessage(folder);
+			break;
+		case MSG_FAIL:
+			Toast.makeText(this, R.string.no_songs, Toast.LENGTH_SHORT).show();
 			break;
 		}
 		return false;
