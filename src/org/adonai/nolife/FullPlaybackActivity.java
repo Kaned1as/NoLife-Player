@@ -674,6 +674,11 @@ public class FullPlaybackActivity extends PlaybackActivity
 		case R.id.shuffle:
 			cycleShuffle();
 			break;
+		case R.id.seek_head:
+		case R.id.seek_back:
+			updateProgress();
+			super.onClick(view);
+			break;
 		default:
 			super.onClick(view);
 			break;
