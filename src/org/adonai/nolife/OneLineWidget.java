@@ -31,6 +31,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -114,10 +115,11 @@ public class OneLineWidget extends AppWidgetProvider {
 			views.setViewVisibility(R.id.buttons, View.VISIBLE);
 			views.setTextViewText(R.id.title, song.title);
 			views.setTextViewText(R.id.artist, song.artist);
-			if (Song.mDisableCoverArt)
+			Uri uri = song.getCoverUri();
+			if (uri == null)
 				views.setImageViewResource(R.id.cover, 0);
 			else
-				views.setImageViewUri(R.id.cover, song.getCoverUri());
+				views.setImageViewUri(R.id.cover, uri);
 		}
 
 		boolean playing = (state & PlaybackService.FLAG_PLAYING) != 0;
