@@ -1240,7 +1240,13 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 	 */
 	public void runQuery(int mode, QueryTask query)
 	{
-		int count = mTimeline.addSongs(mode, query.runQuery(getContentResolver()));
+		Cursor cursor = query.runQuery(getContentResolver());
+		if (cursor == null) {
+			return;
+		}
+
+		int count = mTimeline.addSongs(mode, cursor);
+		cursor.close();
 
 		int text;
 
