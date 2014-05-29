@@ -736,7 +736,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			startActivity(new Intent(this, FullPlaybackActivity.class));
 			return true;
 		case MENU_RELOAD_SONGS:
-			getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, 
+			getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
 			        Uri.parse("file://" + Environment.getExternalStorageDirectory())));
 			return true;
 		case MENU_PICK_FOLDER:
