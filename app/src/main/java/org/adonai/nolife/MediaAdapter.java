@@ -142,7 +142,7 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 		mLimiter = limiter;
 		mIndexer = new MusicAlphabetIndexer(1);
 		mNeedsRequery = true;
-		IDs = new ArrayList<Long>();
+		IDs = new ArrayList<>();
 
 		switch (type) {
 		case MediaUtils.TYPE_ARTIST:
@@ -479,10 +479,8 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 	@Override
 	public void changeCursor(Cursor cursor)
 	{
-		super.changeCursor(cursor);
-		
 		if(cursor != null) {
-			ArrayList<String> firstLetters = new ArrayList<String>();
+			final ArrayList<String> firstLetters = new ArrayList<>();
 			while(cursor.moveToNext()) {
 				if(cursor.getString(1) == null || cursor.getString(1).length() == 0)
 					continue;
@@ -492,7 +490,7 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 					firstLetters.add(firstLetter);
 			}
 			Collections.sort(firstLetters);
-			StringBuilder alphabet = new StringBuilder();
+			final StringBuilder alphabet = new StringBuilder();
             for (final String firstLetter : firstLetters)
                 alphabet.append(firstLetter);
 		
@@ -500,7 +498,8 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 		}
 		else
 			mIndexer.setCursor(cursor);
-		
+
+        super.changeCursor(cursor);
 	}
 	
 	public void markChecked() {

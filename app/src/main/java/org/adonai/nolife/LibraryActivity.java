@@ -22,14 +22,10 @@
 
 package org.adonai.nolife;
 
-import java.io.File;
-
-import org.adonai.nolife.R;
-
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -58,7 +54,10 @@ import android.widget.ListView;
 import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import junit.framework.Assert;
+
+import java.io.File;
 
 /**
  * The library activity where songs to play can be selected from the library.
@@ -366,6 +365,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 			else {
 				pickSongs(createClickIntent((MediaAdapter)list.getAdapter(), mediaView), mDefaultAction);
 			}
+        mediaView.invalidate();
 	}
 
 	public void afterTextChanged(Editable editable)
@@ -758,15 +758,14 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 	 */
 	private MediaAdapter setupView(int id, int type, boolean expandable, boolean hasHeader, MediaAdapter.Limiter limiter)
 	{
-		ListView view = (ListView)findViewById(id);
+		final ListView view = (ListView) findViewById(id);
+        MediaAdapter adapter = new MediaAdapter(this, type, expandable, hasHeader, limiter);
+        view.setAdapter(adapter);
+
 		view.setOnItemClickListener(this);
 		view.setOnCreateContextMenuListener(this);
 		view.setCacheColorHint(Color.BLACK);
 		view.setDivider(null);
-		view.setFastScrollEnabled(true);
-
-		MediaAdapter adapter = new MediaAdapter(this, type, expandable, hasHeader, limiter);
-		view.setAdapter(adapter);
 
 		return adapter;
 	}
@@ -819,7 +818,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
 				if(id == -1)
 					return;
 				
-				ListView view = (ListView)mLists.getChildAt(mCurrentTab);				
+				ListView view = (ListView)mLists.getChildAt(mCurrentTab);
 				for(int k = 0; k < view.getCount(); k++)
 					if(view.getItemIdAtPosition(k) == id)
 						if(java.lang.Math.abs((view.getFirstVisiblePosition() + view.getLastVisiblePosition()) / 2 - k) < 30)
