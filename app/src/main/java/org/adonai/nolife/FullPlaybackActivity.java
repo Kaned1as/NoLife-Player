@@ -22,24 +22,6 @@
 
 package org.adonai.nolife;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URLEncoder;
-
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.exceptions.CannotReadException;
-import org.jaudiotagger.audio.exceptions.CannotWriteException;
-import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
-import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
-import org.jaudiotagger.tag.FieldDataInvalidException;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.KeyNotFoundException;
-import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.TagException;
-import org.adonai.nolife.R;
-import org.adonai.nolife.RangeSeekBar.OnRangeSeekBarChangeListener;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -62,6 +44,23 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.adonai.nolife.RangeSeekBar.OnRangeSeekBarChangeListener;
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.jaudiotagger.audio.exceptions.CannotWriteException;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.tag.FieldDataInvalidException;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.KeyNotFoundException;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagException;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URLEncoder;
 
 /**
  * The primary playback screen with playback controls and large cover display.
@@ -406,7 +405,7 @@ public class FullPlaybackActivity extends PlaybackActivity
 				tag = mf.getTagOrCreateAndSetDefault();
 
 				String lyrics = tag.getFirst(FieldKey.LYRICS);
-				if(!lyrics.equals("")) {
+				if(lyrics.length() > 0) {
 					AlertDialog alertDialog;
 					alertDialog = new AlertDialog.Builder(FullPlaybackActivity.this).create();
 					alertDialog.setTitle(getResources().getString(R.string.song_lyrics));
@@ -415,9 +414,9 @@ public class FullPlaybackActivity extends PlaybackActivity
 					return true;
 				}
 				
-				String title = tag.getFirst(FieldKey.TITLE).toString();
-				String artist = tag.getFirst(FieldKey.ARTIST).toString();
-				new parseForTag().execute("http://lyrics.wikia.com/api.php?func=getSong&artist="+URLEncoder.encode(artist, "UTF-8")+"&song="+URLEncoder.encode(title, "UTF-8")+"&fmt=html");
+				String titleEncoded = URLEncoder.encode(tag.getFirst(FieldKey.TITLE).toString(), "UTF-8");
+				String artistEncoded = URLEncoder.encode(tag.getFirst(FieldKey.ARTIST).toString(), "UTF-8");
+				new LyricsParser().execute("http://lyrics.wikia.com/api.php?func=getSong&artist=" + artistEncoded + "&song=" + titleEncoded + "&fmt=html");
 				pd = ProgressDialog.show(FullPlaybackActivity.this, getResources().getString(R.string.fetching), getResources().getString(R.string.requesting_server), true, true);
 			} catch (CannotReadException e) {
 				Toast.makeText(FullPlaybackActivity.this, R.string.cant_read_file, Toast.LENGTH_SHORT).show();
@@ -463,7 +462,7 @@ public class FullPlaybackActivity extends PlaybackActivity
 		}
 	}
 	
-	private class parseForTag extends MediaUtils.ParseSite {
+	private class LyricsParser extends MediaUtils.ParseSite {
 		@Override
 		protected void onProgressUpdate(Integer... Progress) {
 			if (Progress[0] == 1)
@@ -475,7 +474,9 @@ public class FullPlaybackActivity extends PlaybackActivity
 		@Override
 		protected void onPostExecute(String output) {
 	        pd.dismiss();
-	        
+	        if(output == null)
+                return;
+
 	        AlertDialog alertDialog;
 			alertDialog = new AlertDialog.Builder(FullPlaybackActivity.this).create();
 			alertDialog.setTitle(getResources().getString(R.string.song_lyrics));

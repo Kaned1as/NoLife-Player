@@ -482,19 +482,19 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
 		super.changeCursor(cursor);
 		
 		if(cursor != null) {
-			ArrayList<String> first_letters = new ArrayList<String>();
+			ArrayList<String> firstLetters = new ArrayList<String>();
 			while(cursor.moveToNext()) {
 				if(cursor.getString(1) == null || cursor.getString(1).length() == 0)
 					continue;
 				
-				String first_letter = cursor.getString(1).substring(0, 1).toUpperCase();
-				if(!first_letters.contains((String)first_letter))
-					first_letters.add(first_letter);
+				String firstLetter = cursor.getString(1).substring(0, 1).toUpperCase();
+				if(!firstLetters.contains(firstLetter))
+					firstLetters.add(firstLetter);
 			}
-			Collections.sort(first_letters);
-			String alphabet = "";
-			for(int i = 0; i < first_letters.size(); i++)
-				alphabet += first_letters.get(i);
+			Collections.sort(firstLetters);
+			StringBuilder alphabet = new StringBuilder();
+            for (final String firstLetter : firstLetters)
+                alphabet.append(firstLetter);
 		
 			mIndexer = new MusicAlphabetIndexer(cursor, 1, alphabet);
 		}

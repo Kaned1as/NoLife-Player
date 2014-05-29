@@ -1,20 +1,5 @@
 package org.adonai.nolife;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.exceptions.*;
-import org.jaudiotagger.tag.FieldDataInvalidException;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.KeyNotFoundException;
-import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.TagException;
-import org.adonai.nolife.R;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -28,15 +13,32 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.jaudiotagger.audio.exceptions.CannotWriteException;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.tag.FieldDataInvalidException;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.KeyNotFoundException;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagException;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class TagEditActivity extends Activity implements View.OnClickListener, TextWatcher  {
-	private TextView TitleEdit;
-	private TextView ArtistEdit;
-	private TextView AlbumEdit;
-	private TextView LyricsEdit;
-	private Button SaveButton;
-	private Button FetchButton;
+	private TextView mTitleEdit;
+	private TextView mArtistEdit;
+	private TextView mAlbumEdit;
+	private TextView mLyricsEdit;
+	private Button mSaveButton;
+	private Button mFetchButton;
 	private ProgressDialog pd;
-	private AudioFile  mf;
+	private AudioFile mf;
 
 	
 	@Override
@@ -50,19 +52,19 @@ public class TagEditActivity extends Activity implements View.OnClickListener, T
 		}
 
 		setContentView(R.layout.tag_edit);
-		TitleEdit = (TextView)findViewById(R.id.TitleEdit);
-		ArtistEdit = (TextView)findViewById(R.id.ArtistEdit);
-		AlbumEdit = (TextView)findViewById(R.id.AlbumEdit);
-		LyricsEdit = (TextView)findViewById(R.id.LyricsEdit);
-		SaveButton = (Button)findViewById(R.id.Savebutton);
-		FetchButton = (Button)findViewById(R.id.fetchbutton);
-		SaveButton.setOnClickListener(this);
-		FetchButton.setOnClickListener(this);
+		mTitleEdit = (TextView)findViewById(R.id.TitleEdit);
+		mArtistEdit = (TextView)findViewById(R.id.ArtistEdit);
+		mAlbumEdit = (TextView)findViewById(R.id.AlbumEdit);
+		mLyricsEdit = (TextView)findViewById(R.id.LyricsEdit);
+		mSaveButton = (Button)findViewById(R.id.Savebutton);
+		mFetchButton = (Button)findViewById(R.id.fetchbutton);
+		mSaveButton.setOnClickListener(this);
+		mFetchButton.setOnClickListener(this);
 		
-		TitleEdit.addTextChangedListener(this);
-		ArtistEdit.addTextChangedListener(this);
-		AlbumEdit.addTextChangedListener(this);
-		LyricsEdit.addTextChangedListener(this);
+		mTitleEdit.addTextChangedListener(this);
+		mArtistEdit.addTextChangedListener(this);
+		mAlbumEdit.addTextChangedListener(this);
+		mLyricsEdit.addTextChangedListener(this);
 			
 		long id = getIntent().getLongExtra("SongId", -1);
 		ContentResolver resolver = getContentResolver();
@@ -80,12 +82,12 @@ public class TagEditActivity extends Activity implements View.OnClickListener, T
 					// TODO: Edit images
 					//Artwork art = tag.getFirstArtwork();
 					//Bitmap picture = BitmapFactory.decodeByteArray(art.getBinaryData(), 0, art.getBinaryData().length);
-					//LyricsEdit.setBackgroundDrawable(new BitmapDrawable(this.getResources(), picture));
+					//mLyricsEdit.setBackgroundDrawable(new BitmapDrawable(this.getResources(), picture));
 					
-					TitleEdit.setText(tag.getFirst(FieldKey.TITLE));
-					ArtistEdit.setText(tag.getFirst(FieldKey.ARTIST));
-					AlbumEdit.setText(tag.getFirst(FieldKey.ALBUM));
-					LyricsEdit.setText(tag.getFirst(FieldKey.LYRICS));
+					mTitleEdit.setText(tag.getFirst(FieldKey.TITLE));
+					mArtistEdit.setText(tag.getFirst(FieldKey.ARTIST));
+					mAlbumEdit.setText(tag.getFirst(FieldKey.ALBUM));
+					mLyricsEdit.setText(tag.getFirst(FieldKey.LYRICS));
 				} catch (CannotReadException e) {
 					Toast.makeText(getApplicationContext(), R.string.cant_read_file, Toast.LENGTH_SHORT).show();
 					finish();
@@ -114,12 +116,12 @@ public class TagEditActivity extends Activity implements View.OnClickListener, T
 				Tag tag = mf.getTagOrCreateAndSetDefault();
 				
 				try {	
-					tag.setField(FieldKey.TITLE,TitleEdit.getText().toString());
-					tag.setField(FieldKey.ALBUM,AlbumEdit.getText().toString());
-					tag.setField(FieldKey.ARTIST,ArtistEdit.getText().toString());
-					tag.setField(FieldKey.LYRICS,LyricsEdit.getText().toString());
+					tag.setField(FieldKey.TITLE, mTitleEdit.getText().toString());
+					tag.setField(FieldKey.ALBUM, mAlbumEdit.getText().toString());
+					tag.setField(FieldKey.ARTIST, mArtistEdit.getText().toString());
+					tag.setField(FieldKey.LYRICS, mLyricsEdit.getText().toString());
 					mf.commit();
-					SaveButton.setText(getResources().getString(R.string.saved));
+					mSaveButton.setText(getResources().getString(R.string.saved));
 				} catch (KeyNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -135,21 +137,20 @@ public class TagEditActivity extends Activity implements View.OnClickListener, T
 				break;
 				}
 			case R.id.fetchbutton: {
-				String title = TitleEdit.getText().toString();
-				String artist = ArtistEdit.getText().toString();
 				try {
-					new parseForTag().execute("http://lyrics.wikia.com/api.php?func=getSong&artist="+URLEncoder.encode(artist, "UTF-8")+"&song="+URLEncoder.encode(title, "UTF-8")+"&fmt=html");
+                    final String artistEncoded = URLEncoder.encode(mArtistEdit.getText().toString(), "UTF-8");
+                    final String titleEncoded = URLEncoder.encode(mTitleEdit.getText().toString(), "UTF-8");
+					new LyricsParser().execute("http://lyrics.wikia.com/api.php?func=getSong&artist=" + artistEncoded + "&song=" + titleEncoded + "&fmt=html");
 					pd = ProgressDialog.show(TagEditActivity.this, getResources().getString(R.string.fetching), getResources().getString(R.string.requesting_server), true, true);
 				} catch (UnsupportedEncodingException e) {
 					Toast.makeText(TagEditActivity.this, R.string.unsup_chars_tag, Toast.LENGTH_SHORT).show();
-					e.printStackTrace();
 				}
 				break;
 			}
 		}
 	}
 	
-	private class parseForTag extends MediaUtils.ParseSite {
+	private class LyricsParser extends MediaUtils.ParseSite {
 		@Override
 		protected void onProgressUpdate(Integer... Progress) {
 			if (Progress[0] == 1)
@@ -161,13 +162,13 @@ public class TagEditActivity extends Activity implements View.OnClickListener, T
 		@Override
 		protected void onPostExecute(String output) {
 	        pd.dismiss();
-	        LyricsEdit.setText(output.toString());
+	        mLyricsEdit.setText(output);
 	    }
 	}
 
 	@Override
 	public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-		SaveButton.setText(R.string.savechanges);
+		mSaveButton.setText(R.string.savechanges);
 	}
 	
 	@Override

@@ -28,20 +28,20 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
-import android.text.Html;
-import java.io.IOException;
-import java.net.MalformedURLException;
+
+import junit.framework.Assert;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.nodes.TextNode;
+
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
-import org.htmlcleaner.ContentNode;
-import org.htmlcleaner.HtmlCleaner;
-import org.htmlcleaner.TagNode;
-
-import junit.framework.Assert;
 
 public class MediaUtils {
 	/**
@@ -514,61 +514,37 @@ public class MediaUtils {
 	}
 	
 	public static class ParseSite extends AsyncTask<String, Integer, String> {
-		private TagNode rootNode;
-		private TagNode lyricbox;
-		private URL full_url;
-		
+
 		protected String doInBackground(String... arg) {
-			HtmlCleaner cleaner = new HtmlCleaner();
-			cleaner.getProperties().setOmitComments(true);
-			cleaner.getProperties().setRecognizeUnicodeChars(true);
-			
-			try {
-				rootNode = cleaner.clean(new URL(arg[0]));
-				TagNode linkElements[] = rootNode.getElementsByName("a", true);
-				if(linkElements.length >= 3) {
-					full_url = new URL(linkElements[2].getAttributeByName("href"));
+            try {
+                final Document parsedApiCall = Jsoup.parse(new URL(arg[0]), 10000);
+                final Element songLink = parsedApiCall.select("a[title=url]").first();
+                if(songLink != null) {
 					publishProgress(1);
-					rootNode = cleaner.clean(full_url);
-					lyricbox = rootNode.findElementByAttValue("class", "lyricbox", true, false);
-					
-					if(lyricbox == null) {
+                    final Document parsedPageCall = Jsoup.parse(new URL(songLink.attr("href")), 10000);
+                    final Element lyricBox = parsedPageCall.select("div.lyricbox").first();
+					if(lyricBox == null) {
 						publishProgress(2);
-						return new String("");
+						return null;
 					}
 					
-					boolean done = false;
-					while(!done) {
-					TagNode ad = lyricbox.findElementByAttValue("class", "rtMatcher", true, false);
-					if(ad != null)
-						ad.removeFromTree();
-					else
-						done = true;
-					}
-					
-					StringBuffer output = new StringBuffer("");
-					@SuppressWarnings("unchecked")
-					List<Object> children = lyricbox.getChildren();
-					for (int i = 0; i < children.size(); i++) {
-						Object item = children.get(i);
-						if (item instanceof ContentNode) {
-							output.append(((ContentNode)item).getContent().toString());
-						} else if (item instanceof TagNode)
-							output.append("<br>");
-					}
-					
-			        return Html.fromHtml(output.toString()).toString();
-				} else publishProgress(2);
-					
-					
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
+                    lyricBox.select("div.rtMatcher").remove();
+                    final StringBuilder builder = new StringBuilder(500);
+                    for(final Node curr : lyricBox.childNodes()) {
+                        if(curr instanceof TextNode)
+                            builder.append(((TextNode) curr).text());
+                        else
+                            builder.append("\n");
+                    }
+
+                    return builder.toString();
+				} else
+                    publishProgress(2);
+			} catch (Exception e) {
 				publishProgress(2);
 			}
 			
-	        return new String("");
+	        return null;
 	    }
 		
 		protected void onProgressUpdate(Integer... Progress) 
