@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/work/android/NoLife-Player/app/src/main/res/values-ru/translatable.xml -->
+    <eat-comment />
+
+    <string-array name="default_action_entries">
+        <item>Воспроизвести</item>
+        <item>Поставить в очередь</item>
+        <item>Последнее использованное действие</item>
+    </string-array>
+    <string-array name="display_mode_entries">
+        <item>Инфо в прямоугольнике поверх (по умолчанию)</item>
+        <item>Инфо за обложкой альбома</item>
+        <item>Инфо в неподвижном слое</item>
+        <item>Инфо в неподвижном слое (Fобложка на полный экран)</item>
+    </string-array>
+    <string-array name="notification_action_entries">
+        <item>Открыть основное приложение</item>
+        <item>Открыть мини-плеер</item>
+        <item>Перейти к следующей песне</item>
+    </string-array>
+    <string-array name="notification_mode_entries">
+        <item>Никогда не показывать</item>
+        <item>Показывать при воспроизведении</item>
+        <item>Всегда показывать</item>
+    </string-array>
+    <string-array name="swipe_action_entries">
+
+        <!-- This must match the order of swipe_action_values exactly -->
+        <item>Ничего не делать</item>
+        <item>Открыть библиотеку</item>
+        <item>Воспроизведение/Пауза</item>
+        <item>Следующая песня</item>
+        <item>Предыдущая песня</item>
+        <item>Включить/выключить повтор</item>
+        <item>Включить/выключить перемешивание</item>
+        <item>Поставить в очередь текущий альбом</item>
+        <item>Поставить в очередь текущего исполнителя</item>
+        <item>Поставить в очередь текущий жанр</item>
+        <item>Очистить очередь</item>
+        <item>Показать/скрыть кнопки управления</item>
+        <item>Показать текст песни</item>
+    </string-array>
+
+    <plurals name="added_to_playlist">
+        <item quantity="one">1 song added to playlist %2$s.</item>
+        <item quantity="other">%1$d songs added to playlist %2$s.</item>
+    </plurals>
+    <plurals name="deleted">
+        <item quantity="one">1 song deleted.</item>
+        <item quantity="other">%d songs deleted.</item>
+    </plurals>
+    <plurals name="enqueued">
+        <item quantity="one">1 song enqueued.</item>
+        <item quantity="other">%d songs enqueued.</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">01 hour</item>
+        <item quantity="other">%02d hours</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">01 minute</item>
+        <item quantity="other">%02d minutes</item>
+    </plurals>
+    <plurals name="playing">
+        <item quantity="one">1 song playing.</item>
+        <item quantity="other">%d songs playing.</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">01 second</item>
+        <item quantity="other">%02d seconds</item>
+    </plurals>
+
+    <string name="add_to_playlist">Добавить в список воспроизведения...</string>
+    <string name="album">Альбом</string>
+    <string name="albums">Альбомы</string>
+    <string name="all_songs">Все песни</string>
+    <string name="app_name">NoLife Player</string>
+    <string name="artistname">Исполнитель</string>
+    <string name="artists">Группы</string>
+    <string name="cancel">Отмена</string>
+    <string name="cant_find_lyrics">Текст песни не найден</string>
+    <string name="cant_read_file">Не могу открыть текущий файл</string>
+    <string name="cant_write_tag">Не могу записать тэг в файл</string>
+    <string name="choose_playlist_name">Выберите имя списка воспроизведения</string>
+    <string name="controls_in_selector_summary">Показывать текущую песню и кнопки управления в окне библиотеки</string>
+    <string name="controls_in_selector_title">Кнопки управления в окне библиотеки</string>
+    <string name="cover_longpress_action_summary">Совершаемое действие при долгом нажатии на обложку альбома</string>
+    <string name="cover_longpress_action_title">Долгое нажатие на обложку альбома</string>
+    <string name="cover_press_action_summary">Совершаемое действие при нажатии на обложку альбома</string>
+    <string name="cover_press_action_title">Нажатие на обложку альбома</string>
+    <string name="create">Создать</string>
+    <string name="current_playlist">Текущий список воспроизведения</string>
+    <string name="cutsong">Проиграть фрагмент</string>
+    <string name="default_action_summary">Действие, совершаемое при нажатии на строку</string>
+    <string name="default_action_title">Действие по умолчанию</string>
+    <string name="delete">Удалить</string>
+    <string name="deleting">Удаление...</string>
+    <string name="disable_cover_art_summary">Не показывать обложку альбома нигде в приложении</string>
+    <string name="disable_cover_art_title">Отключить показ обложки альбома</string>
+    <string name="disable_lockscreen_summary">Не показывать экран блокировки, если открыта библиотека или окно воспроизведения.</string>
+    <string name="disable_lockscreen_title">Отключить экран блокировки</string>
+    <string name="display_mode">Режим отображения</string>
+    <string name="display_mode_summary">Вид и положение обложки альбома и сведений о песне.</string>
+    <string name="display_mode_title">Режим отображения</string>
+    <string name="double_tap_summary">Двойной клик по виджету 1х1 вызовет открытие основного приложения.</string>
+    <string name="double_tap_title">Двойной клик на виджете</string>
+    <string name="edit">Редактировать</string>
+    <string name="edittag">Редактировать тэг</string>
+    <string name="empty_queue">Песни не выбраны. Выберите несколько из библиотеки (кнопка поиска) или перейдите в режим случайого воспроизведения, прикоснувшись к этому сообщению.</string>
+    <string name="enqueue">Поставить в очередь</string>
+    <string name="enqueue_all">Поставить в очередь все</string>
+    <string name="expand">Расширить</string>
+    <string name="fetch">Получить</string>
+    <string name="fetch_lyrics">Текст песни</string>
+    <string name="fetching">Получение...</string>
+    <string name="fulldelete">Удалить файл</string>
+    <string name="genres">Жанры</string>
+    <string name="headset_only_summary">Воспроизводить музыку только через внешний динамик (наушники, гарнитура)</string>
+    <string name="headset_only_title">Только внешний источник</string>
+    <string name="headset_pause_summary">Ставить на паузу воспроизведение при отключении наушников.</string>
+    <string name="headset_pause_title">Пауза при откючении</string>
+    <string name="headset_play_summary">Начинать воспроизведение при подключении наушников (только при работающей службе).</string>
+    <string name="headset_play_title">Воспроизведение при включении наушников</string>
+    <string name="idle_timeout_summary">Количество времени, которое должно пройти до момента отключения</string>
+    <string name="idle_timeout_title">Таймаут отсутствия</string>
+    <string name="invalid_audioframe">Неверный фрейм тэга</string>
+    <string name="library">Библиотека</string>
+    <string name="media_button_summary">Один клик для ввоспроизведения/паузы. Двойной клик для перехода к следующей песне.</string>
+    <string name="media_button_title">Использовать кнопки наушников</string>
+    <string name="more">Еще...</string>
+    <string name="new_playlist">Новый список воспроизведения...</string>
+    <string name="no_repeat">Без повтора</string>
+    <string name="no_shuffle">Без перемешивания</string>
+    <string name="no_songs">На вашем устройстве не обнаружено песен.</string>
+    <string name="none">N/A</string>
+    <string name="notification_action_summary">Совершаемое действие при нажатии на уведомление</string>
+    <string name="notification_action_title">Действие на уведомлении</string>
+    <string name="notification_invert_color_summary">Использовать белый текст вместо черного</string>
+    <string name="notification_invert_color_title">Инвертировать цвет уведомления</string>
+    <string name="notification_mode_summary">Когда показывать уведомления</string>
+    <string name="notification_mode_title">Режим уведомления</string>
+    <string name="overwrite">Перезаписать</string>
+    <string name="pick_folder">Выбрать папку</string>
+    <string name="play">Воспроизвести</string>
+    <string name="play_all">Воспроизвести все</string>
+    <string name="playback_view">Сейчас воспроизводится</string>
+    <string name="playlist_deleted">Список воспроизведения %s удален.</string>
+    <string name="playlists">Списки воспроизведения</string>
+    <string name="pllstdelete">Удалить из очереди</string>
+    <string name="pref_misc">Другое...</string>
+    <string name="pref_notifications">Уведомления</string>
+    <string name="pref_output">Источник звука</string>
+    <string name="pref_playback_view">Окно воспроизведения</string>
+    <string name="pref_song_selector">Библиотека</string>
+    <string name="processing">Обработка...</string>
+    <string name="queue_cleared">Очередь очищена.</string>
+    <string name="random">Случайная</string>
+    <string name="random_enabling">Случайный режим включен</string>
+    <string name="readonly">Файл только для чтения</string>
+    <string name="reload_songs">Обновить список</string>
+    <string name="rename">Переименовать</string>
+    <string name="repeat">Повтор</string>
+    <string name="repeat_current_song">Повтор текущей песни</string>
+    <string name="requesting_server">Запрос сервера..</string>
+    <string name="retrieving_lyrics">Получение текста...</string>
+    <string name="save_as_plist">Сохранить как список воспроизведения</string>
+    <string name="savechanges">Сохранить изменения</string>
+    <string name="saved">Сохранено</string>
+    <string name="scrobble_summary">Использовать скробблинг в Last.FM через ScrobbleDroid или Simple Last.FM Scrobbler</string>
+    <string name="scrobble_title">Использовать ScrobbleDroid API</string>
+    <string name="search">Поиск</string>
+    <string name="seek_summary">Ширина прыжка при щелчке на кнопку перемотки, в секундах</string>
+    <string name="seek_value">Скорость перемотки</string>
+    <string name="select">Выбрать</string>
+    <string name="selector_on_startup_summary">Открывать окно медиа-библиотеки при старте приложения.</string>
+    <string name="selector_on_startup_title">Открывать при старте</string>
+    <string name="send_no_apps">Для данного действия нет подходящих приложений</string>
+    <string name="sendto">Отправить...</string>
+    <string name="settings">Настройки</string>
+    <string name="shuffle_albums">Перемешать альбомы</string>
+    <string name="shuffle_songs">Перемешать песни</string>
+    <string name="song_load_failed">Не удалось воспроизвести песню %s. Возможно, файл поврежден или удален.</string>
+    <string name="song_lyrics">Текст песни</string>
+    <string name="songs">Песни</string>
+    <string name="songtitle">Название песни</string>
+    <string name="starting">Запуск...</string>
+    <string name="stock_broadcast_summary">Эмулировать оповещения, посылаемые встроенными плеерами, виджетами, кнопками контроля на экране блокировки и т.д.</string>
+    <string name="stock_broadcast_title">Эмулировать внутренние оповещения</string>
+    <string name="swipe_down_action_summary">Совершаемое действие при жесте скольжения пальцем вниз</string>
+    <string name="swipe_down_action_title">Жест: Вниз</string>
+    <string name="swipe_up_action_summary">Совершаемое действие при жесте скольжения пальцем вверх</string>
+    <string name="swipe_up_action_title">Жест: Вверх</string>
+    <string name="title_by_artist">%1$s - %2$s</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="unsup_chars_tag">Неподдерживаемые буквы в тэге песни</string>
+    <string name="unsup_tag">Неподдерживаемый тип тэга</string>
+    <string name="use_idle_timeout_summary">Когда включено, останавливает воспроизведение спустя выбранный промежуток отсутствия активности в плеере.</string>
+    <string name="use_idle_timeout_title">Включить таймер отсутствия</string>
+    <string name="volume_summary">Громкость музыки</string>
+    <string name="volume_title">Громкость</string>
+    <string name="widgettransparency">Прозрачность виджета</string>
+    <string name="widgettransparency_summary">Использовать прозрачный фон у виджета или нет</string>
+
+</resources>

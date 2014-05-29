@@ -1,0 +1,2339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\work\android\NoLife-Player\app\src\main\res" >
+            <file
+                name="tab_indicator_text"
+                path="C:\work\android\NoLife-Player\app\src\main\res\color\tab_indicator_text.xml"
+                qualifiers=""
+                type="color" />
+            <file
+                name="btn_default"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\btn_default.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="buttonbar"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\buttonbar.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="close"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\close.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="hidden_next"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\hidden_next.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="hidden_pause"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\hidden_pause.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="hidden_play"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\hidden_play.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_tab_albums"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\ic_tab_albums.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_tab_artists"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\ic_tab_artists.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_tab_genres"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\ic_tab_genres.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_tab_playlists"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\ic_tab_playlists.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_tab_songs"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\ic_tab_songs.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="next"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\next.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="pause"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\pause.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="play"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\play.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="previous"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\previous.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="progress_horizontal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\progress_horizontal.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="search_background"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\search_background.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="seek_backward"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\seek_backward.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="seek_forward"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\seek_forward.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="seek_thumb"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable\seek_thumb.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="albumart_mp_unknown_list"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\albumart_mp_unknown_list.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="alt_appwidget_bg"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\alt_appwidget_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="appwidget_bg"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\appwidget_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="appwidget_bt"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\appwidget_bt.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="btn_default_pressed"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\btn_default_pressed.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="buttonbar_active"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\buttonbar_active.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="buttonbar_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\buttonbar_focused.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="buttonbar_inactive"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\buttonbar_inactive.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="buttonbar_pressed"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\buttonbar_pressed.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="close_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\close_focused.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="close_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\close_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="default_cover"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\default_cover.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="down"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\down.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="empty"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\empty.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="expander_arrow"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\expander_arrow.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_cut_clicked"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_cut_clicked.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_cut_default"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_cut_default.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_folder"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_folder.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_gallery"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_menu_gallery.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_music_library"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_menu_music_library.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_preferences"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_menu_preferences.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_refresh"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_menu_refresh.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_search"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_menu_search.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_albums_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_albums_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_albums_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_albums_unselected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_artists_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_artists_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_artists_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_artists_unselected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_genres_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_genres_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_genres_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_genres_unselected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_playlists_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_playlists_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_playlists_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_playlists_unselected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_songs_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_songs_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_songs_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\ic_tab_songs_unselected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="music_bottom_playback_bg"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\music_bottom_playback_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="next_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\next_focused.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="next_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\next_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="pause_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\pause_focused.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="pause_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\pause_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="play_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\play_focused.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="play_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\play_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="previous_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\previous_focused.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="previous_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\previous_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="random_active"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\random_active.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="repeat_active"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\repeat_active.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="repeat_current_active"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\repeat_current_active.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="repeat_inactive"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\repeat_inactive.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="seek_backward_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\seek_backward_focused.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="seek_backward_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\seek_backward_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="seek_forward_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\seek_forward_focused.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="seek_forward_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\seek_forward_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="seek_thumb_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\seek_thumb_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="seek_thumb_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\seek_thumb_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="shuffle_active"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\shuffle_active.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="shuffle_album_active"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\shuffle_album_active.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="shuffle_inactive"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\shuffle_inactive.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="status_icon"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\status_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="status_icon_large"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\status_icon_large.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="status_icon_paused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\status_icon_paused.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="up"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-hdpi\up.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="albumart_mp_unknown_list"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\albumart_mp_unknown_list.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="appwidget_bg"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\appwidget_bg.9.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="buttonbar_active"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\buttonbar_active.9.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="buttonbar_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\buttonbar_focused.9.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="buttonbar_inactive"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\buttonbar_inactive.9.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="buttonbar_pressed"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\buttonbar_pressed.9.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="close_focused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\close_focused.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="close_normal"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\close_normal.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="default_cover"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\default_cover.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="empty"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\empty.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="expander_arrow"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\expander_arrow.9.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\icon.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_cut_clicked"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_cut_clicked.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_cut_default"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_cut_default.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_gallery"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_menu_gallery.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_music_library"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_menu_music_library.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_preferences"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_menu_preferences.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_refresh"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_menu_refresh.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_search"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_menu_search.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_albums_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_albums_selected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_albums_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_albums_unselected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_artists_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_artists_selected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_artists_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_artists_unselected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_genres_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_genres_selected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_genres_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_genres_unselected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_playlists_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_playlists_selected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_playlists_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_playlists_unselected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_songs_selected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_songs_selected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_tab_songs_unselected"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\ic_tab_songs_unselected.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="music_bottom_playback_bg"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\music_bottom_playback_bg.9.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="random_active"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\random_active.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="status_icon"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\status_icon.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="status_icon_large"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\status_icon_large.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="status_icon_paused"
+                path="C:\work\android\NoLife-Player\app\src\main\res\drawable-mdpi\status_icon_paused.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="folder_item"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\folder_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="folder_selector"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\folder_selector.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="four_long_widget"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\four_long_widget.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="full_playback"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\full_playback.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="full_playback_alt"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\full_playback_alt.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="library_content"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\library_content.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="library_nocontrols"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\library_nocontrols.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="library_withcontrols"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\library_withcontrols.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="lyrics_widget"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\lyrics_widget.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="mini_playback"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\mini_playback.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="new_playlist_dialog"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\new_playlist_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="notification"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\notification.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="oneline_widget"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\oneline_widget.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="playlistitem"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\playlistitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="playlist_editor"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\playlist_editor.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tag_edit"
+                path="C:\work\android\NoLife-Player\app\src\main\res\layout\tag_edit.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="C:\work\android\NoLife-Player\app\src\main\res\values\translatable.xml"
+                qualifiers="" >
+                <string name="playlists" >Playlists
+                </string>
+                <string name="songs" >Songs
+                </string>
+                <string name="overwrite" >Overwrite
+                </string>
+                <string name="use_idle_timeout_title" >Enable Idle Timeout
+                </string>
+                <string name="fetching" >Fetching...
+                </string>
+                <string name="controls_in_selector_summary" >Show the currently playing song and media controls in the library view
+                </string>
+                <string name="headset_play_title" >Play When Plugged
+                </string>
+                <string name="widgettransparency" >Widget Trasparency
+                </string>
+                <string name="deleting" >Deleting...
+                </string>
+                <string name="scrobble_summary" >Scrobble to Last.FM through ScrobbleDroid or Simple Last.FM Scrobbler
+                </string>
+                <string name="unknown" >Unknown
+                </string>
+                <string name="reload_songs" >Reload songs
+                </string>
+                <string name="sendto" >Send...
+                </string>
+                <string name="display_mode_title" >Display Mode
+                </string>
+                <string name="idle_timeout_title" >Idle Timeout
+                </string>
+                <string name="no_songs" >No songs found on your device.
+                </string>
+                <string name="all_songs" >All Songs
+                </string>
+                <string name="unsup_chars_tag" >Unsupported characters in song tag
+                </string>
+                <string name="media_button_summary" >Single click for play/pause. Double click for next.
+                </string>
+
+                <plurals name="seconds" >
+                    <item quantity="one">
+01 second
+                    </item>
+                    <item quantity="other">
+%02d seconds
+                    </item>
+                </plurals>
+
+                <string name="pick_folder" >Pick Folder
+                </string>
+                <string name="readonly" >File is read-only
+                </string>
+                <string name="double_tap_title" >Double Tap Widget
+                </string>
+                <string name="settings" >Settings
+                </string>
+                <string name="volume_summary" >Music volume
+                </string>
+                <string name="playback_view" >Now Playing
+                </string>
+                <string name="unsup_tag" >Unsupported tag type
+                </string>
+                <string name="cover_longpress_action_title" >Cover Long Press Action
+                </string>
+                <string name="starting" >Starting up...
+                </string>
+                <string name="headset_play_summary" >Play when the headphones are plugged in. (Only works when the service is running.)
+                </string>
+                <string name="expand" >Expand
+                </string>
+                <string name="stock_broadcast_summary" >Send broadcasts emulating those sent by the stock music player to work with 3rd party lockscreen controls, widgets, etc.
+                </string>
+                <string name="volume_title" >Volume
+                </string>
+                <string name="notification_mode_summary" >When to show the notification
+                </string>
+                <string name="rename" >Rename
+                </string>
+                <string name="shuffle_songs" >Shuffle songs
+                </string>
+                <string name="cant_find_lyrics" >Song lyrics not found
+                </string>
+                <string name="title_by_artist" >%1$s by %2$s
+                </string>
+                <string name="cancel" >Cancel
+                </string>
+                <string name="song_lyrics" >Song Lyrics
+                </string>
+                <string name="no_shuffle" >No shuffle
+                </string>
+                <string name="headset_only_title" >External Output Only
+                </string>
+                <string name="cutsong" >Cut and cycle
+                </string>
+                <string name="search" >Search
+                </string>
+                <string name="artists" >Artists
+                </string>
+                <string name="enqueue_all" >Enqueue All
+                </string>
+                <string name="seek_summary" >Seek interval, secs
+                </string>
+                <string name="scrobble_title" >Use ScrobbleDroid API
+                </string>
+                <string name="fulldelete" >Delete file
+                </string>
+                <string name="notification_action_title" >Notification Action
+                </string>
+                <string name="send_no_apps" >There are no appropriate applications for this action
+                </string>
+                <string name="seek_value" >Seek value
+                </string>
+                <string name="select" >Select
+                </string>
+                <string name="requesting_server" >Requesting server...
+                </string>
+                <string name="artistname" >Artist Name
+                </string>
+                <string name="repeat" >Repeat
+                </string>
+                <string name="app_name" >NoLife Player
+                </string>
+                <string name="display_mode_summary" >The appearance and position of the song art and info.
+                </string>
+                <string name="enqueue" >Enqueue
+                </string>
+                <string name="playlist_deleted" >Playlist %s deleted.
+                </string>
+                <string name="add_to_playlist" >Add to Playlist...
+                </string>
+                <string name="processing" >Processing...
+                </string>
+                <string name="random" >Random
+                </string>
+                <string name="selector_on_startup_summary" >Open library on startup
+                </string>
+                <string name="song_load_failed" >Failed to load song %s. It may be corrupt or missing.
+                </string>
+                <string name="selector_on_startup_title" >Open on Startup
+                </string>
+                <string name="pref_playback_view" >Playback View
+                </string>
+                <string name="new_playlist" >New Playlist...
+                </string>
+                <string name="notification_mode_title" >Notification Mode
+                </string>
+                <string name="play_all" >Play All
+                </string>
+                <string name="swipe_up_action_summary" >What to do when a swipe up gesture is performed
+                </string>
+                <string name="cant_read_file" >Cannot read selected file
+                </string>
+                <string name="pref_output" >Audio Output
+                </string>
+                <string name="disable_lockscreen_summary" >Do not show the lockscreen with the library screen or playback screen open.
+                </string>
+                <string name="genres" >Genres
+                </string>
+                <string name="choose_playlist_name" >Choose Playlist Name
+                </string>
+                <string name="shuffle_albums" >Shuffle albums
+                </string>
+                <string name="notification_invert_color_title" >Invert Notification Color
+                </string>
+                <string name="pllstdelete" >Delete from playlist
+                </string>
+                <string name="edit" >Edit
+                </string>
+                <string name="headset_pause_title" >Pause When Unplugged
+                </string>
+                <string name="album" >Album
+                </string>
+                <string name="cover_longpress_action_summary" >What to do when the cover is long-pressed
+                </string>
+                <string name="widgettransparency_summary" >Use transparent background in app widget or not
+                </string>
+
+                <string-array name="notification_mode_entries" >
+                    <item>
+Never Show
+                    </item>
+                    <item>
+Show When Playing
+                    </item>
+                    <item>
+Always Show
+                    </item>
+                </string-array>
+
+                <string name="default_action_summary" >What to do when an item is tapped
+                </string>
+                <string name="random_enabling" >Random enabled
+                </string>
+                <string name="library" >Library
+                </string>
+                <string name="notification_invert_color_summary" >Use white text instead of black text
+                </string>
+                <string name="controls_in_selector_title" >Controls in Library
+                </string>
+                <string name="pref_misc" >Miscellaneous Features
+                </string>
+                <string name="pref_song_selector" >Library View
+                </string>
+                <string name="disable_cover_art_title" >Disable Cover Art
+                </string>
+                <string name="disable_lockscreen_title" >Disable Lockscreen
+                </string>
+
+                <string-array name="default_action_entries" >
+                    <item>
+Play
+                    </item>
+                    <item>
+Enqueue
+                    </item>
+                    <item>
+Last Used Action
+                    </item>
+                </string-array>
+
+                <string name="albums" >Albums
+                </string>
+                <string name="play" >Play
+                </string>
+
+                <string-array name="notification_action_entries" >
+                    <item>
+Open Main Activity
+                    </item>
+                    <item>
+Open Mini Player
+                    </item>
+                    <item>
+Skip To Next Song
+                    </item>
+                </string-array>
+
+                <string name="swipe_up_action_title" >Swipe Up Action
+                </string>
+
+                <plurals name="playing" >
+                    <item quantity="one">
+1 song playing.
+                    </item>
+                    <item quantity="other">
+%d songs playing.
+                    </item>
+                </plurals>
+
+                <string name="stock_broadcast_title" >Emulate Stock Broadcasts
+                </string>
+                <string name="media_button_title" >Use Headset Controls
+                </string>
+                <string name="display_mode" >Display Mode
+                </string>
+                <string name="edittag" >Edit ID3Tag
+                </string>
+                <string name="fetch" >Fetch
+                </string>
+
+                <plurals name="deleted" >
+                    <item quantity="one">
+1 song deleted.
+                    </item>
+                    <item quantity="other">
+%d songs deleted.
+                    </item>
+                </plurals>
+
+                <string name="no_repeat" >No repeat
+                </string>
+                <string name="save_as_plist" >Save as playlist
+                </string>
+
+                <plurals name="added_to_playlist" >
+                    <item quantity="one">
+1 song added to playlist %2$s.
+                    </item>
+                    <item quantity="other">
+%1$d songs added to playlist %2$s.
+                    </item>
+                </plurals>
+
+                <string name="cover_press_action_title" >Cover Tap Action
+                </string>
+
+                <string-array name="display_mode_entries" >
+                    <item>
+Info In Overlapping Box (default)
+                    </item>
+                    <item>
+Info Below Cover Art
+                    </item>
+                    <item>
+Info In Immobile Layer
+                    </item>
+                    <item>
+Info In Immobile Layer (Fullscreen Cover)
+                    </item>
+                </string-array>
+
+                <string name="use_idle_timeout_summary" >When active, playback will be stopped after the given period of inactivity
+                </string>
+
+                <plurals name="enqueued" >
+                    <item quantity="one">
+1 song enqueued.
+                    </item>
+                    <item quantity="other">
+%d songs enqueued.
+                    </item>
+                </plurals>
+
+                <string name="queue_cleared" >Queue cleared.
+                </string>
+                <string name="cant_write_tag" >Cannot write tag to file
+                </string>
+
+                <plurals name="hours" >
+                    <item quantity="one">
+01 hour
+                    </item>
+                    <item quantity="other">
+%02d hours
+                    </item>
+                </plurals>
+
+                <string name="headset_only_summary" >Only play music through an external output (e.g. headphones, Bluetooth)
+                </string>
+                <string name="headset_pause_summary" >Pause when the headphones are unplugged.
+                </string>
+
+                <plurals name="minutes" >
+                    <item quantity="one">
+01 minute
+                    </item>
+                    <item quantity="other">
+%02d minutes
+                    </item>
+                </plurals>
+
+                <string name="idle_timeout_summary" >The amount of time that must pass before becoming idle
+                </string>
+                <string name="pref_notifications" >Notifications
+                </string>
+                <string name="disable_cover_art_summary" >Do not show cover art anywhere in the application
+                </string>
+                <string name="default_action_title" >Default Action
+                </string>
+                <string name="fetch_lyrics" >Fetch Lyrics
+                </string>
+                <string name="none" >None
+                </string>
+                <string name="create" >Create
+                </string>
+                <string name="empty_queue" >No songs selected. Pick some from the library (search key) or enter random mode by tapping this message.
+                </string>
+                <string name="songtitle" >Song Title
+                </string>
+                <string name="current_playlist" >Current Playlist
+                </string>
+                <string name="saved" >Saved
+                </string>
+                <string name="savechanges" >Save Changes
+                </string>
+                <string name="swipe_down_action_summary" >What to do when a swipe down gesture is performed
+                </string>
+                <string name="repeat_current_song" >Repeat current song
+                </string>
+                <string name="double_tap_summary" >Double-tapping the 1x1 widget will open the player. Incurs a 400ms delay before the widget responds to actions.
+                </string>
+                <string name="retrieving_lyrics" >Retrieving lyrics...
+                </string>
+                <string name="invalid_audioframe" >File tag frame is invalid
+                </string>
+                <string name="more" >More...
+                </string>
+                <string name="cover_press_action_summary" >What to do when the cover is tapped
+                </string>
+
+                <string-array name="swipe_action_entries" >
+
+                    <!-- This must match the order of swipe_action_values exactly -->
+                    <item>
+Do Nothing
+                    </item>
+                    <item>
+Open Library
+                    </item>
+                    <item>
+Play/Pause
+                    </item>
+                    <item>
+Next Song
+                    </item>
+                    <item>
+Previous Song
+                    </item>
+                    <item>
+Toggle Repeat
+                    </item>
+                    <item>
+Toggle Shuffle
+                    </item>
+                    <item>
+Enqueue Current Album
+                    </item>
+                    <item>
+Enqueue Current Artist
+                    </item>
+                    <item>
+Enqueue Current Genre
+                    </item>
+                    <item>
+Clear Queue
+                    </item>
+                    <item>
+Toggle Controls
+                    </item>
+                    <item>
+Show Lyrics
+                    </item>
+                </string-array>
+
+                <string name="delete" >Delete
+                </string>
+                <string name="swipe_down_action_title" >Swipe Down Action
+                </string>
+                <string name="notification_action_summary" >What to do when the notification is pressed
+                </string>
+            </file>
+            <file
+                path="C:\work\android\NoLife-Player\app\src\main\res\values\untranslatable.xml"
+                qualifiers="" >
+                <string-array name="swipe_action_values" >
+
+                    <!--
+             This must match the order of swipe_action_entries exactly and
+		     contain only values from PlaybackActivity.Action enum.
+                    -->
+                    <item>
+Nothing
+                    </item>
+                    <item>
+Library
+                    </item>
+                    <item>
+PlayPause
+                    </item>
+                    <item>
+NextSong
+                    </item>
+                    <item>
+PreviousSong
+                    </item>
+                    <item>
+Repeat
+                    </item>
+                    <item>
+Shuffle
+                    </item>
+                    <item>
+EnqueueAlbum
+                    </item>
+                    <item>
+EnqueueArtist
+                    </item>
+                    <item>
+EnqueueGenre
+                    </item>
+                    <item>
+ClearQueue
+                    </item>
+                    <item>
+ToggleControls
+                    </item>
+                    <item>
+ShowLyrics
+                    </item>
+                </string-array>
+
+                <style
+                    name="NoBackground"
+                    parent="android:style/Theme" >
+                    <item name="android:windowBackground">
+@null
+                    </item>
+                    <item name="android:windowNoTitle">
+true
+                    </item>
+                </style>
+
+                <string-array name="entry_values" >
+
+                    <!--
+             Note: even if this was an integer-array, these would be converted
+		     to strings anyway.
+		     http://code.google.com/p/android/issues/detail?id=2096
+                    -->
+                    <item>
+0
+                    </item>
+                    <item>
+1
+                    </item>
+                    <item>
+2
+                    </item>
+                    <item>
+3
+                    </item>
+                </string-array>
+            </file>
+            <file
+                path="C:\work\android\NoLife-Player\app\src\main\res\values-nb\translatable.xml"
+                qualifiers="nb" >
+                <string-array name="notification_mode_entries" >
+                    <item>
+Aldri Vis
+                    </item>
+                    <item>
+Vis Ved Avspilling
+                    </item>
+                    <item>
+Alltid Vis
+                    </item>
+                </string-array>
+
+                <string name="notification_action_summary" >Hva skjer når varselet er trykket
+                </string>
+                <string name="queue_cleared" >Kø ryddet.
+                </string>
+                <string name="notification_invert_color_summary" >Bruk hvit tekst i stedet for svart tekst
+                </string>
+                <string name="edit" >Endre
+                </string>
+                <string name="double_tap_title" >Dobbeltapp Widget
+                </string>
+
+                <plurals name="added_to_playlist" >
+                    <item quantity="one">
+1 låt lagt til spilleliste %2$s.
+                    </item>
+                    <item quantity="other">
+%1$d låter lagt til spilleliste %2$s.
+                    </item>
+                </plurals>
+
+                <string name="headset_only_title" >Kun Ekstern Lydutgang
+                </string>
+                <string name="albums" >Album
+                </string>
+                <string name="expand" >Utvid
+                </string>
+                <string name="settings" >Instillinger
+                </string>
+                <string name="delete" >Slett
+                </string>
+                <string name="headset_pause_title" >Pause Når Frakoblet
+                </string>
+                <string name="create" >Lage
+                </string>
+
+                <string-array name="default_action_entries" >
+                    <item>
+Spill
+                    </item>
+                    <item>
+Kø
+                    </item>
+                    <item>
+Siste Brukte Handling
+                    </item>
+                </string-array>
+
+                <string name="volume_title" >Volum
+                </string>
+                <string name="idle_timeout_title" >Tomgang
+                </string>
+                <string name="overwrite" >Overskriv
+                </string>
+                <string name="choose_playlist_name" >Velg Spilleliste Navn
+                </string>
+                <string name="volume_summary" >Musill volum
+                </string>
+                <string name="enqueue" >Kø
+                </string>
+                <string name="no_songs" >Ingen låter finnes på enheten.
+                </string>
+
+                <plurals name="minutes" >
+                    <item quantity="one">
+01 minutt
+                    </item>
+                    <item quantity="other">
+%02d minutter
+                    </item>
+                </plurals>
+
+                <string name="idle_timeout_summary" >Mengde tid som må passere før det blir tomgang
+                </string>
+                <string name="swipe_down_action_summary" >Hva skjer når en sveip ned gest er utført
+                </string>
+                <string name="search" >Søk
+                </string>
+                <string name="rename" >Gi nytt navn
+                </string>
+                <string name="title_by_artist" >%1$s etter %2$s
+                </string>
+                <string name="cover_press_action_summary" >Hva skjer når coveret er tappet på
+                </string>
+                <string name="headset_play_title" >Spill Når Tilkoblet
+                </string>
+                <string name="pref_playback_view" >Avspill Visning
+                </string>
+                <string name="deleting" >Sletter...
+                </string>
+
+                <plurals name="deleted" >
+                    <item quantity="one">
+1 låt slettet.
+                    </item>
+                    <item quantity="other">
+%d låter slettet.
+                    </item>
+                </plurals>
+
+                <string name="genres" >Gjangre
+                </string>
+                <string name="disable_cover_art_title" >Deaktiver Cover bilde
+                </string>
+                <string name="default_action_summary" >Hva skjer når et element blir tappet på
+                </string>
+                <string name="cover_longpress_action_title" >Lang Cover Trykk Handling
+                </string>
+                <string name="playlists" >Spillelister
+                </string>
+                <string name="media_button_summary" >Ett tapp for spille / pause. Dobbeltapp for neste.
+                </string>
+                <string name="starting" >Oppstart...
+                </string>
+                <string name="display_mode_summary" >Utseendet og plasseringen av låten bilde og info.
+                </string>
+                <string name="headset_pause_summary" >Pause når hodetelefonen er frakoblet.
+                </string>
+                <string name="library" >Bibliotek
+                </string>
+                <string name="enqueue_all" >Kø Alt
+                </string>
+                <string name="scrobble_summary" >Scrobble til Last.FM via ScrobbleDroid eller Simple Last.FM Scrobbler
+                </string>
+                <string name="use_idle_timeout_title" >Aktiver Tomgang
+                </string>
+                <string name="empty_queue" >Ingen låter valgt. Plukk noen fra biblioteket (søk tast) eller gå inn i tilfeldig-modus(i menyen).
+                </string>
+                <string name="swipe_down_action_title" >Sveip Ned Handling
+                </string>
+                <string name="swipe_up_action_title" >Sveip Opp Handling
+                </string>
+
+                <plurals name="enqueued" >
+                    <item quantity="one">
+1 låt i køen.
+                    </item>
+                    <item quantity="other">
+%d låter i køen.
+                    </item>
+                </plurals>
+
+                <string name="play_all" >Soill Alt
+                </string>
+
+                <plurals name="playing" >
+                    <item quantity="one">
+1 låt spilles.
+                    </item>
+                    <item quantity="other">
+%d låter spilles.
+                    </item>
+                </plurals>
+
+                <string name="pref_notifications" >Varsler
+                </string>
+
+                <string-array name="swipe_action_entries" >
+                    <item>
+Gjør Ingenting
+                    </item>
+                    <item>
+Åpne Bibliotek
+                    </item>
+                    <item>
+Spill/Pause
+                    </item>
+                    <item>
+Neste Låt
+                    </item>
+                    <item>
+Forrige Låt
+                    </item>
+                    <item>
+Ters Gjenta
+                    </item>
+                    <item>
+Ters Stokke
+                    </item>
+                    <item>
+Kø Aktuelle Album
+                    </item>
+                    <item>
+Kø Aktuelle Artist
+                    </item>
+                    <item>
+Kø Aktuelle Gjanger
+                    </item>
+                    <item>
+Tøm Kø
+                    </item>
+                    <item>
+Ters Medieknapper
+                    </item>
+                </string-array>
+
+                <string name="unknown" >Ukjent
+                </string>
+                <string name="song_load_failed" >Kunne ikke laste låt %s. Den kan være skadet eller mangler.
+                </string>
+                <string name="display_mode_title" >Visningsmodus
+                </string>
+                <string name="headset_play_summary" >Spill når hodetelefonen er tilkoblet. (Fungerer bare når tjenesten kjører.)
+                </string>
+                <string name="cover_press_action_title" >Cover Tapp Handling
+                </string>
+                <string name="cancel" >Avbryt
+                </string>
+                <string name="selector_on_startup_summary" >Åpne bibliotek ved oppstart
+                </string>
+                <string name="playlist_deleted" >Spilleliste %s slettet.
+                </string>
+
+                <plurals name="seconds" >
+                    <item quantity="one">
+01 sekund
+                    </item>
+                    <item quantity="other">
+%02d sekunder
+                    </item>
+                </plurals>
+
+                <string name="stock_broadcast_summary" >Send sendinger som emulerer den innebygde spilleren til å fungere med tredjeparts låseskjermer, widgets, etc.
+                </string>
+                <string name="stock_broadcast_title" >Emuler Innebygd Sendinger
+                </string>
+                <string name="media_button_title" >Bruk Hodetelefon Knapper
+                </string>
+                <string name="controls_in_selector_summary" >Vis låten som spilles og mediekontrollene i biblioteket
+                </string>
+                <string name="display_mode" >Visningsmodus
+                </string>
+                <string name="pref_output" >Lydutgang
+                </string>
+
+                <string-array name="display_mode_entries" >
+                    <item>
+Info i overlappende Boks (standard)
+                    </item>
+                    <item>
+Info Under Cover Bilde
+                    </item>
+                    <item>
+Info I Stadig Lag
+                    </item>
+                    <item>
+Info I Stadig Lag (Fullskjerm Cover)
+                    </item>
+                </string-array>
+
+                <string name="random_enabling" >Tilfeldig aktivert
+                </string>
+                <string name="controls_in_selector_title" >Medieknapper i Bibliotek
+                </string>
+                <string name="selector_on_startup_title" >Åpne ved oppstart
+                </string>
+                <string name="double_tap_summary" >Dobbeltapping på 1x1 widget vil åpne spilleren. Forvent en 400ms forsinkelse før widgeten reagerer på handlingen.
+                </string>
+                <string name="swipe_up_action_summary" >Hva skjer når en sveip opp gest er utført
+                </string>
+                <string name="playback_view" >Spilles Nå
+                </string>
+                <string name="new_playlist" >Ny Spilleliste...
+                </string>
+                <string name="songs" >Låter
+                </string>
+                <string name="scrobble_title" >Bruk ScrobbleDroid API
+                </string>
+                <string name="notification_mode_summary" >Når skal varsler vises
+                </string>
+                <string name="all_songs" >Alle Låter
+                </string>
+                <string name="notification_action_title" >Varsel Handling
+                </string>
+                <string name="notification_invert_color_title" >Inverter Varsling Farge
+                </string>
+                <string name="use_idle_timeout_summary" >Når aktiv, blir avspillingen stoppet etter en gitt periode med inaktivitet
+                </string>
+                <string name="headset_only_summary" >Kun spill musikk via en ekstern utgang (f.eks hodetelefoner, Blåtann)
+                </string>
+                <string name="cover_longpress_action_summary" >Hva skjer når coveret er lenge trykket på
+                </string>
+                <string name="add_to_playlist" >Legg til spilleliste...
+                </string>
+                <string name="play" >Spill
+                </string>
+
+                <string-array name="notification_action_entries" >
+                    <item>
+Åpne Hoved Aktivitet
+                    </item>
+                    <item>
+Åpne Mini Spiller
+                    </item>
+                    <item>
+Hopp Til Neste Låt
+                    </item>
+                </string-array>
+
+                <string name="none" >Ingen
+                </string>
+                <string name="pref_song_selector" >Bibliotek Visning
+                </string>
+                <string name="disable_cover_art_summary" >Ikke vis cover bilde noen steder i programmet
+                </string>
+                <string name="artists" >Artister
+                </string>
+
+                <plurals name="hours" >
+                    <item quantity="one">
+01 time
+                    </item>
+                    <item quantity="other">
+%02d timer
+                    </item>
+                </plurals>
+
+                <string name="pref_misc" >Diverse Egenskaper
+                </string>
+                <string name="default_action_title" >Standard Handling
+                </string>
+                <string name="notification_mode_title" >Varselmodus
+                </string>
+                <string name="app_name" >Vanilla Music
+                </string>
+            </file>
+            <file
+                path="C:\work\android\NoLife-Player\app\src\main\res\values-ru\translatable.xml"
+                qualifiers="ru" >
+                <string name="headset_only_summary" >Воспроизводить музыку только через внешний динамик (наушники, гарнитура)
+                </string>
+                <string name="title_by_artist" >%1$s - %2$s
+                </string>
+                <string name="display_mode" >Режим отображения
+                </string>
+
+                <string-array name="notification_action_entries" >
+                    <item>
+Открыть основное приложение
+                    </item>
+                    <item>
+Открыть мини-плеер
+                    </item>
+                    <item>
+Перейти к следующей песне
+                    </item>
+                </string-array>
+
+                <string name="no_songs" >На вашем устройстве не обнаружено песен.
+                </string>
+                <string name="cant_write_tag" >Не могу записать тэг в файл
+                </string>
+                <string name="play_all" >Воспроизвести все
+                </string>
+                <string name="shuffle_albums" >Перемешать альбомы
+                </string>
+                <string name="queue_cleared" >Очередь очищена.
+                </string>
+                <string name="volume_title" >Громкость
+                </string>
+                <string name="new_playlist" >Новый список воспроизведения...
+                </string>
+                <string name="notification_action_summary" >Совершаемое действие при нажатии на уведомление
+                </string>
+                <string name="expand" >Расширить
+                </string>
+                <string name="double_tap_title" >Двойной клик на виджете
+                </string>
+                <string name="overwrite" >Перезаписать
+                </string>
+                <string name="swipe_up_action_title" >Жест: Вверх
+                </string>
+                <string name="fetch_lyrics" >Текст песни
+                </string>
+                <string name="album" >Альбом
+                </string>
+                <string name="repeat_current_song" >Повтор текущей песни
+                </string>
+                <string name="search" >Поиск
+                </string>
+                <string name="repeat" >Повтор
+                </string>
+                <string name="sendto" >Отправить...
+                </string>
+                <string name="disable_lockscreen_summary" >Не показывать экран блокировки, если открыта библиотека или окно воспроизведения.
+                </string>
+                <string name="stock_broadcast_summary" >Эмулировать оповещения, посылаемые встроенными плеерами, виджетами, кнопками контроля на экране блокировки и т.д.
+                </string>
+                <string name="notification_invert_color_title" >Инвертировать цвет уведомления
+                </string>
+                <string name="idle_timeout_title" >Таймаут отсутствия
+                </string>
+                <string name="unsup_chars_tag" >Неподдерживаемые буквы в тэге песни
+                </string>
+                <string name="default_action_title" >Действие по умолчанию
+                </string>
+                <string name="pref_song_selector" >Библиотека
+                </string>
+                <string name="idle_timeout_summary" >Количество времени, которое должно пройти до момента отключения
+                </string>
+                <string name="delete" >Удалить
+                </string>
+
+                <plurals name="deleted" >
+                    <item quantity="one">
+1 song deleted.
+                    </item>
+                    <item quantity="other">
+%d songs deleted.
+                    </item>
+                </plurals>
+
+                <string name="pick_folder" >Выбрать папку
+                </string>
+                <string name="fulldelete" >Удалить файл
+                </string>
+                <string name="requesting_server" >Запрос сервера..
+                </string>
+                <string name="edittag" >Редактировать тэг
+                </string>
+
+                <plurals name="seconds" >
+                    <item quantity="one">
+01 second
+                    </item>
+                    <item quantity="other">
+%02d seconds
+                    </item>
+                </plurals>
+
+                <string name="stock_broadcast_title" >Эмулировать внутренние оповещения
+                </string>
+                <string name="fetch" >Получить
+                </string>
+                <string name="scrobble_summary" >Использовать скробблинг в Last.FM через ScrobbleDroid или Simple Last.FM Scrobbler
+                </string>
+                <string name="artists" >Группы
+                </string>
+                <string name="enqueue_all" >Поставить в очередь все
+                </string>
+                <string name="no_shuffle" >Без перемешивания
+                </string>
+                <string name="enqueue" >Поставить в очередь
+                </string>
+                <string name="play" >Воспроизвести
+                </string>
+                <string name="rename" >Переименовать
+                </string>
+                <string name="default_action_summary" >Действие, совершаемое при нажатии на строку
+                </string>
+                <string name="send_no_apps" >Для данного действия нет подходящих приложений
+                </string>
+                <string name="display_mode_summary" >Вид и положение обложки альбома и сведений о песне.
+                </string>
+
+                <plurals name="added_to_playlist" >
+                    <item quantity="one">
+1 song added to playlist %2$s.
+                    </item>
+                    <item quantity="other">
+%1$d songs added to playlist %2$s.
+                    </item>
+                </plurals>
+
+                <string name="notification_invert_color_summary" >Использовать белый текст вместо черного
+                </string>
+                <string name="display_mode_title" >Режим отображения
+                </string>
+                <string name="songs" >Песни
+                </string>
+                <string name="choose_playlist_name" >Выберите имя списка воспроизведения
+                </string>
+                <string name="edit" >Редактировать
+                </string>
+                <string name="playlists" >Списки воспроизведения
+                </string>
+                <string name="reload_songs" >Обновить список
+                </string>
+                <string name="cant_find_lyrics" >Текст песни не найден
+                </string>
+                <string name="scrobble_title" >Использовать ScrobbleDroid API
+                </string>
+
+                <string-array name="display_mode_entries" >
+                    <item>
+Инфо в прямоугольнике поверх (по умолчанию)
+                    </item>
+                    <item>
+Инфо за обложкой альбома
+                    </item>
+                    <item>
+Инфо в неподвижном слое
+                    </item>
+                    <item>
+Инфо в неподвижном слое (Fобложка на полный экран)
+                    </item>
+                </string-array>
+
+                <string name="library" >Библиотека
+                </string>
+                <string name="shuffle_songs" >Перемешать песни
+                </string>
+
+                <plurals name="playing" >
+                    <item quantity="one">
+1 song playing.
+                    </item>
+                    <item quantity="other">
+%d songs playing.
+                    </item>
+                </plurals>
+
+                <string name="notification_mode_summary" >Когда показывать уведомления
+                </string>
+                <string name="artistname" >Исполнитель
+                </string>
+                <string name="disable_lockscreen_title" >Отключить экран блокировки
+                </string>
+                <string name="starting" >Запуск...
+                </string>
+                <string name="selector_on_startup_title" >Открывать при старте
+                </string>
+                <string name="headset_play_title" >Воспроизведение при включении наушников
+                </string>
+                <string name="seek_value" >Скорость перемотки
+                </string>
+                <string name="notification_action_title" >Действие на уведомлении
+                </string>
+                <string name="cutsong" >Проиграть фрагмент
+                </string>
+
+                <string-array name="default_action_entries" >
+                    <item>
+Воспроизвести
+                    </item>
+                    <item>
+Поставить в очередь
+                    </item>
+                    <item>
+Последнее использованное действие
+                    </item>
+                </string-array>
+
+                <string name="cancel" >Отмена
+                </string>
+                <string name="headset_pause_title" >Пауза при откючении
+                </string>
+                <string name="pref_misc" >Другое...
+                </string>
+                <string name="double_tap_summary" >Двойной клик по виджету 1х1 вызовет открытие основного приложения.
+                </string>
+                <string name="cover_longpress_action_summary" >Совершаемое действие при долгом нажатии на обложку альбома
+                </string>
+                <string name="swipe_down_action_summary" >Совершаемое действие при жесте скольжения пальцем вниз
+                </string>
+
+                <plurals name="minutes" >
+                    <item quantity="one">
+01 minute
+                    </item>
+                    <item quantity="other">
+%02d minutes
+                    </item>
+                </plurals>
+
+                <string name="random" >Случайная
+                </string>
+                <string name="use_idle_timeout_title" >Включить таймер отсутствия
+                </string>
+                <string name="headset_play_summary" >Начинать воспроизведение при подключении наушников (только при работающей службе).
+                </string>
+                <string name="fetching" >Получение...
+                </string>
+                <string name="invalid_audioframe" >Неверный фрейм тэга
+                </string>
+
+                <string-array name="swipe_action_entries" >
+
+                    <!-- This must match the order of swipe_action_values exactly -->
+                    <item>
+Ничего не делать
+                    </item>
+                    <item>
+Открыть библиотеку
+                    </item>
+                    <item>
+Воспроизведение/Пауза
+                    </item>
+                    <item>
+Следующая песня
+                    </item>
+                    <item>
+Предыдущая песня
+                    </item>
+                    <item>
+Включить/выключить повтор
+                    </item>
+                    <item>
+Включить/выключить перемешивание
+                    </item>
+                    <item>
+Поставить в очередь текущий альбом
+                    </item>
+                    <item>
+Поставить в очередь текущего исполнителя
+                    </item>
+                    <item>
+Поставить в очередь текущий жанр
+                    </item>
+                    <item>
+Очистить очередь
+                    </item>
+                    <item>
+Показать/скрыть кнопки управления
+                    </item>
+                    <item>
+Показать текст песни
+                    </item>
+                </string-array>
+
+                <string name="cover_press_action_summary" >Совершаемое действие при нажатии на обложку альбома
+                </string>
+                <string name="swipe_down_action_title" >Жест: Вниз
+                </string>
+                <string name="cover_longpress_action_title" >Долгое нажатие на обложку альбома
+                </string>
+
+                <plurals name="enqueued" >
+                    <item quantity="one">
+1 song enqueued.
+                    </item>
+                    <item quantity="other">
+%d songs enqueued.
+                    </item>
+                </plurals>
+
+                <string name="more" >Еще...
+                </string>
+                <string name="add_to_playlist" >Добавить в список воспроизведения...
+                </string>
+                <string name="processing" >Обработка...
+                </string>
+                <string name="use_idle_timeout_summary" >Когда включено, останавливает воспроизведение спустя выбранный промежуток отсутствия активности в плеере.
+                </string>
+                <string name="headset_pause_summary" >Ставить на паузу воспроизведение при отключении наушников.
+                </string>
+                <string name="widgettransparency" >Прозрачность виджета
+                </string>
+                <string name="disable_cover_art_title" >Отключить показ обложки альбома
+                </string>
+                <string name="playlist_deleted" >Список воспроизведения %s удален.
+                </string>
+                <string name="deleting" >Удаление...
+                </string>
+                <string name="app_name" >NoLife Player
+                </string>
+                <string name="readonly" >Файл только для чтения
+                </string>
+                <string name="none" >N/A
+                </string>
+                <string name="current_playlist" >Текущий список воспроизведения
+                </string>
+                <string name="swipe_up_action_summary" >Совершаемое действие при жесте скольжения пальцем вверх
+                </string>
+                <string name="albums" >Альбомы
+                </string>
+
+                <plurals name="hours" >
+                    <item quantity="one">
+01 hour
+                    </item>
+                    <item quantity="other">
+%02d hours
+                    </item>
+                </plurals>
+
+                <string name="playback_view" >Сейчас воспроизводится
+                </string>
+                <string name="settings" >Настройки
+                </string>
+                <string name="media_button_summary" >Один клик для ввоспроизведения/паузы. Двойной клик для перехода к следующей песне.
+                </string>
+                <string name="pref_playback_view" >Окно воспроизведения
+                </string>
+                <string name="cant_read_file" >Не могу открыть текущий файл
+                </string>
+                <string name="seek_summary" >Ширина прыжка при щелчке на кнопку перемотки, в секундах
+                </string>
+                <string name="song_lyrics" >Текст песни
+                </string>
+                <string name="saved" >Сохранено
+                </string>
+                <string name="unsup_tag" >Неподдерживаемый тип тэга
+                </string>
+
+                <string-array name="notification_mode_entries" >
+                    <item>
+Никогда не показывать
+                    </item>
+                    <item>
+Показывать при воспроизведении
+                    </item>
+                    <item>
+Всегда показывать
+                    </item>
+                </string-array>
+
+                <string name="controls_in_selector_title" >Кнопки управления в окне библиотеки
+                </string>
+                <string name="save_as_plist" >Сохранить как список воспроизведения
+                </string>
+                <string name="empty_queue" >Песни не выбраны. Выберите несколько из библиотеки (кнопка поиска) или перейдите в режим случайого воспроизведения, прикоснувшись к этому сообщению.
+                </string>
+                <string name="create" >Создать
+                </string>
+                <string name="headset_only_title" >Только внешний источник
+                </string>
+                <string name="pllstdelete" >Удалить из очереди
+                </string>
+                <string name="pref_output" >Источник звука
+                </string>
+                <string name="disable_cover_art_summary" >Не показывать обложку альбома нигде в приложении
+                </string>
+                <string name="media_button_title" >Использовать кнопки наушников
+                </string>
+                <string name="widgettransparency_summary" >Использовать прозрачный фон у виджета или нет
+                </string>
+                <string name="retrieving_lyrics" >Получение текста...
+                </string>
+                <string name="controls_in_selector_summary" >Показывать текущую песню и кнопки управления в окне библиотеки
+                </string>
+                <string name="pref_notifications" >Уведомления
+                </string>
+                <string name="song_load_failed" >Не удалось воспроизвести песню %s. Возможно, файл поврежден или удален.
+                </string>
+                <string name="songtitle" >Название песни
+                </string>
+                <string name="random_enabling" >Случайный режим включен
+                </string>
+                <string name="notification_mode_title" >Режим уведомления
+                </string>
+                <string name="cover_press_action_title" >Нажатие на обложку альбома
+                </string>
+                <string name="select" >Выбрать
+                </string>
+                <string name="savechanges" >Сохранить изменения
+                </string>
+                <string name="volume_summary" >Громкость музыки
+                </string>
+                <string name="selector_on_startup_summary" >Открывать окно медиа-библиотеки при старте приложения.
+                </string>
+                <string name="genres" >Жанры
+                </string>
+                <string name="all_songs" >Все песни
+                </string>
+                <string name="no_repeat" >Без повтора
+                </string>
+                <string name="unknown" >Неизвестно
+                </string>
+            </file>
+            <file
+                path="C:\work\android\NoLife-Player\app\src\main\res\values-sk\translatable.xml"
+                qualifiers="sk" >
+                <string name="idle_timeout_summary" >Čas, ktorý musí ubehnúť pred prejdením do nečinnosti.
+                </string>
+                <string name="stock_broadcast_summary" >Tvári sa ako originálny prehrávač hudby posielaním vysielania pre umožnenie spolupráce s ovládaniami, miniaplikáciami zamykania obrazovky.
+                </string>
+                <string name="disable_cover_art_title" >Vypnúť obal albumu
+                </string>
+                <string name="swipe_down_action_title" >Prejdením prstom nadol
+                </string>
+                <string name="swipe_up_action_summary" >Čo spraviť, keď prejdete prstom nahor.
+                </string>
+
+                <plurals name="playing" >
+                    <item quantity="one">
+1 prehrávaná skladba.
+                    </item>
+                    <item quantity="few">
+%d prehrávané skladby.
+                    </item>
+                    <item quantity="other">
+%d prehrávaných skladieb.
+                    </item>
+                </plurals>
+
+                <string name="artists" >Interpreti
+                </string>
+                <string name="display_mode_title" >Režim zobrazenia
+                </string>
+                <string name="cover_longpress_action_title" >Akcia pri podržaní na obale
+                </string>
+                <string name="pref_output" >Zvukový výstup
+                </string>
+                <string name="double_tap_summary" >Dvojité ťuknutie na 1×1 miniaplikáciu otvorí prehrávač. Vytvorí oneskorenie 0,4 sekúnd pred tým, ako miniaplikácia reaguje na akciu.
+                </string>
+                <string name="pref_song_selector" >Zobrazenie knižnice
+                </string>
+                <string name="expand" >Rozšíriť
+                </string>
+                <string name="queue_cleared" >Zoznam vymazaný.
+                </string>
+
+                <plurals name="deleted" >
+                    <item quantity="one">
+1 skladba odstránená.
+                    </item>
+                    <item quantity="few">
+%d skladby odstránené.
+                    </item>
+                    <item quantity="other">
+%d skladieb odstránených.
+                    </item>
+                </plurals>
+
+                <string-array name="notification_action_entries" >
+                    <item>
+Otvoriť hlavnú činnosť
+                    </item>
+                    <item>
+Otvoriť mini prehrávač
+                    </item>
+                    <item>
+Preskočiť na ďalšiu skladbu
+                    </item>
+                </string-array>
+
+                <string name="headset_play_title" >Prehrať po pripojení
+                </string>
+                <string name="idle_timeout_title" >Časový limit nečinnosti
+                </string>
+                <string name="song_load_failed" >Načítanie skladby %s zlyhalo. Môže byť poškodená, alebo chýba.
+                </string>
+                <string name="media_button_summary" >Jedným stlačením prehrať/pozastaviť. Dvojitým stlačením nasledujúca.
+                </string>
+                <string name="default_action_summary" >Čo spraviť, keď ťuknete na položku.
+                </string>
+                <string name="songs" >Skladby
+                </string>
+                <string name="display_mode_summary" >Vzhľad a pozícia grafiky skladby a informácií.
+                </string>
+                <string name="enqueue" >Zaradiť do zoznamu
+                </string>
+                <string name="cover_longpress_action_summary" >Čo spraviť, keď ťuknete a podržíte na obal albumu.
+                </string>
+                <string name="create" >Vytvoriť
+                </string>
+                <string name="notification_mode_summary" >Kedy zobraziť upozornenie.
+                </string>
+                <string name="search" >Hľadať
+                </string>
+                <string name="swipe_down_action_summary" >Čo spraviť keď prejdete prstom nadol.
+                </string>
+
+                <string-array name="swipe_action_entries" >
+                    <item>
+Nerobiť nič
+                    </item>
+                    <item>
+Otvoriť knižnicu
+                    </item>
+                    <item>
+Prehrať/Pozastaviť
+                    </item>
+                    <item>
+Nasledujúca skladba
+                    </item>
+                    <item>
+Predchádzajúca skladba
+                    </item>
+                    <item>
+Prepnúť opakovanie
+                    </item>
+                    <item>
+Prepnúť náhodný výber
+                    </item>
+                    <item>
+Pridať do zoznamu aktuálny album
+                    </item>
+                    <item>
+Pridať do zoznamu aktuálneho interpreta
+                    </item>
+                    <item>
+Pridať do zoznamu aktuálny žáner
+                    </item>
+                    <item>
+Vymazať zoznam
+                    </item>
+                    <item>
+Prepnúť ovládanie
+                    </item>
+                </string-array>
+
+                <plurals name="seconds" >
+                    <item quantity="one">
+01 sekunda
+                    </item>
+                    <item quantity="few">
+%02d sekundy
+                    </item>
+                    <item quantity="other">
+%02d sekúnd
+                    </item>
+                </plurals>
+
+                <string name="cover_press_action_summary" >Čo spraviť, keď ťuknete na obal albumu.
+                </string>
+                <string name="display_mode" >Režim zobrazenia
+                </string>
+                <string name="notification_mode_title" >Režim upozornení
+                </string>
+                <string name="pref_notifications" >Upozornenia
+                </string>
+                <string name="random_enabling" >Náhodný výber zapnutý.
+                </string>
+                <string name="settings" >Nastavenia
+                </string>
+                <string name="app_name" >Vanilla Music
+                </string>
+                <string name="rename" >Premenovať
+                </string>
+                <string name="controls_in_selector_summary" >V knižnici zobrazí aktuálne prehrávanú skladbu a ovládanie prehrávania.
+                </string>
+                <string name="notification_action_summary" >Čo spraviť keď je na upozornenie ťuknuté.
+                </string>
+                <string name="choose_playlist_name" >Vyberte názov zoznamu skladieb
+                </string>
+                <string name="playlist_deleted" >Zoznam skladieb %s odstránený.
+                </string>
+                <string name="media_button_title" >Použiť ovládanie náhlavnej súpravy
+                </string>
+                <string name="title_by_artist" >%1$s od %2$s
+                </string>
+                <string name="add_to_playlist" >Pridať do zoznamu skladieb…
+                </string>
+                <string name="use_idle_timeout_title" >Povoliť časový limit nečinnosti
+                </string>
+                <string name="albums" >Albumy
+                </string>
+                <string name="scrobble_title" >Použiť ScrobbleDroid API
+                </string>
+                <string name="unknown" >Neznáme
+                </string>
+                <string name="empty_queue" >Neboli vybrané žiadne skladby. Vyberte niektorú z knižnice (vyhľadávaním) alebo zvoľte náhodný výber (cez menu).
+                </string>
+                <string name="delete" >Odstrániť
+                </string>
+                <string name="playback_view" >Práve sa prehráva
+                </string>
+
+                <string-array name="display_mode_entries" >
+                    <item>
+Informácie v prekrývajúcom ráme (predvolené)
+                    </item>
+                    <item>
+Informácie pod obalom
+                    </item>
+                    <item>
+Informácie vo vrstve Immobile
+                    </item>
+                    <item>
+Informácie vo vrstve Immobile (obal na celej obrazovke)
+                    </item>
+                </string-array>
+
+                <string name="disable_cover_art_summary" >Nebude zobrazovať obal albumu nikde v aplikácii.
+                </string>
+                <string name="use_idle_timeout_summary" >Keď je povolené, prehrávanie sa zastaví po danom čase nečinnosti.
+                </string>
+                <string name="pref_playback_view" >Zobrazenie prehrávania
+                </string>
+                <string name="play" >Prehrať
+                </string>
+                <string name="starting" >Spúštanie…
+                </string>
+                <string name="headset_pause_title" >Pozastaviť pri odpojení
+                </string>
+                <string name="cancel" >Zrušiť
+                </string>
+                <string name="notification_action_title" >Akcia upozornenia
+                </string>
+                <string name="headset_play_summary" >Spustí prehrávanie keď zapojíte sluchátka. Funguje iba keď beží služba.
+                </string>
+                <string name="enqueue_all" >Pridať do zoznamu všetko
+                </string>
+
+                <plurals name="hours" >
+                    <item quantity="one">
+01 hodina
+                    </item>
+                    <item quantity="few">
+%02d hodiny
+                    </item>
+                    <item quantity="other">
+%02d hodín
+                    </item>
+                </plurals>
+
+                <string name="none" >Nič
+                </string>
+                <string name="scrobble_summary" >Scrobble prístup k Last.FM cez ScrobbleDroid alebo Simple Last.FM Scrobbler.
+                </string>
+                <string name="selector_on_startup_title" >Otvoriť po spustení
+                </string>
+                <string name="genres" >Žánre
+                </string>
+                <string name="notification_invert_color_summary" >Použije biely text namiesto čierneho.
+                </string>
+                <string name="library" >Knižnica
+                </string>
+                <string name="double_tap_title" >Dvojité ťuknutie na miniaplikáciu
+                </string>
+                <string name="volume_title" >Hlasitosť
+                </string>
+                <string name="deleting" >Odstraňuje sa…
+                </string>
+
+                <plurals name="added_to_playlist" >
+                    <item quantity="one">
+1 skladba pridaná do zoznamu skladieb %2$s.
+                    </item>
+                    <item quantity="few">
+%1$d skladby pridané do zoznamu skladieb %2$s.
+                    </item>
+                    <item quantity="other">
+%1$d skladieb pridaných do zoznamu skladieb %2$s.
+                    </item>
+                </plurals>
+
+                <string name="controls_in_selector_title" >Ovládanie v knižnici
+                </string>
+                <string name="no_songs" >V zariadení neboli nájdené žiadne skladby.
+                </string>
+                <string name="selector_on_startup_summary" >Po spustení otvorí knižnicu.
+                </string>
+                <string name="swipe_up_action_title" >Akcia prejedním prstu nahor
+                </string>
+                <string name="stock_broadcast_title" >Tváriť sa ako originálny prehrávač
+                </string>
+                <string name="notification_invert_color_title" >Invertovať farbu oznámenia
+                </string>
+                <string name="headset_only_summary" >Prehrá hudbu iba cez externý výstup (napríklad sluchátka, Bluetooth).
+                </string>
+                <string name="edit" >Upraviť
+                </string>
+                <string name="overwrite" >Prepísať
+                </string>
+                <string name="all_songs" >Všetky skladby
+                </string>
+                <string name="play_all" >Prehrať všetko
+                </string>
+                <string name="pref_misc" >Ostatné funkcie
+                </string>
+
+                <string-array name="default_action_entries" >
+                    <item>
+Prehrať
+                    </item>
+                    <item>
+Zaradiť do zoznamu
+                    </item>
+                    <item>
+Naposledy použitá akcia
+                    </item>
+                </string-array>
+
+                <string name="new_playlist" >Nový zoznam skladieb…
+                </string>
+
+                <plurals name="enqueued" >
+                    <item quantity="one">
+1 pridaná skladba.
+                    </item>
+                    <item quantity="few">
+%d pridané skladby.
+                    </item>
+                    <item quantity="other">
+%d pridaných skladieb.
+                    </item>
+                </plurals>
+
+                <string name="headset_only_title" >Iba externý výstup
+                </string>
+                <string name="playlists" >Zoznamy skladieb
+                </string>
+                <string name="cover_press_action_title" >Akcia pri ťuknutí na obal
+                </string>
+
+                <plurals name="minutes" >
+                    <item quantity="one">
+01 minúta
+                    </item>
+                    <item quantity="few">
+%02d minúty
+                    </item>
+                    <item quantity="other">
+%02d minút
+                    </item>
+                </plurals>
+
+                <string name="default_action_title" >Predvolená akcia
+                </string>
+                <string name="volume_summary" >Hlasitosť hudby
+                </string>
+
+                <string-array name="notification_mode_entries" >
+                    <item>
+Nikdy nezobraziť
+                    </item>
+                    <item>
+Zobraziť počas prehrávania
+                    </item>
+                    <item>
+Vždy zobraziť
+                    </item>
+                </string-array>
+
+                <string name="headset_pause_summary" >Pozastaví prehrávanie keď odpojíte sluchátka.
+                </string>
+            </file>
+            <file
+                name="four_long_widget"
+                path="C:\work\android\NoLife-Player\app\src\main\res\xml\four_long_widget.xml"
+                qualifiers=""
+                type="xml" />
+            <file
+                name="lyrics_widget"
+                path="C:\work\android\NoLife-Player\app\src\main\res\xml\lyrics_widget.xml"
+                qualifiers=""
+                type="xml" />
+            <file
+                name="oneline_widget"
+                path="C:\work\android\NoLife-Player\app\src\main\res\xml\oneline_widget.xml"
+                qualifiers=""
+                type="xml" />
+            <file
+                name="preferences"
+                path="C:\work\android\NoLife-Player\app\src\main\res\xml\preferences.xml"
+                qualifiers=""
+                type="xml" />
+        </source>
+        <source path="C:\work\android\NoLife-Player\app\build\res\rs\debug" />
+        <source path="C:\work\android\NoLife-Player\app\build\res\generated\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\work\android\NoLife-Player\app\src\debug\res" />
+    </dataSet>
+
+</merger>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:minWidth="294dip"
+	android:minHeight="288dip"
+	android:initialLayout="@layout/lyrics_widget"
+	/><!-- From: file:/C:/work/android/NoLife-Player/app/src/main/res/xml/lyrics_widget.xml -->

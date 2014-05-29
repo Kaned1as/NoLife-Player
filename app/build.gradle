@@ -1,0 +1,23 @@
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.2"
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 19
+    }
+
+    buildTypes {
+        release {
+            runProguard true
+            proguardFiles 'proguard.config'
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/htmlcleaner-2.2.jar')
+    compile files('libs/jaudiotagger.jar')
+}

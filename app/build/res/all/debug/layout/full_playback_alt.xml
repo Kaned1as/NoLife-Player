@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2010, 2011 Christopher Eby <kreed@kreed.org>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+	<org.adonai.nolife.CoverView
+		android:id="@+id/cover_view"
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent" />
+	<LinearLayout
+		android:id="@+id/top_group"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_gravity="top|left"
+		android:layout_margin="0dip"
+		android:padding="4dip"
+		android:background="#a000"
+		android:orientation="vertical">
+		<TextView
+			android:id="@+id/title"
+			android:ellipsize="marquee"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:gravity="center"
+			android:singleLine="true"
+			android:textStyle="bold" />
+		<TextView
+			android:id="@+id/artist"
+			android:ellipsize="marquee"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:gravity="center"
+			android:singleLine="true" />
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:orientation="horizontal">
+			<TextView
+				android:id="@+id/elapsed"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:gravity="bottom"
+				android:textSize="10sp"
+				android:text="00:00" />
+			<TextView
+				android:id="@+id/album"
+				android:ellipsize="marquee"
+				android:layout_height="wrap_content"
+				android:layout_width="0px"
+				android:layout_weight="1"
+				android:layout_marginLeft="2dip"
+				android:layout_marginRight="2dip"
+				android:gravity="center"
+				android:singleLine="true" />
+			<TextView
+				android:id="@+id/duration"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:gravity="bottom"
+				android:textSize="10sp"
+				android:text="00:00" />
+		</LinearLayout>
+
+		<LinearLayout
+		    android:id="@+id/manageLayout"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" android:layout_gravity="center">
+
+			<SeekBar
+			    android:id="@+id/seek_bar"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:maxHeight="5dip"
+			    android:padding="5px"
+			    android:progressDrawable="@drawable/progress_horizontal"
+			    android:thumb="@drawable/seek_thumb" />
+
+		</LinearLayout>
+
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/controls_bottom"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_gravity="bottom|left"
+		android:layout_margin="0dip"
+		android:background="@drawable/appwidget_bg"
+		android:orientation="horizontal">
+		<ImageButton
+			android:id="@+id/shuffle"
+			android:layout_height="wrap_content"
+			android:layout_width="0px"
+			android:layout_weight="1"
+			android:background="@null"
+			android:scaleType="fitCenter"
+			android:src="@drawable/shuffle_inactive" android:layout_gravity="center"/>
+		<ImageButton
+			android:id="@+id/previous"
+			android:layout_height="wrap_content"
+			android:layout_width="0px"
+			android:layout_weight="1"
+			android:background="@drawable/btn_default"
+			android:scaleType="center"
+			android:src="@drawable/previous" android:layout_gravity="center"/>
+
+		<ImageButton
+		    android:id="@+id/seek_back"
+		    android:layout_width="0px"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@null"
+		    android:scaleType="center"
+		    android:src="@drawable/seek_backward" android:layout_gravity="center"/>
+
+		<ImageButton
+			android:id="@+id/play_pause"
+			android:layout_height="wrap_content"
+			android:layout_width="0px"
+			android:layout_weight="1"
+			android:background="@drawable/btn_default"
+			android:scaleType="center"
+			android:src="@drawable/play" android:layout_gravity="center"/>
+
+		<ImageButton
+		    android:id="@+id/seek_head"
+		    android:layout_width="0px"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="@null"
+		    android:scaleType="center"
+		    android:src="@drawable/seek_forward" android:layout_gravity="center"/>
+
+		<ImageButton
+			android:id="@+id/next"
+			android:layout_height="wrap_content"
+			android:layout_width="0px"
+			android:layout_weight="1"
+			android:background="@drawable/btn_default"
+			android:scaleType="center"
+			android:src="@drawable/next" android:layout_gravity="center"/>
+		<ImageButton
+			android:id="@+id/end_action"
+			android:layout_height="wrap_content"
+			android:layout_width="0px"
+			android:layout_weight="1"
+			android:background="@null"
+			android:scaleType="fitCenter"
+			android:src="@drawable/repeat_inactive" android:layout_gravity="center"/>
+	</LinearLayout>
+
+	<LinearLayout
+	    android:id="@+id/volume_layout"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" android:layout_gravity="right|center_vertical" android:visibility="visible">
+
+	    <ImageButton
+	        android:id="@+id/adjustvol_up"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="65dip"
+	        android:background="@drawable/btn_default"
+	        android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+	    <ImageButton
+	        android:id="@+id/adjustvol_down"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="65dip"
+	        android:background="@drawable/btn_default"
+	        android:src="@android:drawable/ic_lock_silent_mode" />
+	</LinearLayout>
+
+</merge>
+<!-- From: file:/C:/work/android/NoLife-Player/app/src/main/res/layout/full_playback_alt.xml -->
