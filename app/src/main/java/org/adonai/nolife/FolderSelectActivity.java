@@ -70,8 +70,8 @@ public class FolderSelectActivity extends Activity implements OnClickListener, H
     {
         mFolderTitle.setText("Location: " + dirPath);
 
-     item = new ArrayList<String>();
-     path = new ArrayList<String>();
+     item = new ArrayList<>();
+     path = new ArrayList<>();
      
      File f = new File(dirPath);
      File[] files = f.listFiles();
@@ -80,16 +80,14 @@ public class FolderSelectActivity extends Activity implements OnClickListener, H
      {   
       item.add("..");
       path.add(f.getParent());     
-     }     
-
-     for(int i=0; i < files.length; i++)
-     {
-       File file = files[i];
-       if(file.isDirectory()) {
-           item.add(file.getName());
-           path.add(file.getAbsolutePath());
-       }
      }
+
+    for (File file : files) {
+        if (file.isDirectory()) {
+            item.add(file.getName());
+            path.add(file.getAbsolutePath());
+        }
+    }
      ArrayAdapter<String> fileList = new FolderArrayAdapter(this, R.layout.folder_item, R.id.folderTitle, item);
      mFolderList.setAdapter(fileList);
      pwd = f;
@@ -188,8 +186,8 @@ public class FolderSelectActivity extends Activity implements OnClickListener, H
             pd = ProgressDialog.show(this, getResources().getString(R.string.processing), "");
             new Thread() {
                 public void run() {
-                    ArrayList<String> songs_paths = new ArrayList<String>();
-                    ArrayList<Song> tempSongs = new ArrayList<Song>();
+                    ArrayList<String> songs_paths = new ArrayList<>();
+                    ArrayList<Song> tempSongs = new ArrayList<>();
 
                     for(int i = 0; i < mFolders.size(); i++)
                         selectCurrentFolder(new File(mFolders.get(i)), songs_paths);
@@ -212,7 +210,7 @@ public class FolderSelectActivity extends Activity implements OnClickListener, H
                     cursor.close();
 
                     if(!tempSongs.isEmpty())
-                        PlaybackService.get(getApplicationContext()).mTimeline.convertFromSongArray(tempSongs);
+                        PlaybackService.get(FolderSelectActivity.this).mTimeline.convertFromSongArray(tempSongs);
                     else
                         mHandler.sendEmptyMessage(MSG_FAIL);
                     mHandler.sendEmptyMessage(MSG_FINISH);

@@ -35,13 +35,13 @@ THE SOFTWARE.
     <string name="no_repeat">Без повтора</string><string name="current_playlist">Текущий список воспроизведения</string>
     <string name="repeat">Повтор</string>
     <string name="repeat_current_song">Повтор текущей песни</string>
-    <string name="random">Случайная</string><string name="sendto">Отправить...</string>
+    <string name="random">Случайная</string><string name="sendto">Отправить…</string>
     <string name="random_enabling">Случайный режим включен</string>
     <string name="song_load_failed">Не удалось воспроизвести песню %s. Возможно, файл поврежден или удален.</string>
     <string name="queue_cleared">Очередь очищена.</string>
 
     <!-- Widgets -->
-    <string name="starting">Запуск...</string>
+    <string name="starting">Запуск…</string>
 
     <!-- New Playlist Dialog -->
     <string name="choose_playlist_name">Выберите имя списка воспроизведения</string>
@@ -54,30 +54,38 @@ THE SOFTWARE.
     <string name="play">Воспроизвести</string>
     <string name="edit">Редактировать</string>
     <string name="rename">Переименовать</string>
-    <string name="add_to_playlist">Добавить в список воспроизведения...</string>
-    <string name="new_playlist">Новый список воспроизведения...</string>
+    <string name="add_to_playlist">Добавить в список воспроизведения…</string>
+    <string name="new_playlist">Новый список воспроизведения…</string>
     <string name="expand">Расширить</string>
     <string name="delete">Удалить</string>
     <string name="playback_view">Сейчас воспроизводится</string>
     <string name="search">Поиск</string>
 
     <plurals name="playing">
-        <item quantity="one">1 song playing.</item>
-        <item quantity="other">%d songs playing.</item>
+        <item quantity="one">1 песня воспроизводится.</item>
+        <item quantity="other">%d песен воспроизводится.</item>
+        <item quantity="few">Несколько песен воспроизводится.</item>
+        <item quantity="many">Много песен воспроизводится.</item>
     </plurals>
     <plurals name="enqueued">
-        <item quantity="one">1 song enqueued.</item>
-        <item quantity="other">%d songs enqueued.</item>
+        <item quantity="one">1 песня поставлена в очередь.</item>
+        <item quantity="other">%d песен поставлено в очередь.</item>
+        <item quantity="few">Несколько песен поставлено в очередь.</item>
+        <item quantity="many">Много песен поставлено в очередь.</item>
     </plurals>
     <plurals name="added_to_playlist">
-        <item quantity="one">1 song added to playlist %2$s.</item>
-        <item quantity="other">%1$d songs added to playlist %2$s.</item>
+        <item quantity="one">1 песня добавлена в плейлист %2$s.</item>
+        <item quantity="other">%1$d песен добавлено в плейлист %2$s.</item>
+        <item quantity="few">Несколько песен добавлено в плейлист.</item>
+        <item quantity="many">Много песен добавлено в плейлист.</item>
     </plurals>
-    <string name="deleting">Удаление...</string>
+    <string name="deleting">Удаление…</string>
     <string name="playlist_deleted">Список воспроизведения %s удален.</string>
     <plurals name="deleted">
-        <item quantity="one">1 song deleted.</item>
-        <item quantity="other">%d songs deleted.</item>
+        <item quantity="one">1 песня удалена.</item>
+        <item quantity="other">%d песен удалено.</item>
+        <item quantity="few">Несколько песен удалено.</item>
+        <item quantity="many">Много песен удалено</item>
     </plurals>
 
     <string name="artists">Группы</string>
@@ -95,16 +103,22 @@ THE SOFTWARE.
 
     <!-- Preferences -->
     <plurals name="seconds">
-        <item quantity="one">01 second</item>
-        <item quantity="other">%02d seconds</item>
+        <item quantity="one">01 секунда</item>
+        <item quantity="other">%02d секунд</item>
+        <item quantity="few">Несколько секунд</item>
+        <item quantity="many">Много секунд</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">01 minute</item>
-        <item quantity="other">%02d minutes</item>
+        <item quantity="one">01 минута</item>
+        <item quantity="other">%02d минут</item>
+        <item quantity="few">Несколько минут</item>
+        <item quantity="many">Много минут</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">01 hour</item>
-        <item quantity="other">%02d hours</item>
+        <item quantity="one">01 час</item>
+        <item quantity="other">%02d часов</item>
+        <item quantity="few">Несколько часов</item>
+        <item quantity="many">Много часов</item>
     </plurals>
 
     <string name="pref_output">Источник звука</string>
@@ -149,7 +163,7 @@ THE SOFTWARE.
     <string name="default_action_title">Действие по умолчанию</string>
     <string name="default_action_summary">Действие, совершаемое при нажатии на строку</string>
 
-    <string name="pref_misc">Другое...</string>
+    <string name="pref_misc">Другое…</string>
     <string name="disable_lockscreen_title">Отключить экран блокировки</string>
     <string name="disable_lockscreen_summary">Не показывать экран блокировки, если открыта библиотека или окно воспроизведения.</string>
     <string name="use_idle_timeout_title">Включить таймер отсутствия</string>
@@ -207,8 +221,8 @@ THE SOFTWARE.
     <string name="savechanges">Сохранить изменения</string>
     <string name="song_lyrics">Текст песни</string>
     <string name="fetch_lyrics">Текст песни</string>
-    <string name="retrieving_lyrics">Получение текста...</string>
-    <string name="requesting_server">Запрос сервера..</string>
+    <string name="retrieving_lyrics">Получение текста…</string>
+    <string name="requesting_server">Запрос сервера…</string>
     <string name="cant_write_tag">Не могу записать тэг в файл</string>
     <string name="unsup_chars_tag">Неподдерживаемые буквы в тэге песни</string>
     <string name="unsup_tag">Неподдерживаемый тип тэга</string>
@@ -218,10 +232,10 @@ THE SOFTWARE.
     <string name="cant_find_lyrics">Текст песни не найден</string>
     <string name="reload_songs">Обновить список</string>
     <string name="send_no_apps">Для данного действия нет подходящих приложений</string>
-    <string name="more">Еще...</string>
+    <string name="more">Еще…</string>
     <string name="fetch">Получить</string>
     <string name="saved">Сохранено</string>
-    <string name="fetching">Получение...</string>
+    <string name="fetching">Получение…</string>
     <string name="fulldelete">Удалить файл</string>
     <string name="pllstdelete">Удалить из очереди</string>
     <string name="cutsong">Проиграть фрагмент</string>
@@ -230,7 +244,8 @@ THE SOFTWARE.
     <string name="widgettransparency">Прозрачность виджета</string>
     <string name="widgettransparency_summary">Использовать прозрачный фон у виджета или нет</string>
     <string name="pick_folder">Выбрать папку</string>
-    <string name="processing">Обработка...</string>
+    <string name="processing">Обработка…</string>
     <string name="select">Выбрать</string>
     <string name="save_as_plist">Сохранить как список воспроизведения</string>
+    <string name="track_not_found">Трек не найден</string>
 </resources>

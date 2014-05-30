@@ -235,4 +235,5 @@ THE SOFTWARE.
     <string name="select">Select</string>
     <string name="processing">Processing...</string>
     <string name="save_as_plist">Save as playlist</string>
+    <string name="track_not_found">Track not found</string>
 </resources>

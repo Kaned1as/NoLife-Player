@@ -22,13 +22,17 @@
 
 package org.adonai.nolife;
 
-import org.adonai.nolife.R;
-
 import android.content.Intent;
+import android.database.Cursor;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+
+import java.io.File;
 
 /**
  * Compact playback activity that displays itself like a dialog. That is, the
@@ -66,6 +70,33 @@ public class MiniPlaybackActivity extends PlaybackActivity {
             break;
         default:
             super.onClick(view);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getIntent().getData() != null) {
+            final Uri data = getIntent().getData();
+            final File toScan = new File(data.getPath());
+            if(toScan.exists())
+                MediaScannerConnection.scanFile(this, new String[]{data.getPath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                    @Override
+                    public void onScanCompleted(String path, Uri uri) {
+                        final Uri media = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                        String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0 AND " + MediaStore.Audio.Media.DATA + " = ?";
+                        final Cursor cursor = getContentResolver().query(media, Song.FILLED_PROJECTION, selection, new String[]{data.getPath()}, null);
+                        PlaybackService.get(MiniPlaybackActivity.this).mTimeline.addSongs(SongTimeline.MODE_PLAY, cursor);
+                    }
+                });
+
+            getIntent().setData(null);
         }
     }
 }

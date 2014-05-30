@@ -229,7 +229,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
      */
     private int mIdleTimeout;
 
-    private cutTimer mCut = new cutTimer();
+    private CutTimer mCut = new CutTimer();
     /**
      * The intent for the notification to execute, created by
      * {@link PlaybackService#createNotificationAction(SharedPreferences)}.
@@ -290,7 +290,6 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 
         SharedPreferences settings = getSettings(this);
         settings.registerOnSharedPreferenceChangeListener(this);
-        MediaButtonReceiver.registerMediaButton(this);
         mNotificationMode = Integer.parseInt(settings.getString("notification_mode", "1"));
         mScrobble = settings.getBoolean("scrobble", false);
         float volume = settings.getFloat("volume", 1.0f);
@@ -679,6 +678,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
      */
     public int play()
     {
+        MediaButtonReceiver.registerMediaButton(this);
         synchronized (mStateLock) {
             if ((mState & FLAG_EMPTY_QUEUE) != 0) {
                 setFinishAction(SongTimeline.FINISH_RANDOM);
@@ -1543,7 +1543,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
         }
     }
 
-    public class cutTimer {
+    public class CutTimer {
         public boolean mEnabled = false;
         public int mCutStart = 0;
         public int mCutEnd = 1000;
@@ -1555,7 +1555,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
         }
     }
 
-    public cutTimer getCut()
+    public CutTimer getCut()
     {
         return mCut;
     }

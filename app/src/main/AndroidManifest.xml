@@ -67,7 +67,20 @@ THE SOFTWARE.
             android:name="MiniPlaybackActivity"
             android:theme="@android:style/Theme.Dialog"
             android:excludeFromRecents="true"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+                <data android:mimeType="audio/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:mimeType="audio/*" />
+            </intent-filter>
+            </activity>
         <receiver
             android:name=".FourLongWidget"
             android:label="NoLife Player 2x4">

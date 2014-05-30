@@ -27,6 +27,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 import junit.framework.Assert;
 
@@ -490,8 +491,10 @@ public final class SongTimeline {
         if (cursor == null)
             return 0;
         int count = cursor.getCount();
-        if (count == 0)
+        if (count == 0) {
+            Toast.makeText(mContext, R.string.track_not_found, Toast.LENGTH_SHORT).show();
             return 0;
+        }
 
         ArrayList<Song> timeline = mSongs;
         synchronized (this) {
