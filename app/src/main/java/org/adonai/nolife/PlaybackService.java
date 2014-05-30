@@ -252,6 +252,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
     private Song mCurrentSong;
 
     boolean mPlayingBeforeCall;
+    boolean mHeadphonesBeforeCall;
     private int mPendingSeek;
     public Receiver mReceiver;
     public InCallListener mCallListener;
@@ -915,7 +916,9 @@ public final class PlaybackService extends Service implements Handler.Callback, 
     }
 
     private class InCallListener extends PhoneStateListener {
+
         @Override
+        @SuppressWarnings("deprecation")
         public void onCallStateChanged(int state, String incomingNumber)
         {
             switch (state) {
@@ -925,6 +928,7 @@ public final class PlaybackService extends Service implements Handler.Callback, 
 
                 if (!mPlayingBeforeCall) {
                     synchronized (mStateLock) {
+                        mHeadphonesBeforeCall = mAudioManager.isWiredHeadsetOn();
                         if (mPlayingBeforeCall = (mState & FLAG_PLAYING) != 0)
                             unsetFlag(FLAG_PLAYING);
                     }
@@ -934,9 +938,10 @@ public final class PlaybackService extends Service implements Handler.Callback, 
             case TelephonyManager.CALL_STATE_IDLE: {
                 MediaButtonReceiver.setInCall(false);
 
-                if (mPlayingBeforeCall) {
+                if (mPlayingBeforeCall && mHeadphonesBeforeCall == mAudioManager.isWiredHeadsetOn()) {
                     setFlag(FLAG_PLAYING);
                     mPlayingBeforeCall = false;
+                    mHeadphonesBeforeCall = false;
                 }
                 break;
             }

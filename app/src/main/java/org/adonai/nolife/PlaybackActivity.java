@@ -98,7 +98,6 @@ public class PlaybackActivity extends Activity
         super.onCreate(state);
 
         PlaybackService.addActivity(this);
-
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         HandlerThread thread = new HandlerThread(getClass().getName());
@@ -161,7 +160,6 @@ public class PlaybackActivity extends Activity
     public void onResume()
     {
         super.onResume();
-        MediaButtonReceiver.registerMediaButton(this);
         MediaButtonReceiver.setInCall(false);
         if (PlaybackService.hasInstance()) {
             PlaybackService service = PlaybackService.get(this);
