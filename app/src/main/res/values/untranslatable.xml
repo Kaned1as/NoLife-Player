@@ -21,10 +21,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <resources>
-    <style name="NoBackground" parent="android:style/Theme">
-        <item name="android:windowBackground">@null</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
     <string-array name="entry_values">
         <!-- Note: even if this was an integer-array, these would be converted
              to strings anyway.

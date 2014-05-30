@@ -48,20 +48,21 @@ THE SOFTWARE.
         <activity
             android:name="FullPlaybackActivity"
             android:theme="@style/NoBackground"
-            android:launchMode="singleInstance" /><receiver
-            android:name=".OneLineWidget"
-            android:label="NoLife Player 1x4">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/oneline_widget" />
-        </receiver>
+            android:launchMode="singleInstance" />
+            <receiver
+                android:name=".OneLineWidget"
+                android:label="NoLife Player 1x4">
+                <intent-filter>
+                    <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                </intent-filter>
+                <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/oneline_widget" />
+            </receiver>
         <activity
             android:name="LibraryActivity"
             android:launchMode="singleInstance"
-            android:theme="@android:style/Theme.Black.NoTitleBar" />
+            android:theme="@style/NoBackground" />
         <activity
             android:name="MiniPlaybackActivity"
             android:theme="@android:style/Theme.Dialog"
