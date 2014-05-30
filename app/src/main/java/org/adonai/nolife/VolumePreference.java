@@ -37,44 +37,44 @@ import android.widget.SeekBar;
  * roughly exponential scale.
  */
 public class VolumePreference extends DialogPreference implements SeekBar.OnSeekBarChangeListener {
-	public VolumePreference(Context context, AttributeSet attrs)
-	{
-		super(context, attrs);
-	}
+    public VolumePreference(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+    }
 
-	@Override
-	protected void onPrepareDialogBuilder(Builder builder)
-	{
-		// setting is applied instantly; no way to cancel
-		builder.setNegativeButton(null, null);
+    @Override
+    protected void onPrepareDialogBuilder(Builder builder)
+    {
+        // setting is applied instantly; no way to cancel
+        builder.setNegativeButton(null, null);
 
-		ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-		SeekBar seekBar = new SeekBar(getContext());
-		seekBar.setPadding(20, 20, 20, 20);
-		seekBar.setLayoutParams(params);
-		seekBar.setMax(1000);
-		seekBar.setProgress((int)(Math.pow(getPersistedFloat(1.0f), 0.25f) * 1000));
-		seekBar.setOnSeekBarChangeListener(this);
-		builder.setView(seekBar);
-	}
+        SeekBar seekBar = new SeekBar(getContext());
+        seekBar.setPadding(20, 20, 20, 20);
+        seekBar.setLayoutParams(params);
+        seekBar.setMax(1000);
+        seekBar.setProgress((int)(Math.pow(getPersistedFloat(1.0f), 0.25f) * 1000));
+        seekBar.setOnSeekBarChangeListener(this);
+        builder.setView(seekBar);
+    }
 
-	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
-	{
-		// Approximate an exponential curve with x^4. Produces a value from 0.0 - 1.0.
-		if (fromUser && shouldPersist()) {
-			float value = seekBar.getProgress() / 1000.0f;
-			value *= value;
-			value *= value;
-			persistFloat(value);
-		}
-	}
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+    {
+        // Approximate an exponential curve with x^4. Produces a value from 0.0 - 1.0.
+        if (fromUser && shouldPersist()) {
+            float value = seekBar.getProgress() / 1000.0f;
+            value *= value;
+            value *= value;
+            persistFloat(value);
+        }
+    }
 
-	public void onStartTrackingTouch(SeekBar seekBar)
-	{
-	}
+    public void onStartTrackingTouch(SeekBar seekBar)
+    {
+    }
 
-	public void onStopTrackingTouch(SeekBar seekBar)
-	{
-	}
+    public void onStopTrackingTouch(SeekBar seekBar)
+    {
+    }
 }

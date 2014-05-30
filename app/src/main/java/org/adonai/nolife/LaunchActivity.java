@@ -32,18 +32,18 @@ import android.os.Bundle;
  * user preferences.
  */
 public class LaunchActivity extends Activity {
-	/**
-	 * Launch either the PlaybackActivity or LibraryActivity, depending on user
-	 * settings.
-	 */
-	@Override
-	public void onCreate(Bundle state)
-	{
-		super.onCreate(state);
+    /**
+     * Launch either the PlaybackActivity or LibraryActivity, depending on user
+     * settings.
+     */
+    @Override
+    public void onCreate(Bundle state)
+    {
+        super.onCreate(state);
 
-		SharedPreferences settings = PlaybackService.getSettings(this);
-		boolean selector = settings.getBoolean("selector_on_startup", false);
-		startActivity(new Intent(this, selector ? LibraryActivity.class : FullPlaybackActivity.class));
-		finish();
-	}
+        SharedPreferences settings = PlaybackService.getSettings(this);
+        boolean selector = settings.getBoolean("selector_on_startup", false);
+        startActivity(new Intent(this, selector ? LibraryActivity.class : FullPlaybackActivity.class));
+        finish();
+    }
 }

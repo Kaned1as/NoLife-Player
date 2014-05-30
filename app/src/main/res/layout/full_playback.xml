@@ -21,137 +21,137 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
-	<org.adonai.nolife.CoverView
-		android:id="@+id/cover_view"
-		android:layout_height="fill_parent"
-		android:layout_width="fill_parent" />
+    <org.adonai.nolife.CoverView
+        android:id="@+id/cover_view"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent" />
 
-	<LinearLayout
-	    android:id="@+id/controls_top"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:background="#a000"
-	    android:orientation="horizontal" android:layout_gravity="top|left">
+    <LinearLayout
+        android:id="@+id/controls_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#a000"
+        android:orientation="horizontal" android:layout_gravity="top|left">
 
-	    <TextView
-	        android:id="@+id/elapsed"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:text="00:00" />
+        <TextView
+            android:id="@+id/elapsed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="00:00" />
 
-	    <LinearLayout
-	        android:id="@+id/manageLayout"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:orientation="vertical" android:layout_weight="1" android:layout_gravity="center">
+        <LinearLayout
+            android:id="@+id/manageLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_weight="1" android:layout_gravity="center">
 
-	        <SeekBar
-	            android:id="@+id/seek_bar"
-	            android:layout_width="fill_parent"
-	            android:layout_weight="1"
-	            android:paddingLeft="15px"
-	            android:paddingRight="15px"
-	            android:layout_height="wrap_content" android:progressDrawable="@drawable/progress_horizontal" android:thumb="@drawable/seek_thumb" android:maxHeight="5dip"/>
+            <SeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:paddingLeft="15px"
+                android:paddingRight="15px"
+                android:layout_height="wrap_content" android:progressDrawable="@drawable/progress_horizontal" android:thumb="@drawable/seek_thumb" android:maxHeight="5dip"/>
 
-	    </LinearLayout>
+        </LinearLayout>
 
-	    <TextView
-	        android:id="@+id/duration"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:text="00:00" />
-	</LinearLayout>
-	<LinearLayout
-		android:id="@+id/controls_bottom"
-		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
-		android:layout_gravity="bottom|left"
-		android:orientation="horizontal" android:background="@drawable/appwidget_bg">
-		<ImageButton
-			android:id="@+id/shuffle"
-			android:layout_height="wrap_content"
-			android:layout_width="0px"
-			android:layout_weight="0.7"
-			android:background="@null"
-			android:scaleType="fitCenter"
-			android:src="@drawable/shuffle_inactive" android:layout_gravity="center"/>
-		<ImageButton
-			android:id="@+id/previous"
-			android:layout_height="wrap_content"
-			android:layout_width="0px"
-			android:layout_weight="1"
-			android:background="@drawable/btn_default"
-			android:scaleType="center"
-			android:src="@drawable/previous" android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="00:00" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/controls_bottom"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom|left"
+        android:orientation="horizontal" android:background="@drawable/appwidget_bg">
+        <ImageButton
+            android:id="@+id/shuffle"
+            android:layout_height="wrap_content"
+            android:layout_width="0px"
+            android:layout_weight="0.7"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/shuffle_inactive" android:layout_gravity="center"/>
+        <ImageButton
+            android:id="@+id/previous"
+            android:layout_height="wrap_content"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:background="@drawable/btn_default"
+            android:scaleType="center"
+            android:src="@drawable/previous" android:layout_gravity="center"/>
 
-		<ImageButton
-		    android:id="@+id/seek_back"
-		    android:layout_width="0px"
-		    android:layout_height="wrap_content"
-		    android:layout_weight="1"
-		    android:background="@drawable/btn_default"
-		    android:scaleType="center"
-		    android:src="@drawable/seek_backward" android:layout_gravity="center"/>
+        <ImageButton
+            android:id="@+id/seek_back"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_default"
+            android:scaleType="center"
+            android:src="@drawable/seek_backward" android:layout_gravity="center"/>
 
-		<ImageButton
-			android:id="@+id/play_pause"
-			android:layout_height="wrap_content"
-			android:layout_width="0px"
-			android:layout_weight="1"
-			android:scaleType="center"
-			android:src="@drawable/play" android:layout_gravity="center" android:background="@drawable/btn_default"/>
+        <ImageButton
+            android:id="@+id/play_pause"
+            android:layout_height="wrap_content"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/play" android:layout_gravity="center" android:background="@drawable/btn_default"/>
 
-		<ImageButton
-		    android:id="@+id/seek_head"
-		    android:layout_width="0px"
-		    android:layout_height="wrap_content"
-		    android:layout_weight="1"
-		    android:background="@drawable/btn_default"
-		    android:scaleType="center"
-		    android:src="@drawable/seek_forward" android:layout_gravity="center"/>
+        <ImageButton
+            android:id="@+id/seek_head"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_default"
+            android:scaleType="center"
+            android:src="@drawable/seek_forward" android:layout_gravity="center"/>
 
-		<ImageButton
-			android:id="@+id/next"
-			android:layout_height="wrap_content"
-			android:layout_width="0px"
-			android:layout_weight="1"
-			android:background="@drawable/btn_default"
-			android:scaleType="center"
-			android:src="@drawable/next" android:layout_gravity="center"/>
-		<ImageButton
-			android:id="@+id/end_action"
-			android:layout_height="wrap_content"
-			android:layout_width="0px"
-			android:layout_weight="0.7"
-			android:background="@null"
-			android:scaleType="fitCenter"
-			android:src="@drawable/repeat_inactive" android:layout_gravity="center"/>
-	</LinearLayout>
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_height="wrap_content"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:background="@drawable/btn_default"
+            android:scaleType="center"
+            android:src="@drawable/next" android:layout_gravity="center"/>
+        <ImageButton
+            android:id="@+id/end_action"
+            android:layout_height="wrap_content"
+            android:layout_width="0px"
+            android:layout_weight="0.7"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/repeat_inactive" android:layout_gravity="center"/>
+    </LinearLayout>
 
-	<LinearLayout
-	    android:id="@+id/volume_layout"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" android:layout_gravity="right|center_vertical" android:visibility="visible">
+    <LinearLayout
+        android:id="@+id/volume_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_gravity="right|center_vertical" android:visibility="visible">
 
-		<ImageButton
-		    android:id="@+id/adjustvol_up"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginBottom="65dip"
-		    android:background="@drawable/btn_default"
-		    android:src="@android:drawable/ic_lock_silent_mode_off" />
+        <ImageButton
+            android:id="@+id/adjustvol_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="65dip"
+            android:background="@drawable/btn_default"
+            android:src="@android:drawable/ic_lock_silent_mode_off" />
 
-		<ImageButton
-		    android:id="@+id/adjustvol_down"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginTop="65dip"
-		    android:background="@drawable/btn_default"
-		    android:src="@android:drawable/ic_lock_silent_mode" />
+        <ImageButton
+            android:id="@+id/adjustvol_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dip"
+            android:background="@drawable/btn_default"
+            android:src="@android:drawable/ic_lock_silent_mode" />
 
-	</LinearLayout>
+    </LinearLayout>
 
 </merge>

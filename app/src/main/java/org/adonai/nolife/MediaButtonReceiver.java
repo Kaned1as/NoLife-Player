@@ -34,177 +34,177 @@ import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 
 public class MediaButtonReceiver extends BroadcastReceiver {
-		/**
-	 * If another button event is received before this time in milliseconds
-	 * expires, the event with be considered a double click.
-	 */
-	private static final int DOUBLE_CLICK_DELAY = 400;
+        /**
+     * If another button event is received before this time in milliseconds
+     * expires, the event with be considered a double click.
+     */
+    private static final int DOUBLE_CLICK_DELAY = 400;
 
-	/**
-	 * Whether the headset controls should be used. 1 for yes, 0 for no, -1 for
-	 * uninitialized.
-	 */
-	private static int sUseControls = -1;
-	/**
-	 * Whether the phone is currently in a call. 1 for yes, 0 for no, -1 for
-	 * uninitialized.
-	 */
-	private static int sInCall = -1;
-	/**
-	 * Time of the last play/pause click. Used to detect double-clicks.
-	 */
-	private static long sLastClickTime = 0;
+    /**
+     * Whether the headset controls should be used. 1 for yes, 0 for no, -1 for
+     * uninitialized.
+     */
+    private static int sUseControls = -1;
+    /**
+     * Whether the phone is currently in a call. 1 for yes, 0 for no, -1 for
+     * uninitialized.
+     */
+    private static int sInCall = -1;
+    /**
+     * Time of the last play/pause click. Used to detect double-clicks.
+     */
+    private static long sLastClickTime = 0;
 
-	/**
-	 * Reload the preference and enable/disable buttons as appropriate.
-	 *
-	 * @param context A context to use.
-	 */
-	public static void reloadPreference(Context context)
-	{
-		sUseControls = -1;
-		registerMediaButton(context);
-	}
+    /**
+     * Reload the preference and enable/disable buttons as appropriate.
+     *
+     * @param context A context to use.
+     */
+    public static void reloadPreference(Context context)
+    {
+        sUseControls = -1;
+        registerMediaButton(context);
+    }
 
-	/**
-	 * Return whether headset controls should be used, loading the preference
-	 * if necessary.
-	 *
-	 * @param context A context to use.
-	 */
-	public static boolean useHeadsetControls(Context context)
-	{
-		if (sUseControls == -1) {
-			SharedPreferences settings = PlaybackService.getSettings(context);
-			sUseControls = settings.getBoolean("media_button", true) ? 1 : 0;
-		}
+    /**
+     * Return whether headset controls should be used, loading the preference
+     * if necessary.
+     *
+     * @param context A context to use.
+     */
+    public static boolean useHeadsetControls(Context context)
+    {
+        if (sUseControls == -1) {
+            SharedPreferences settings = PlaybackService.getSettings(context);
+            sUseControls = settings.getBoolean("media_button", true) ? 1 : 0;
+        }
 
-		return sUseControls == 1;
-	}
+        return sUseControls == 1;
+    }
 
-	/**
-	 * Return whether the phone is currently in a call.
-	 *
-	 * @param context A context to use.
-	 */
-	private static boolean isInCall(Context context)
-	{
-		if (sInCall == -1) {
-			TelephonyManager manager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-			sInCall = (byte)(manager.getCallState() == TelephonyManager.CALL_STATE_IDLE ? 0 : 1);
-		}
-		return sInCall == 1;
-	}
+    /**
+     * Return whether the phone is currently in a call.
+     *
+     * @param context A context to use.
+     */
+    private static boolean isInCall(Context context)
+    {
+        if (sInCall == -1) {
+            TelephonyManager manager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+            sInCall = (byte)(manager.getCallState() == TelephonyManager.CALL_STATE_IDLE ? 0 : 1);
+        }
+        return sInCall == 1;
+    }
 
-	/**
-	 * Set the cached value for whether the phone is in a call.
-	 *
-	 * @param value True if in a call, false otherwise.
-	 */
-	public static void setInCall(boolean value)
-	{
-		sInCall = value ? 1 : 0;
-	}
+    /**
+     * Set the cached value for whether the phone is in a call.
+     *
+     * @param value True if in a call, false otherwise.
+     */
+    public static void setInCall(boolean value)
+    {
+        sInCall = value ? 1 : 0;
+    }
 
-	/**
-	 * Process a media button key press.
-	 *
-	 * @param context A context to use.
-	 * @param event The key press event.
-	 * @return True if the event was handled and the broadcast should be
-	 * aborted.
-	 */
-	public static boolean processKey(Context context, KeyEvent event)
-	{
-		if (event == null || isInCall(context) || !useHeadsetControls(context))
-			return false;
+    /**
+     * Process a media button key press.
+     *
+     * @param context A context to use.
+     * @param event The key press event.
+     * @return True if the event was handled and the broadcast should be
+     * aborted.
+     */
+    public static boolean processKey(Context context, KeyEvent event)
+    {
+        if (event == null || isInCall(context) || !useHeadsetControls(context))
+            return false;
 
-		int action = event.getAction();
-		String act = null;
+        int action = event.getAction();
+        String act = null;
 
-		switch (event.getKeyCode()) {
-		case KeyEvent.KEYCODE_HEADSETHOOK:
-		case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
-			// single click: pause/resume.
-			// double click: next track
+        switch (event.getKeyCode()) {
+        case KeyEvent.KEYCODE_HEADSETHOOK:
+        case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
+            // single click: pause/resume.
+            // double click: next track
 
-			if (action == KeyEvent.ACTION_DOWN) {
-				long time = SystemClock.uptimeMillis();
-				if (time - sLastClickTime < DOUBLE_CLICK_DELAY)
-					act = PlaybackService.ACTION_NEXT_SONG_AUTOPLAY;
-				else
-					act = PlaybackService.ACTION_TOGGLE_PLAYBACK;
-				sLastClickTime = time;
-			}
-			break;
-		case KeyEvent.KEYCODE_MEDIA_NEXT:
-			if (action == KeyEvent.ACTION_DOWN)
-				act = PlaybackService.ACTION_NEXT_SONG_AUTOPLAY;
-			break;
-		case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
-			if (action == KeyEvent.ACTION_DOWN)
-				act = PlaybackService.ACTION_PREVIOUS_SONG_AUTOPLAY;
-			break;
-		default:
-			return false;
-		}
+            if (action == KeyEvent.ACTION_DOWN) {
+                long time = SystemClock.uptimeMillis();
+                if (time - sLastClickTime < DOUBLE_CLICK_DELAY)
+                    act = PlaybackService.ACTION_NEXT_SONG_AUTOPLAY;
+                else
+                    act = PlaybackService.ACTION_TOGGLE_PLAYBACK;
+                sLastClickTime = time;
+            }
+            break;
+        case KeyEvent.KEYCODE_MEDIA_NEXT:
+            if (action == KeyEvent.ACTION_DOWN)
+                act = PlaybackService.ACTION_NEXT_SONG_AUTOPLAY;
+            break;
+        case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
+            if (action == KeyEvent.ACTION_DOWN)
+                act = PlaybackService.ACTION_PREVIOUS_SONG_AUTOPLAY;
+            break;
+        default:
+            return false;
+        }
 
-		if (act != null) {
-			Intent intent = new Intent(context, PlaybackService.class);
-			intent.setAction(act);
-			context.startService(intent);
-		}
+        if (act != null) {
+            Intent intent = new Intent(context, PlaybackService.class);
+            intent.setAction(act);
+            context.startService(intent);
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * Request focus on the media buttons from AudioManager if media buttons
-	 * are enabled.
-	 *
-	 * @param context A context to use.
-	 */
-	public static void registerMediaButton(Context context)
-	{
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO)
-			return;
+    /**
+     * Request focus on the media buttons from AudioManager if media buttons
+     * are enabled.
+     *
+     * @param context A context to use.
+     */
+    public static void registerMediaButton(Context context)
+    {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO)
+            return;
 
-		AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
-		ComponentName receiver = new ComponentName(context.getPackageName(), MediaButtonReceiver.class.getName());
-		audioManager.registerMediaButtonEventReceiver(receiver);
-	}
+        AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+        ComponentName receiver = new ComponentName(context.getPackageName(), MediaButtonReceiver.class.getName());
+        audioManager.registerMediaButtonEventReceiver(receiver);
+    }
 
-	/**
-	 * Unregister the media buttons from AudioManager.
-	 *
-	 * @param context A context to use.
-	 */
-	public static void unregisterMediaButton(Context context)
-	{
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO)
-			return;
+    /**
+     * Unregister the media buttons from AudioManager.
+     *
+     * @param context A context to use.
+     */
+    public static void unregisterMediaButton(Context context)
+    {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO)
+            return;
 
-		AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
-		ComponentName receiver = new ComponentName(context.getPackageName(), MediaButtonReceiver.class.getName());
-		audioManager.unregisterMediaButtonEventReceiver(receiver);
-	}
+        AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+        ComponentName receiver = new ComponentName(context.getPackageName(), MediaButtonReceiver.class.getName());
+        audioManager.unregisterMediaButtonEventReceiver(receiver);
+    }
 
-	@Override
-	public void onReceive(Context context, Intent intent)
-	{
-		
-		if (Intent.ACTION_MEDIA_BUTTON.equals(intent.getAction())) {
-			KeyEvent event = intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
-			boolean handled = processKey(context, event);
-			if (handled && isOrderedBroadcast())
-				abortBroadcast();
-		}
-		// a bit hacky and won't work on some devices...
-		if (intent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
-			Intent i = new Intent(context, PlaybackService.class);
-			i.setAction(PlaybackService.ACTION_VOLUME_DOWN);
-			i.putExtra("triggered", true);
-			context.startService(i);
-		}	
-	}
+    @Override
+    public void onReceive(Context context, Intent intent)
+    {
+
+        if (Intent.ACTION_MEDIA_BUTTON.equals(intent.getAction())) {
+            KeyEvent event = intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
+            boolean handled = processKey(context, event);
+            if (handled && isOrderedBroadcast())
+                abortBroadcast();
+        }
+        // a bit hacky and won't work on some devices...
+        if (intent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
+            Intent i = new Intent(context, PlaybackService.class);
+            i.setAction(PlaybackService.ACTION_VOLUME_DOWN);
+            i.putExtra("triggered", true);
+            context.startService(i);
+        }
+    }
 }

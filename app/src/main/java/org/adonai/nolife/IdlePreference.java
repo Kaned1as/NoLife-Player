@@ -22,8 +22,6 @@
 
 package org.adonai.nolife;
 
-import org.adonai.nolife.R;
-
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.res.Resources;
@@ -42,102 +40,102 @@ import android.widget.TextView;
  * (6 hours). The values range on an approximately exponential scale.
  */
 public class IdlePreference extends DialogPreference implements SeekBar.OnSeekBarChangeListener {
-	private static final int MIN = 60;
-	private static final int MAX = 21600;
+    private static final int MIN = 60;
+    private static final int MAX = 21600;
 
-	/**
-	 * The current idle timeout displayed on the slider. Will not be persisted
-	 * until the dialog is closed.
-	 */
-	private int mValue;
-	/**
-	 * The view in which the value is displayed.
-	 */
-	private TextView mValueText;
+    /**
+     * The current idle timeout displayed on the slider. Will not be persisted
+     * until the dialog is closed.
+     */
+    private int mValue;
+    /**
+     * The view in which the value is displayed.
+     */
+    private TextView mValueText;
 
-	public IdlePreference(Context context, AttributeSet attrs)
-	{
-		super(context, attrs);
-	}
+    public IdlePreference(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+    }
 
-	@Override
-	protected void onPrepareDialogBuilder(Builder builder)
-	{
-		Context context = getContext();
-		ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    @Override
+    protected void onPrepareDialogBuilder(Builder builder)
+    {
+        Context context = getContext();
+        ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-		mValue = getPersistedInt(3600);
+        mValue = getPersistedInt(3600);
 
-		LinearLayout layout = new LinearLayout(context);
-		layout.setOrientation(LinearLayout.VERTICAL);
-		layout.setLayoutParams(params);
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setLayoutParams(params);
 
-		mValueText = new TextView(context);
-		mValueText.setGravity(Gravity.RIGHT);
-		mValueText.setPadding(20, 0, 20, 0);
-		layout.addView(mValueText);
+        mValueText = new TextView(context);
+        mValueText.setGravity(Gravity.RIGHT);
+        mValueText.setPadding(20, 0, 20, 0);
+        layout.addView(mValueText);
 
-		SeekBar seekBar = new SeekBar(context);
-		seekBar.setPadding(20, 0, 20, 20);
-		seekBar.setLayoutParams(params);
-		seekBar.setMax(1000);
-		seekBar.setProgress((int)(Math.pow((float)(mValue - MIN) / (MAX - MIN), 0.25f) * 1000));
-		seekBar.setOnSeekBarChangeListener(this);
-		layout.addView(seekBar);
+        SeekBar seekBar = new SeekBar(context);
+        seekBar.setPadding(20, 0, 20, 20);
+        seekBar.setLayoutParams(params);
+        seekBar.setMax(1000);
+        seekBar.setProgress((int)(Math.pow((float)(mValue - MIN) / (MAX - MIN), 0.25f) * 1000));
+        seekBar.setOnSeekBarChangeListener(this);
+        layout.addView(seekBar);
 
-		updateText();
+        updateText();
 
-		builder.setView(layout);
-	}
+        builder.setView(layout);
+    }
 
-	/**
-	 * Update the text view with the current value.
-	 */
-	private void updateText()
-	{
-		Resources res = getContext().getResources();
-		int value = mValue;
-		StringBuilder text = new StringBuilder();
-		if (value >= 3600) {
-			int hours = value / 3600;
-			text.append(res.getQuantityString(R.plurals.hours, hours, hours));
-			text.append(", ");
-			int minutes = value / 60 - hours * 60;
-			text.append(res.getQuantityString(R.plurals.minutes, minutes, minutes));
-		} else {
-			int minutes = value / 60;
-			text.append(res.getQuantityString(R.plurals.minutes, minutes, minutes));
-			text.append(", ");
-			int seconds = value - minutes * 60;
-			text.append(res.getQuantityString(R.plurals.seconds, seconds, seconds));
-		}
-		mValueText.setText(text.toString());
-	}
+    /**
+     * Update the text view with the current value.
+     */
+    private void updateText()
+    {
+        Resources res = getContext().getResources();
+        int value = mValue;
+        StringBuilder text = new StringBuilder();
+        if (value >= 3600) {
+            int hours = value / 3600;
+            text.append(res.getQuantityString(R.plurals.hours, hours, hours));
+            text.append(", ");
+            int minutes = value / 60 - hours * 60;
+            text.append(res.getQuantityString(R.plurals.minutes, minutes, minutes));
+        } else {
+            int minutes = value / 60;
+            text.append(res.getQuantityString(R.plurals.minutes, minutes, minutes));
+            text.append(", ");
+            int seconds = value - minutes * 60;
+            text.append(res.getQuantityString(R.plurals.seconds, seconds, seconds));
+        }
+        mValueText.setText(text.toString());
+    }
 
-	@Override
-	protected void onDialogClosed(boolean positiveResult)
-	{
-		if (positiveResult && shouldPersist())
-			persistInt(mValue);
-	}
+    @Override
+    protected void onDialogClosed(boolean positiveResult)
+    {
+        if (positiveResult && shouldPersist())
+            persistInt(mValue);
+    }
 
-	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
-	{
-		// Approximate an exponential curve with x^4. Produces a value from MIN-MAX.
-		if (fromUser) {
-			float value = seekBar.getProgress() / 1000.0f;
-			value *= value;
-			value *= value;
-			mValue = (int)(value * (MAX - MIN)) + MIN;
-			updateText();
-		}
-	}
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+    {
+        // Approximate an exponential curve with x^4. Produces a value from MIN-MAX.
+        if (fromUser) {
+            float value = seekBar.getProgress() / 1000.0f;
+            value *= value;
+            value *= value;
+            mValue = (int)(value * (MAX - MIN)) + MIN;
+            updateText();
+        }
+    }
 
-	public void onStartTrackingTouch(SeekBar seekBar)
-	{
-	}
+    public void onStartTrackingTouch(SeekBar seekBar)
+    {
+    }
 
-	public void onStopTrackingTouch(SeekBar seekBar)
-	{
-	}
+    public void onStopTrackingTouch(SeekBar seekBar)
+    {
+    }
 }

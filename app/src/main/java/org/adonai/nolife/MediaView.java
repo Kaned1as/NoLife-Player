@@ -47,258 +47,258 @@ import android.widget.ListView;
  * to the right side.
  */
 public final class MediaView extends View {
-	/**
-	 * The expander arrow bitmap used in all views that have expanders.
-	 */
-	private static Bitmap sExpander;
-	/**
-	 * The paint object, cached for reuse.
-	 */
-	private static Paint sPaint;
-	/**
-	 * The cached dash effect that separates the expander arrow and the text.
-	 */
-	private static DashPathEffect sDashEffect;
-	/**
-	 * The cached divider gradient that separates each view from other views.
-	 */
-	private static RadialGradient sDividerGradient;
-	
-	private static LinearGradient sSelectionGradient;
-	
-	private static LinearGradient sPlaylistGradient;
-	/**
-	 * The text size used for the text in all views.
-	 */
-	private static int sTextSize;
+    /**
+     * The expander arrow bitmap used in all views that have expanders.
+     */
+    private static Bitmap sExpander;
+    /**
+     * The paint object, cached for reuse.
+     */
+    private static Paint sPaint;
+    /**
+     * The cached dash effect that separates the expander arrow and the text.
+     */
+    private static DashPathEffect sDashEffect;
+    /**
+     * The cached divider gradient that separates each view from other views.
+     */
+    private static RadialGradient sDividerGradient;
 
-	public static void init(Context context)
-	{
-		Resources res = context.getResources();
-		sExpander = BitmapFactory.decodeResource(res, R.drawable.expander_arrow);
-		sTextSize = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, res.getDisplayMetrics());
-		sDashEffect = new DashPathEffect(new float[] { 3, 3 }, 0);
-		sDividerGradient = null;
+    private static LinearGradient sSelectionGradient;
 
-		sPaint = new Paint();
-		sPaint.setTextSize(sTextSize);
-		sPaint.setAntiAlias(true);
-	}
+    private static LinearGradient sPlaylistGradient;
+    /**
+     * The text size used for the text in all views.
+     */
+    private static int sTextSize;
 
-	/**
-	 * The MediaStore id of the media represented by this view.
-	 */
-	private long mId;
-	/**
-	 * The primary text field in the view, displayed on the upper line.
-	 */
-	private String mTitle;
-	/**
-	 * The secondary text field in the view, displayed on the lower line.
-	 */
-	private String mSubTitle;
-	/**
-	 * True if the last touch event was over the expander arrow.
-	 */
-	private boolean mExpanderPressed;
-	/**
-	 * True if the expander should be shown.
-	 */
-	private final boolean mExpandable;
-	/**
-	 * The cached measured view height.
-	 */
-	private int mViewHeight;
-	/**
-	 * True if this view is a header. Will override expandable setting to false.
-	 */
-	private boolean mIsHeader;
+    public static void init(Context context)
+    {
+        Resources res = context.getResources();
+        sExpander = BitmapFactory.decodeResource(res, R.drawable.expander_arrow);
+        sTextSize = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, res.getDisplayMetrics());
+        sDashEffect = new DashPathEffect(new float[] { 3, 3 }, 0);
+        sDividerGradient = null;
 
-	/**
-	 * Construct a MediaView.
-	 *
-	 * @param context A Context to use.
-	 * @param expandable True if the expander should be shown.
-	 */
-	public MediaView(Context context, boolean expandable)
-	{
-		super(context);
+        sPaint = new Paint();
+        sPaint.setTextSize(sTextSize);
+        sPaint.setAntiAlias(true);
+    }
 
-		mExpandable = expandable;
+    /**
+     * The MediaStore id of the media represented by this view.
+     */
+    private long mId;
+    /**
+     * The primary text field in the view, displayed on the upper line.
+     */
+    private String mTitle;
+    /**
+     * The secondary text field in the view, displayed on the lower line.
+     */
+    private String mSubTitle;
+    /**
+     * True if the last touch event was over the expander arrow.
+     */
+    private boolean mExpanderPressed;
+    /**
+     * True if the expander should be shown.
+     */
+    private final boolean mExpandable;
+    /**
+     * The cached measured view height.
+     */
+    private int mViewHeight;
+    /**
+     * True if this view is a header. Will override expandable setting to false.
+     */
+    private boolean mIsHeader;
 
-		mViewHeight = 7 * sTextSize / 2;
-		if (expandable)
-			mViewHeight = Math.max(mViewHeight, sExpander.getHeight() + sTextSize);
-	}
+    /**
+     * Construct a MediaView.
+     *
+     * @param context A Context to use.
+     * @param expandable True if the expander should be shown.
+     */
+    public MediaView(Context context, boolean expandable)
+    {
+        super(context);
 
-	/**
-	 * Request the cached height and maximum width from the layout.
-	 */
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-	{
-		setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), mViewHeight);
-	}
+        mExpandable = expandable;
 
-	/**
-	 * Draw the view on the given canvas.
-	 */
-	@Override
-	public void onDraw(Canvas canvas)
-	{
-		if (mTitle == null)
-			return;
+        mViewHeight = 7 * sTextSize / 2;
+        if (expandable)
+            mViewHeight = Math.max(mViewHeight, sExpander.getHeight() + sTextSize);
+    }
 
-		int width = getWidth();
-		int height = getHeight();
-		int padding = sTextSize / 2;
+    /**
+     * Request the cached height and maximum width from the layout.
+     */
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+    {
+        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), mViewHeight);
+    }
 
-		Paint paint = sPaint;
-		
-		if (sSelectionGradient == null)
-			sSelectionGradient = new LinearGradient(0, 1, width, 1, 0xAAAAAAAA, Color.TRANSPARENT, Shader.TileMode.CLAMP);
-		
-		if (sPlaylistGradient == null)
-			sPlaylistGradient = new LinearGradient(0, 1, width, 1, 0xAA00BBBB, Color.TRANSPARENT, Shader.TileMode.CLAMP);
-		
-		if(!mIsHeader) {
-			MediaAdapter ma = (MediaAdapter)((ListView)getParent()).getAdapter();
-			
-			long id = MediaUtils.getIdforMediaType(getContext(), ma.getMediaType());
-			
-			if(id == mId) {
-				paint.setShader(sSelectionGradient);
-				canvas.drawRect(0, 0, width, height, paint);
-				paint.setShader(null);
-				paint.setTypeface(Typeface.DEFAULT_BOLD);
-			} else if (ma.IDs.contains(mId)) {
-				paint.setShader(sPlaylistGradient);
-				canvas.drawRect(0, 0, width, height, paint);
-				paint.setShader(null);
-			}
-				
-		}
+    /**
+     * Draw the view on the given canvas.
+     */
+    @Override
+    public void onDraw(Canvas canvas)
+    {
+        if (mTitle == null)
+            return;
 
-		if (mExpandable && !mIsHeader) {
-			Bitmap expander = sExpander;
-			width -= padding * 4 + expander.getWidth();
+        int width = getWidth();
+        int height = getHeight();
+        int padding = sTextSize / 2;
 
-			paint.setColor(Color.GRAY);
-			paint.setPathEffect(sDashEffect);
-			canvas.drawLine(width, padding, width, height - padding, paint);
-			paint.setPathEffect(null);
+        Paint paint = sPaint;
 
-			canvas.drawBitmap(expander, width + padding * 2, (height - expander.getHeight()) / 2, paint);
-		}
+        if (sSelectionGradient == null)
+            sSelectionGradient = new LinearGradient(0, 1, width, 1, 0xAAAAAAAA, Color.TRANSPARENT, Shader.TileMode.CLAMP);
 
-		canvas.save();
-		canvas.clipRect(padding, 0, width - padding, height);
+        if (sPlaylistGradient == null)
+            sPlaylistGradient = new LinearGradient(0, 1, width, 1, 0xAA00BBBB, Color.TRANSPARENT, Shader.TileMode.CLAMP);
 
-		int allocatedHeight;
-		
-		if (mSubTitle != null) {
-			allocatedHeight = height / 2 - padding * 3 / 2;
+        if(!mIsHeader) {
+            MediaAdapter ma = (MediaAdapter)((ListView)getParent()).getAdapter();
 
-			paint.setColor(0xFFAAAAAA);
-			canvas.drawText(mSubTitle, padding, height / 2 + padding / 2 + (allocatedHeight - sTextSize) / 2 - paint.ascent(), paint);
-		} else {
-			allocatedHeight = height - padding * 2;
-		}
+            long id = MediaUtils.getIdforMediaType(getContext(), ma.getMediaType());
 
-		paint.setColor(Color.WHITE);
-		canvas.drawText(mTitle, padding, padding + (allocatedHeight - sTextSize) / 2 - paint.ascent(), paint);
-		canvas.restore();
+            if(id == mId) {
+                paint.setShader(sSelectionGradient);
+                canvas.drawRect(0, 0, width, height, paint);
+                paint.setShader(null);
+                paint.setTypeface(Typeface.DEFAULT_BOLD);
+            } else if (ma.IDs.contains(mId)) {
+                paint.setShader(sPlaylistGradient);
+                canvas.drawRect(0, 0, width, height, paint);
+                paint.setShader(null);
+            }
 
-		width = getWidth();
+        }
 
-		if (sDividerGradient == null)
-			sDividerGradient = new RadialGradient(width / 2, 1, width / 2, Color.WHITE, Color.TRANSPARENT, Shader.TileMode.CLAMP);
-		
-		paint.setShader(sDividerGradient);
-		canvas.drawLine(0, height - 1, width, height - 1, paint);
-		paint.setShader(null);
-		paint.setTypeface(Typeface.DEFAULT);
-	}
+        if (mExpandable && !mIsHeader) {
+            Bitmap expander = sExpander;
+            width -= padding * 4 + expander.getWidth();
 
-	/**
-	 * Returns the MediaStore id of the media represented by this view.
-	 */
-	public long getMediaId()
-	{
-		return mId;
-	}
+            paint.setColor(Color.GRAY);
+            paint.setPathEffect(sDashEffect);
+            canvas.drawLine(width, padding, width, height - padding, paint);
+            paint.setPathEffect(null);
 
-	/**
-	 * Returns the title of this view, the primary/upper field.
-	 */
-	public String getTitle()
-	{
-		return mTitle;
-	}
+            canvas.drawBitmap(expander, width + padding * 2, (height - expander.getHeight()) / 2, paint);
+        }
 
-	/**
-	 * Returns true if the expander arrow was pressed in the last touch
-	 * event.
-	 */
-	public boolean isExpanderPressed()
-	{
-		return mExpanderPressed;
-	}
+        canvas.save();
+        canvas.clipRect(padding, 0, width - padding, height);
 
-	/**
-	 * Returns true if views has expander arrows displayed.
-	 */
-	public boolean hasExpanders()
-	{
-		return mExpandable;
-	}
+        int allocatedHeight;
 
-	/**
-	 * Set this view to be a header (custom text, never expandable).
-	 *
-	 * @param text The text to show.
-	 */
-	public void makeHeader(String text)
-	{
-		mIsHeader = true;
-		mTitle = text;
-		mSubTitle = null;
-	}
+        if (mSubTitle != null) {
+            allocatedHeight = height / 2 - padding * 3 / 2;
 
-	/**
-	 * Update the fields in this view with the data from the given Cursor.
-	 *
-	 * @param cursor A cursor moved to the correct position. The first
-	 * column must be the id of the media, the second the primary field.
-	 * If this adapter contains more than one field, the third column
-	 * must contain the secondary field.
-	 * @param useSecondary True if the secondary field should be read.
-	 */
-	public void updateMedia(Cursor cursor, boolean useSecondary)
-	{
-		mIsHeader = false;
-		mId = cursor.getLong(0);
-		mTitle = cursor.getString(1);
-		if (useSecondary)
-			mSubTitle = cursor.getString(2);
-		invalidate();
-	}
+            paint.setColor(0xFFAAAAAA);
+            canvas.drawText(mSubTitle, padding, height / 2 + padding / 2 + (allocatedHeight - sTextSize) / 2 - paint.ascent(), paint);
+        } else {
+            allocatedHeight = height - padding * 2;
+        }
 
-	/**
-	 * Returns true if the view is set to be a "Play/Enqueue All" header.
-	 */
-	public boolean isHeader()
-	{
-		return mIsHeader;
-	}
+        paint.setColor(Color.WHITE);
+        canvas.drawText(mTitle, padding, padding + (allocatedHeight - sTextSize) / 2 - paint.ascent(), paint);
+        canvas.restore();
 
-	/**
-	 * Update mExpanderPressed.
-	 */
-	@Override
-	public boolean onTouchEvent(MotionEvent event)
-	{
-		mExpanderPressed = mExpandable && !mIsHeader && event.getX() > getWidth() - sExpander.getWidth() - 2 * sTextSize;
-		return false;
-	}
+        width = getWidth();
+
+        if (sDividerGradient == null)
+            sDividerGradient = new RadialGradient(width / 2, 1, width / 2, Color.WHITE, Color.TRANSPARENT, Shader.TileMode.CLAMP);
+
+        paint.setShader(sDividerGradient);
+        canvas.drawLine(0, height - 1, width, height - 1, paint);
+        paint.setShader(null);
+        paint.setTypeface(Typeface.DEFAULT);
+    }
+
+    /**
+     * Returns the MediaStore id of the media represented by this view.
+     */
+    public long getMediaId()
+    {
+        return mId;
+    }
+
+    /**
+     * Returns the title of this view, the primary/upper field.
+     */
+    public String getTitle()
+    {
+        return mTitle;
+    }
+
+    /**
+     * Returns true if the expander arrow was pressed in the last touch
+     * event.
+     */
+    public boolean isExpanderPressed()
+    {
+        return mExpanderPressed;
+    }
+
+    /**
+     * Returns true if views has expander arrows displayed.
+     */
+    public boolean hasExpanders()
+    {
+        return mExpandable;
+    }
+
+    /**
+     * Set this view to be a header (custom text, never expandable).
+     *
+     * @param text The text to show.
+     */
+    public void makeHeader(String text)
+    {
+        mIsHeader = true;
+        mTitle = text;
+        mSubTitle = null;
+    }
+
+    /**
+     * Update the fields in this view with the data from the given Cursor.
+     *
+     * @param cursor A cursor moved to the correct position. The first
+     * column must be the id of the media, the second the primary field.
+     * If this adapter contains more than one field, the third column
+     * must contain the secondary field.
+     * @param useSecondary True if the secondary field should be read.
+     */
+    public void updateMedia(Cursor cursor, boolean useSecondary)
+    {
+        mIsHeader = false;
+        mId = cursor.getLong(0);
+        mTitle = cursor.getString(1);
+        if (useSecondary)
+            mSubTitle = cursor.getString(2);
+        invalidate();
+    }
+
+    /**
+     * Returns true if the view is set to be a "Play/Enqueue All" header.
+     */
+    public boolean isHeader()
+    {
+        return mIsHeader;
+    }
+
+    /**
+     * Update mExpanderPressed.
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        mExpanderPressed = mExpandable && !mIsHeader && event.getX() > getWidth() - sExpander.getWidth() - 2 * sTextSize;
+        return false;
+    }
 }

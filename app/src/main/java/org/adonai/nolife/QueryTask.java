@@ -30,52 +30,52 @@ import android.net.Uri;
  * Represents a pending query.
  */
 public class QueryTask {
-	private Uri mUri;
-	private final String[] mProjection;
-	private final String mSelection;
-	private final String[] mSelectionArgs;
-	private String mSortOrder;
+    private Uri mUri;
+    private final String[] mProjection;
+    private final String mSelection;
+    private final String[] mSelectionArgs;
+    private String mSortOrder;
 
-	/**
-	 * Create the tasks. All arguments are passed directly to
-	 * ContentResolver.query().
-	 */
-	public QueryTask(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
-	{
-		mUri = uri;
-		mProjection = projection;
-		mSelection = selection;
-		mSelectionArgs = selectionArgs;
-		mSortOrder = sortOrder;
-	}
+    /**
+     * Create the tasks. All arguments are passed directly to
+     * ContentResolver.query().
+     */
+    public QueryTask(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
+    {
+        mUri = uri;
+        mProjection = projection;
+        mSelection = selection;
+        mSelectionArgs = selectionArgs;
+        mSortOrder = sortOrder;
+    }
 
-	/**
-	 * Modify the uri of the pending query.
-	 *
-	 * @param uri The new uri.
-	 */
-	public void setUri(Uri uri)
-	{
-		mUri = uri;
-	}
+    /**
+     * Modify the uri of the pending query.
+     *
+     * @param uri The new uri.
+     */
+    public void setUri(Uri uri)
+    {
+        mUri = uri;
+    }
 
-	/**
-	 * Modify the sort order of the pending query.
-	 *
-	 * @param sortOrder The new sort order.
-	 */
-	public void setSortOrder(String sortOrder)
-	{
-		mSortOrder = sortOrder;
-	}
+    /**
+     * Modify the sort order of the pending query.
+     *
+     * @param sortOrder The new sort order.
+     */
+    public void setSortOrder(String sortOrder)
+    {
+        mSortOrder = sortOrder;
+    }
 
-	/**
-	 * Run the query. Should be called on a background thread.
-	 *
-	 * @param resolver The ContentResolver to query with.
-	 */
-	public Cursor runQuery(ContentResolver resolver)
-	{
-		return resolver.query(mUri, mProjection, mSelection, mSelectionArgs, mSortOrder);
-	}
+    /**
+     * Run the query. Should be called on a background thread.
+     *
+     * @param resolver The ContentResolver to query with.
+     */
+    public Cursor runQuery(ContentResolver resolver)
+    {
+        return resolver.query(mUri, mProjection, mSelection, mSelectionArgs, mSortOrder);
+    }
 }

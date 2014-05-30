@@ -22,8 +22,6 @@
 
 package org.adonai.nolife;
 
-import org.adonai.nolife.R;
-
 import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
@@ -42,136 +40,136 @@ import android.widget.RemoteViews;
  * next button.
  */
 public class FourLongWidget extends AppWidgetProvider {
-	private static boolean sEnabled;
+    private static boolean sEnabled;
 
-	@Override
-	public void onEnabled(Context context)
-	{
-		sEnabled = true;
-	}
+    @Override
+    public void onEnabled(Context context)
+    {
+        sEnabled = true;
+    }
 
-	@Override
-	public void onDisabled(Context context)
-	{
-		sEnabled = false;
-	}
+    @Override
+    public void onDisabled(Context context)
+    {
+        sEnabled = false;
+    }
 
-	@Override
-	public void onUpdate(Context context, AppWidgetManager manager, int[] ids)
-	{
-		Song song = null;
-		int state = 0;
+    @Override
+    public void onUpdate(Context context, AppWidgetManager manager, int[] ids)
+    {
+        Song song = null;
+        int state = 0;
 
-		if (PlaybackService.hasInstance()) {
-			PlaybackService service = PlaybackService.get(context);
-			song = service.getSong(0);
-			state = service.getState();
-		}
+        if (PlaybackService.hasInstance()) {
+            PlaybackService service = PlaybackService.get(context);
+            song = service.getSong(0);
+            state = service.getState();
+        }
 
-		sEnabled = true;
-		updateWidget(context, manager, song, state);
-	}
+        sEnabled = true;
+        updateWidget(context, manager, song, state);
+    }
 
-	/**
-	 * Check if there are any instances of this widget placed.
-	 */
-	public static void checkEnabled(Context context, AppWidgetManager manager)
-	{
-		sEnabled = manager.getAppWidgetIds(new ComponentName(context, FourLongWidget.class)).length != 0;
-	}
+    /**
+     * Check if there are any instances of this widget placed.
+     */
+    public static void checkEnabled(Context context, AppWidgetManager manager)
+    {
+        sEnabled = manager.getAppWidgetIds(new ComponentName(context, FourLongWidget.class)).length != 0;
+    }
 
-	/**
-	 * Populate the widgets with the given ids with the given info.
-	 *
-	 * @param context A Context to use.
-	 * @param manager The AppWidgetManager that will be used to update the
-	 * widget.
-	 * @param song The current Song in PlaybackService.
-	 * @param state The current PlaybackService state.
-	 */
-	public static void updateWidget(Context context, AppWidgetManager manager, Song song, int state)
-	{
-		if (!sEnabled)
-			return;
-		
-		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.four_long_widget);
-		SharedPreferences settings = PlaybackService.getSettings(context);
-		
-		if(!settings.getBoolean("widget_transparency", true))
-			views.setInt(R.id.widgetLayout, "setBackgroundResource", R.drawable.appwidget_bg);
-		else
-			views.setInt(R.id.widgetLayout, "setBackgroundResource", R.drawable.alt_appwidget_bg);
-		
-		if ((state & PlaybackService.FLAG_NO_MEDIA) != 0) {
-			views.setViewVisibility(R.id.buttons, View.GONE);
-			views.setViewVisibility(R.id.title, View.GONE);
-			views.setInt(R.id.artist, "setText", R.string.no_songs);
-			views.setImageViewResource(R.id.cover, 0);
-		} else if (song == null) {
-			views.setViewVisibility(R.id.buttons, View.VISIBLE);
-			views.setViewVisibility(R.id.title, View.GONE);
-			views.setInt(R.id.artist, "setText", R.string.app_name);
-			views.setImageViewResource(R.id.cover, 0);
-		} else {
-			views.setViewVisibility(R.id.title, View.VISIBLE);
-			views.setViewVisibility(R.id.buttons, View.VISIBLE);
-			views.setTextViewText(R.id.title, song.title);
-			views.setTextViewText(R.id.artist, song.artist);
-			Uri uri = song.getCoverUri();
-			if (uri == null)
-				views.setImageViewResource(R.id.cover, 0);
-			else
-				views.setImageViewUri(R.id.cover, uri);
-		}
+    /**
+     * Populate the widgets with the given ids with the given info.
+     *
+     * @param context A Context to use.
+     * @param manager The AppWidgetManager that will be used to update the
+     * widget.
+     * @param song The current Song in PlaybackService.
+     * @param state The current PlaybackService state.
+     */
+    public static void updateWidget(Context context, AppWidgetManager manager, Song song, int state)
+    {
+        if (!sEnabled)
+            return;
 
-		boolean playing = (state & PlaybackService.FLAG_PLAYING) != 0;
-		boolean shuffle = (state & PlaybackService.MASK_SHUFFLE) != 0;
-		boolean repeat = (((state & PlaybackService.MASK_FINISH) >> PlaybackService.SHIFT_FINISH) & SongTimeline.FINISH_REPEAT_CURRENT) != 0;
-		AudioManager am = (AudioManager)context.getApplicationContext().getSystemService(Service.AUDIO_SERVICE);
-		
-		views.setImageViewResource(R.id.play_pause, playing ? R.drawable.pause : R.drawable.play);
-		views.setImageViewResource(R.id.shuffle_ind, shuffle ? R.drawable.shuffle_active : R.drawable.shuffle_inactive);
-		views.setImageViewResource(R.id.repeat_ind, repeat ? R.drawable.repeat_active : R.drawable.repeat_inactive);
-		views.setProgressBar(R.id.volumebar, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC), am.getStreamVolume(AudioManager.STREAM_MUSIC), false);
-		
-		Intent intent;
-		PendingIntent pendingIntent;
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.four_long_widget);
+        SharedPreferences settings = PlaybackService.getSettings(context);
 
-		ComponentName service = new ComponentName(context, PlaybackService.class);
+        if(!settings.getBoolean("widget_transparency", true))
+            views.setInt(R.id.widgetLayout, "setBackgroundResource", R.drawable.appwidget_bg);
+        else
+            views.setInt(R.id.widgetLayout, "setBackgroundResource", R.drawable.alt_appwidget_bg);
 
-		intent = new Intent(context, LaunchActivity.class);
-		pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-		views.setOnClickPendingIntent(R.id.cover, pendingIntent);
-		views.setOnClickPendingIntent(R.id.text, pendingIntent);
+        if ((state & PlaybackService.FLAG_NO_MEDIA) != 0) {
+            views.setViewVisibility(R.id.buttons, View.GONE);
+            views.setViewVisibility(R.id.title, View.GONE);
+            views.setInt(R.id.artist, "setText", R.string.no_songs);
+            views.setImageViewResource(R.id.cover, 0);
+        } else if (song == null) {
+            views.setViewVisibility(R.id.buttons, View.VISIBLE);
+            views.setViewVisibility(R.id.title, View.GONE);
+            views.setInt(R.id.artist, "setText", R.string.app_name);
+            views.setImageViewResource(R.id.cover, 0);
+        } else {
+            views.setViewVisibility(R.id.title, View.VISIBLE);
+            views.setViewVisibility(R.id.buttons, View.VISIBLE);
+            views.setTextViewText(R.id.title, song.title);
+            views.setTextViewText(R.id.artist, song.artist);
+            Uri uri = song.getCoverUri();
+            if (uri == null)
+                views.setImageViewResource(R.id.cover, 0);
+            else
+                views.setImageViewUri(R.id.cover, uri);
+        }
 
-		intent = new Intent(PlaybackService.ACTION_TOGGLE_PLAYBACK).setComponent(service);
-		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
-		views.setOnClickPendingIntent(R.id.play_pause, pendingIntent);
+        boolean playing = (state & PlaybackService.FLAG_PLAYING) != 0;
+        boolean shuffle = (state & PlaybackService.MASK_SHUFFLE) != 0;
+        boolean repeat = (((state & PlaybackService.MASK_FINISH) >> PlaybackService.SHIFT_FINISH) & SongTimeline.FINISH_REPEAT_CURRENT) != 0;
+        AudioManager am = (AudioManager)context.getApplicationContext().getSystemService(Service.AUDIO_SERVICE);
 
-		intent = new Intent(PlaybackService.ACTION_NEXT_SONG).setComponent(service);
-		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
-		views.setOnClickPendingIntent(R.id.next, pendingIntent);
-		
-		intent = new Intent(PlaybackService.ACTION_PREVIOUS_SONG).setComponent(service);
-		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
-		views.setOnClickPendingIntent(R.id.previous, pendingIntent);
-		
-		intent = new Intent(PlaybackService.ACTION_VOLUME_UP).setComponent(service);
-		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
-		views.setOnClickPendingIntent(R.id.adjustvol_up, pendingIntent);
-		
-		intent = new Intent(PlaybackService.ACTION_VOLUME_DOWN).setComponent(service);
-		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
-		views.setOnClickPendingIntent(R.id.adjustvol_down, pendingIntent);
-		
-		intent = new Intent(PlaybackService.ACTION_SEEK_FORWARD).setComponent(service);
-		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
-		views.setOnClickPendingIntent(R.id.seek_head, pendingIntent);
-		
-		intent = new Intent(PlaybackService.ACTION_SEEK_BACKWARD).setComponent(service);
-		pendingIntent = PendingIntent.getService(context, 0, intent, 0);
-		views.setOnClickPendingIntent(R.id.seek_back, pendingIntent);
+        views.setImageViewResource(R.id.play_pause, playing ? R.drawable.pause : R.drawable.play);
+        views.setImageViewResource(R.id.shuffle_ind, shuffle ? R.drawable.shuffle_active : R.drawable.shuffle_inactive);
+        views.setImageViewResource(R.id.repeat_ind, repeat ? R.drawable.repeat_active : R.drawable.repeat_inactive);
+        views.setProgressBar(R.id.volumebar, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC), am.getStreamVolume(AudioManager.STREAM_MUSIC), false);
 
-		manager.updateAppWidget(new ComponentName(context, FourLongWidget.class), views);
-	}
+        Intent intent;
+        PendingIntent pendingIntent;
+
+        ComponentName service = new ComponentName(context, PlaybackService.class);
+
+        intent = new Intent(context, LaunchActivity.class);
+        pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.cover, pendingIntent);
+        views.setOnClickPendingIntent(R.id.text, pendingIntent);
+
+        intent = new Intent(PlaybackService.ACTION_TOGGLE_PLAYBACK).setComponent(service);
+        pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.play_pause, pendingIntent);
+
+        intent = new Intent(PlaybackService.ACTION_NEXT_SONG).setComponent(service);
+        pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.next, pendingIntent);
+
+        intent = new Intent(PlaybackService.ACTION_PREVIOUS_SONG).setComponent(service);
+        pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.previous, pendingIntent);
+
+        intent = new Intent(PlaybackService.ACTION_VOLUME_UP).setComponent(service);
+        pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.adjustvol_up, pendingIntent);
+
+        intent = new Intent(PlaybackService.ACTION_VOLUME_DOWN).setComponent(service);
+        pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.adjustvol_down, pendingIntent);
+
+        intent = new Intent(PlaybackService.ACTION_SEEK_FORWARD).setComponent(service);
+        pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.seek_head, pendingIntent);
+
+        intent = new Intent(PlaybackService.ACTION_SEEK_BACKWARD).setComponent(service);
+        pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.seek_back, pendingIntent);
+
+        manager.updateAppWidget(new ComponentName(context, FourLongWidget.class), views);
+    }
 }

@@ -34,139 +34,139 @@ import java.util.Arrays;
  * @param <E> The type of the values. (Keys will be longs).
  */
 public class Cache<E> {
-	/**
-	 * The keys contained in the cache, stored in the order of insertion.
-	 */
-	private final long[] mKeys;
-	/**
-	 * The values contained in the cache, stored in a location corresponding
-	 * to the keys in mKeys.
-	 */
-	private final Object[] mValues;
+    /**
+     * The keys contained in the cache, stored in the order of insertion.
+     */
+    private final long[] mKeys;
+    /**
+     * The values contained in the cache, stored in a location corresponding
+     * to the keys in mKeys.
+     */
+    private final Object[] mValues;
 
-	/**
-	 * Create a Cache.
-	 *
-	 * @param capacity The capacity of the cache. This is fixed and may not be
-	 * changed after construction.
-	 */
-	public Cache(int capacity)
-	{
-		mKeys = new long[capacity];
-		mValues = new Object[capacity];
-		Arrays.fill(mKeys, -1);
-	}
+    /**
+     * Create a Cache.
+     *
+     * @param capacity The capacity of the cache. This is fixed and may not be
+     * changed after construction.
+     */
+    public Cache(int capacity)
+    {
+        mKeys = new long[capacity];
+        mValues = new Object[capacity];
+        Arrays.fill(mKeys, -1);
+    }
 
-	/**
-	 * Calculate the number of items in the cache.
-	 *
-	 * @return The number of items in the cache.
-	 */
-	private int count()
-	{
-		long[] keys = mKeys;
-		int count = keys.length;
-		while (--count != -1 && keys[count] == -1);
-		return count + 1;
-	}
+    /**
+     * Calculate the number of items in the cache.
+     *
+     * @return The number of items in the cache.
+     */
+    private int count()
+    {
+        long[] keys = mKeys;
+        int count = keys.length;
+        while (--count != -1 && keys[count] == -1);
+        return count + 1;
+    }
 
-	/**
-	 * Find the index of the given key.
-	 *
-	 * @param key The key to search for.
-	 * @return The index, or -1 if the key was not found.
-	 */
-	private int indexOf(long key)
-	{
-		long[] keys = mKeys;
-		for (int i = keys.length; --i != -1; )
-			if (keys[i] == key)
-				return i;
-		return -1;
-	}
+    /**
+     * Find the index of the given key.
+     *
+     * @param key The key to search for.
+     * @return The index, or -1 if the key was not found.
+     */
+    private int indexOf(long key)
+    {
+        long[] keys = mKeys;
+        for (int i = keys.length; --i != -1; )
+            if (keys[i] == key)
+                return i;
+        return -1;
+    }
 
-	/**
-	 * Retrieve the value with the given key.
-	 *
-	 * @param key The key to search with.
-	 * @return The value, or null if the given key is not contained in this
-	 * cache.
-	 */
-	@SuppressWarnings("unchecked")
-	public E get(long key)
-	{
-		int i = indexOf(key);
-		return i == -1 ? null : (E)mValues[i];
-	}
+    /**
+     * Retrieve the value with the given key.
+     *
+     * @param key The key to search with.
+     * @return The value, or null if the given key is not contained in this
+     * cache.
+     */
+    @SuppressWarnings("unchecked")
+    public E get(long key)
+    {
+        int i = indexOf(key);
+        return i == -1 ? null : (E)mValues[i];
+    }
 
-	/**
-	 * Reset the age of the item with the given key so that it will be
-	 * discarded last.
-	 *
-	 * @param key The key of the item to touch.
-	 */
-	public synchronized void touch(long key)
-	{
-		long[] keys = mKeys;
-		Object[] values = mValues;
+    /**
+     * Reset the age of the item with the given key so that it will be
+     * discarded last.
+     *
+     * @param key The key of the item to touch.
+     */
+    public synchronized void touch(long key)
+    {
+        long[] keys = mKeys;
+        Object[] values = mValues;
 
-		int oldPos = indexOf(key);
-		int newPos = count() - 1;
+        int oldPos = indexOf(key);
+        int newPos = count() - 1;
 
-		if (oldPos != newPos && oldPos != -1) {
-			Object value = values[oldPos];
-			System.arraycopy(keys, oldPos + 1, keys, oldPos, newPos - oldPos);
-			System.arraycopy(values, oldPos + 1, values, oldPos, newPos - oldPos);
-			keys[newPos] = key;
-			values[newPos] = value;
-		}
-	}
+        if (oldPos != newPos && oldPos != -1) {
+            Object value = values[oldPos];
+            System.arraycopy(keys, oldPos + 1, keys, oldPos, newPos - oldPos);
+            System.arraycopy(values, oldPos + 1, values, oldPos, newPos - oldPos);
+            keys[newPos] = key;
+            values[newPos] = value;
+        }
+    }
 
-	/**
-	 * Discard the oldest item in the cache. Does nothing if the cache is not
-	 * full.
-	 *
-	 * @return The item that was discarded, or null if the cache is not full.
-	 */
-	@SuppressWarnings("unchecked")
-	public synchronized E discardOldest()
-	{
-		int count = count();
-		// Cache is not full.
-		if (count != mKeys.length)
-			return null;
+    /**
+     * Discard the oldest item in the cache. Does nothing if the cache is not
+     * full.
+     *
+     * @return The item that was discarded, or null if the cache is not full.
+     */
+    @SuppressWarnings("unchecked")
+    public synchronized E discardOldest()
+    {
+        int count = count();
+        // Cache is not full.
+        if (count != mKeys.length)
+            return null;
 
-		E removed = (E)mValues[0];
-		System.arraycopy(mKeys, 1, mKeys, 0, mKeys.length - 1);
-		System.arraycopy(mValues, 1, mValues, 0, mKeys.length - 1);
-		mKeys[mKeys.length - 1] = -1;
+        E removed = (E)mValues[0];
+        System.arraycopy(mKeys, 1, mKeys, 0, mKeys.length - 1);
+        System.arraycopy(mValues, 1, mValues, 0, mKeys.length - 1);
+        mKeys[mKeys.length - 1] = -1;
 
-		return removed;
-	}
+        return removed;
+    }
 
-	/**
-	 * Insert an item into the cache. Cache must not be full.
-	 *
-	 * @param key The key to place the item at. Must be a duplicate of an
-	 * existing key in the cache.
-	 * @param value The item.
-	 */
-	public synchronized void put(long key, E value)
-	{
-		int count = count();
-		Assert.assertFalse(count == mKeys.length); // must not be full
-		mKeys[count] = key;
-		mValues[count] = value;
-	}
+    /**
+     * Insert an item into the cache. Cache must not be full.
+     *
+     * @param key The key to place the item at. Must be a duplicate of an
+     * existing key in the cache.
+     * @param value The item.
+     */
+    public synchronized void put(long key, E value)
+    {
+        int count = count();
+        Assert.assertFalse(count == mKeys.length); // must not be full
+        mKeys[count] = key;
+        mValues[count] = value;
+    }
 
-	/**
-	 * Clear the keys and return the values to be cleared by the caller.
-	 *
-	 * @return The values in the cache, untouched.
-	 */
-	public Object[] clear()
-	{
-		Arrays.fill(mKeys, -1);
-		return mValues;
-	}
+    /**
+     * Clear the keys and return the values to be cleared by the caller.
+     *
+     * @return The values in the cache, untouched.
+     */
+    public Object[] clear()
+    {
+        Arrays.fill(mKeys, -1);
+        return mValues;
+    }
 }

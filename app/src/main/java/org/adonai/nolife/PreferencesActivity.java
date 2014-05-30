@@ -22,8 +22,6 @@
 
 package org.adonai.nolife;
 
-import org.adonai.nolife.R;
-
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
@@ -31,13 +29,13 @@ import android.preference.PreferenceActivity;
  * The preferences activity in which one can change application preferences.
  */
 public class PreferencesActivity extends PreferenceActivity {
-	/**
-	 * Initialize the activity, loading the preference specifications.
-	 */
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.preferences);
-	}
+    /**
+     * Initialize the activity, loading the preference specifications.
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.preferences);
+    }
 }
