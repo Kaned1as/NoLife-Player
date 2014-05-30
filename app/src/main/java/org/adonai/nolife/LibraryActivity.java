@@ -365,7 +365,6 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
             else {
                 pickSongs(createClickIntent((MediaAdapter)list.getAdapter(), mediaView), mDefaultAction);
             }
-        list.invalidate();
     }
 
     public void afterTextChanged(Editable editable)
@@ -736,8 +735,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
             startActivity(new Intent(this, FullPlaybackActivity.class));
             return true;
         case MENU_RELOAD_SONGS:
-            getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-                    Uri.parse("file://" + Environment.getExternalStorageDirectory())));
+            getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
             return true;
         case MENU_PICK_FOLDER:
             startActivity(new Intent(this, FolderSelectActivity.class));
@@ -818,7 +816,7 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
                 if(id == -1)
                     return;
 
-                ListView view = (ListView)mLists.getChildAt(mCurrentTab);
+                final ListView view = (ListView) mLists.getChildAt(mCurrentTab);
                 for(int k = 0; k < view.getCount(); k++)
                     if(view.getItemIdAtPosition(k) == id)
                         if(java.lang.Math.abs((view.getFirstVisiblePosition() + view.getLastVisiblePosition()) / 2 - k) < 30)
@@ -827,7 +825,6 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
                             view.setSelection(k);
 
                 mCurrentAdapter.markChecked();
-                view.invalidate();
                 break;
             case MSG_DELETE:
             case MSG_ADD_TO_PLAYLIST:

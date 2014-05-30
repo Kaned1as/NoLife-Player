@@ -131,7 +131,8 @@ THE SOFTWARE.
                 android:visibility="gone"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:fastScrollEnabled="true" />
+                android:fastScrollEnabled="true"
+                android:scrollingCache="true" />
             <ListView
                 android:id="@+id/playlist_list"
                 android:visibility="gone"

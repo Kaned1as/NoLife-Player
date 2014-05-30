@@ -31,10 +31,9 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
-import android.widget.SectionIndexer;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.regex.Pattern;
 
 /**
@@ -48,7 +47,7 @@ import java.util.regex.Pattern;
  * to a specific group to be displayed, e.g. only songs from a certain artist.
  * See getLimiter and setLimiter for details.
  */
-public class MediaAdapter extends CursorAdapter implements SectionIndexer {
+public class MediaAdapter extends CursorAdapter {
     private static final Pattern SPACE_SPLIT = Pattern.compile("\\s+");
 
     /**
@@ -95,10 +94,6 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
      */
     private String mConstraint;
     /**
-     * The section indexer, for the letter pop-up when scrolling.
-     */
-    private MusicAlphabetIndexer mIndexer;
-    /**
      * True if this adapter should have a special MediaView with custom text in
      * the first row.
      */
@@ -140,7 +135,6 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
         mExpandable = expandable;
         mHasHeader = hasHeader;
         mLimiter = limiter;
-        mIndexer = new MusicAlphabetIndexer(1);
         mNeedsRequery = true;
         IDs = new ArrayList<>();
 
@@ -476,78 +470,29 @@ public class MediaAdapter extends CursorAdapter implements SectionIndexer {
         return new MediaAdapter.Limiter(id, mType, selection, fields);
     }
 
-    @Override
-    public void changeCursor(Cursor cursor)
-    {
-        if(cursor != null) {
-            final ArrayList<String> firstLetters = new ArrayList<>();
-            while(cursor.moveToNext()) {
-                if(cursor.getString(1) == null || cursor.getString(1).length() == 0)
-                    continue;
-
-                String firstLetter = cursor.getString(1).substring(0, 1).toUpperCase();
-                if(!firstLetters.contains(firstLetter))
-                    firstLetters.add(firstLetter);
-            }
-            Collections.sort(firstLetters);
-            final StringBuilder alphabet = new StringBuilder();
-            for (final String firstLetter : firstLetters)
-                alphabet.append(firstLetter);
-
-            mIndexer = new MusicAlphabetIndexer(cursor, 1, alphabet);
-        }
-        else
-            mIndexer.setCursor(cursor);
-
-        super.changeCursor(cursor);
-    }
-
     public void markChecked() {
 
         ArrayList<Song> mSongs = PlaybackService.get(mContext).mTimeline.getAllSongsCopy();
         if(mSongs.isEmpty())
             return;
 
-        IDs = new ArrayList<Long>();
+        IDs.clear();
         switch(mType) {
         case MediaUtils.TYPE_ARTIST:
-            for(int i = 0; i < mSongs.size(); i++)
-                IDs.add(mSongs.get(i).artistId);
+            for (Song mSong2 : mSongs)
+                IDs.add(mSong2.artistId);
             break;
         case MediaUtils.TYPE_ALBUM:
-            for(int i = 0; i < mSongs.size(); i++)
-                IDs.add(mSongs.get(i).albumId);
+            for (Song mSong1 : mSongs)
+                IDs.add(mSong1.albumId);
             break;
         case MediaUtils.TYPE_SONG:
-            for(int i = 0; i < mSongs.size(); i++)
-                IDs.add(mSongs.get(i).id);
+            for (Song mSong : mSongs)
+                IDs.add(mSong.id);
             break;
         }
-    }
 
-    @Override
-    public Object[] getSections()
-    {
-        return mIndexer.getSections();
-    }
-
-    @Override
-    public int getPositionForSection(int section)
-    {
-        int offset = 0;
-        if (mHasHeader) {
-            if (section == 0)
-                return 0;
-            offset = 1;
-        }
-        return offset + mIndexer.getPositionForSection(section);
-    }
-
-    @Override
-    public int getSectionForPosition(int position)
-    {
-        // never called by FastScroller
-        return 0;
+        notifyDataSetChanged();
     }
 
     /**
