@@ -142,7 +142,7 @@ THE SOFTWARE.
             android:layout_height="wrap_content"
             android:layout_marginBottom="65dip"
             android:background="@drawable/btn_default"
-            android:src="@android:drawable/ic_lock_silent_mode_off" />
+            android:src="@drawable/ic_volume_small" />
 
         <ImageButton
             android:id="@+id/adjustvol_down"
@@ -150,7 +150,7 @@ THE SOFTWARE.
             android:layout_height="wrap_content"
             android:layout_marginTop="65dip"
             android:background="@drawable/btn_default"
-            android:src="@android:drawable/ic_lock_silent_mode" />
+            android:src="@drawable/ic_volume_off_small" />
 
     </LinearLayout>
 

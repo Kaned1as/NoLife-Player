@@ -60,7 +60,7 @@ THE SOFTWARE.
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/shuffle_ind"
             android:scaleType="fitCenter"
-            android:src="@android:drawable/ic_lock_silent_mode" android:background="@drawable/btn_default" android:padding="5dip"/>
+            android:src="@drawable/ic_volume_off_small" android:background="@drawable/btn_default" android:padding="5dip"/>
 
         <ImageButton
             android:id="@+id/adjustvol_up"
@@ -71,7 +71,7 @@ THE SOFTWARE.
             android:background="@drawable/btn_default"
             android:padding="5dip"
             android:scaleType="fitCenter"
-            android:src="@android:drawable/ic_lock_silent_mode_off" />
+            android:src="@drawable/ic_volume_small" />
 
         <ProgressBar
             android:id="@+id/volumebar"

@@ -177,14 +177,14 @@ public class FullPlaybackActivity extends PlaybackActivity
         mRangeSeekBar.setVisibility(View.GONE);
         mRangeSeekBar.setNotifyWhileDragging(true);
 
-        LinearLayout merge = (LinearLayout)findViewById(R.id.manageLayout);
+        final LinearLayout merge = (LinearLayout)findViewById(R.id.manageLayout);
         merge.addView(mRangeSeekBar);
 
         mVolumeLayout =  (LinearLayout)findViewById(R.id.volume_layout);
-        ImageButton adjustvol_up = (ImageButton)mVolumeLayout.findViewById(R.id.adjustvol_up);
-        ImageButton adjustvol_down = (ImageButton)mVolumeLayout.findViewById(R.id.adjustvol_down);
-        adjustvol_up.setOnClickListener(this);
-        adjustvol_down.setOnClickListener(this);
+        final ImageButton volumeUp = (ImageButton)mVolumeLayout.findViewById(R.id.adjustvol_up);
+        final ImageButton volumeDown = (ImageButton)mVolumeLayout.findViewById(R.id.adjustvol_down);
+        volumeUp.setOnClickListener(this);
+        volumeDown.setOnClickListener(this);
 
         CoverView coverView = (CoverView)findViewById(R.id.cover_view);
         coverView.setup(mLooper, this, coverStyle);

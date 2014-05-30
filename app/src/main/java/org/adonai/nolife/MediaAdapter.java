@@ -285,10 +285,10 @@ public class MediaAdapter extends CursorAdapter {
      */
     public QueryTask buildQuery(String[] projection, boolean forceMusicCheck)
     {
-        String constraint = mConstraint;
-        Limiter limiter = mLimiter;
+        final String constraint = mConstraint;
+        final Limiter limiter = mLimiter;
 
-        StringBuilder selection = new StringBuilder();
+        final StringBuilder selection = new StringBuilder();
         String[] selectionArgs = null;
 
         String sort;
@@ -319,10 +319,9 @@ public class MediaAdapter extends CursorAdapter {
                 keySource = mFields;
             }
 
-            int size = needles.length;
-            selectionArgs = new String[size];
+            selectionArgs = new String[needles.length];
 
-            StringBuilder keys = new StringBuilder(20);
+            final StringBuilder keys = new StringBuilder(20);
             keys.append(keySource[0]);
             for (int j = 1; j != keySource.length; ++j) {
                 keys.append("||");
