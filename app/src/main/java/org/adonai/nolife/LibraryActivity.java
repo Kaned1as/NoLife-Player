@@ -712,8 +712,8 @@ public class LibraryActivity extends PlaybackActivity implements AdapterView.OnI
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        final MenuItem nowPlaying = menu.add(0, MENU_PLAYBACK, 0, R.string.playback_view).setIcon(R.drawable.ic_menu_gallery);
-        final MenuItem search = menu.add(0, MENU_SEARCH, 0, R.string.search).setIcon(R.drawable.ic_menu_search);
+        final MenuItem nowPlaying = menu.add(0, MENU_PLAYBACK, 0, R.string.playback_view).setIcon(android.R.drawable.ic_menu_gallery);
+        final MenuItem search = menu.add(0, MENU_SEARCH, 0, R.string.search).setIcon(android.R.drawable.ic_menu_search);
         MediaUtils.supportSetShowAsAction(nowPlaying);
         MediaUtils.supportSetShowAsAction(search);
         menu.addSubMenu(0, MENU_MORE, 0, R.string.more).setIcon(android.R.drawable.ic_menu_more);
