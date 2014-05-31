@@ -159,9 +159,9 @@ public final class CoverBitmap {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
 
-        String title = song.title == null ? "" : song.title;
-        String album = song.album == null ? "" : song.album;
-        String artist = song.artist == null ? "" : song.artist;
+        final String title = song.title == null ? "" : song.title;
+        final String album = song.album == null ? "" : song.album;
+        final String artist = song.artist == null ? "" : song.artist;
 
         int titleSize = TEXT_SIZE_BIG;
         int subSize = TEXT_SIZE;

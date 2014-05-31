@@ -27,7 +27,6 @@ import android.database.Cursor;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -84,18 +83,20 @@ public class MiniPlaybackActivity extends PlaybackActivity {
         super.onResume();
         if(getIntent().getData() != null) {
             final Uri data = getIntent().getData();
-            final File toScan = new File(data.getPath());
-            if(toScan.exists())
-                MediaScannerConnection.scanFile(this, new String[]{data.getPath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
-                    @Override
-                    public void onScanCompleted(String path, Uri uri) {
-                        final Uri media = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-                        String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0 AND " + MediaStore.Audio.Media.DATA + " = ?";
-                        final Cursor cursor = getContentResolver().query(media, Song.FILLED_PROJECTION, selection, new String[]{data.getPath()}, null);
-                        PlaybackService.get(MiniPlaybackActivity.this).mTimeline.addSongs(SongTimeline.MODE_PLAY, cursor);
-                    }
-                });
-
+            final Cursor cursor = getContentResolver().query(data, Song.FILLED_PROJECTION, null, null, null);
+            if(cursor != null)
+                PlaybackService.get(MiniPlaybackActivity.this).mTimeline.addSongs(SongTimeline.MODE_PLAY, cursor);
+            else {
+                final File toScan = new File(data.getPath());
+                if (toScan.exists())
+                    MediaScannerConnection.scanFile(this, new String[]{data.getPath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                        @Override
+                        public void onScanCompleted(String path, Uri uri) {
+                            PlaybackService.get(MiniPlaybackActivity.this).mTimeline.addSongs(SongTimeline.MODE_PLAY, cursor);
+                            cursor.close();
+                        }
+                    });
+            }
             getIntent().setData(null);
         }
     }

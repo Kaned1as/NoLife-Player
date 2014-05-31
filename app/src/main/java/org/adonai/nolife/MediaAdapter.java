@@ -471,7 +471,7 @@ public class MediaAdapter extends CursorAdapter {
 
     public void markChecked() {
 
-        ArrayList<Song> mSongs = PlaybackService.get(mContext).mTimeline.getAllSongsCopy();
+        final ArrayList<Song> mSongs = PlaybackService.get(mContext).mTimeline.getAllSongsCopy();
         if(mSongs.isEmpty())
             return;
 

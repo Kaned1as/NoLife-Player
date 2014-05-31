@@ -22,8 +22,6 @@
 
 package org.adonai.nolife;
 
-import org.adonai.nolife.R;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -352,9 +350,8 @@ public final class CoverView extends View implements Handler.Callback {
             bitmap = mDefaultCover;
             if (bitmap == null)
                 bitmap = generateDefaultCover();
-        } else {
+        } else
             bitmap = CoverBitmap.createBitmap(context, style, cover, song, getWidth(), getHeight(), reuse);
-        }
 
         mBitmaps[i] = bitmap;
         mBitmapCache.put(song.id, bitmap);
@@ -377,7 +374,10 @@ public final class CoverView extends View implements Handler.Callback {
                 mBitmapCache.touch(song.id);
             } else {
                 mBitmaps[i] = null;
-                mHandler.sendMessage(mHandler.obtainMessage(MSG_GENERATE_BITMAP, i, 0));
+                if (getWidth() == 0 || getHeight() == 0)
+                    mPendingQuery = true;
+                else
+                    mHandler.sendMessage(mHandler.obtainMessage(MSG_GENERATE_BITMAP, i, 0));
             }
         }
     }
