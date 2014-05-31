@@ -378,9 +378,11 @@ public class FullPlaybackActivity extends PlaybackActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        menu.add(0, MENU_LIBRARY, 0, R.string.library).setIcon(R.drawable.ic_menu_music_library);
+        final MenuItem library = menu.add(0, MENU_LIBRARY, 0, R.string.library).setIcon(R.drawable.ic_menu_music_library);
+        MediaUtils.supportSetShowAsAction(library);
         if (PlaybackService.get(this).getSong(0) != null) {
-            menu.add(0, MENU_GET_LYRICS, 0, R.string.fetch_lyrics).setIcon(android.R.drawable.ic_input_get);
+            final MenuItem lyrics = menu.add(0, MENU_GET_LYRICS, 0, R.string.fetch_lyrics).setIcon(android.R.drawable.ic_input_get);
+            MediaUtils.supportSetShowAsAction(lyrics);
             menu.addSubMenu(0, MENU_MORE, 0, R.string.more).setIcon(android.R.drawable.ic_menu_more);
         }
         return super.onCreateOptionsMenu(menu);

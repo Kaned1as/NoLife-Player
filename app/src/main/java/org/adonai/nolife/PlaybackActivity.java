@@ -22,14 +22,6 @@
 
 package org.adonai.nolife;
 
-import java.io.File;
-
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.Tag;
-import org.adonai.nolife.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -52,6 +44,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
+
+import java.io.File;
 
 /**
  * Base activity for activities that contain playback controls. Handles
@@ -100,7 +99,7 @@ public class PlaybackActivity extends Activity
         PlaybackService.addActivity(this);
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-        HandlerThread thread = new HandlerThread(getClass().getName());
+        final HandlerThread thread = new HandlerThread("ServiceThread");
         thread.start();
 
         mLooper = thread.getLooper();

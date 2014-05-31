@@ -27,7 +27,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 
 import junit.framework.Assert;
 
@@ -553,6 +555,12 @@ public class MediaUtils {
 
         protected void onPostExecute(String output)
         {
+        }
+    }
+
+    public static void supportSetShowAsAction(MenuItem menu){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            menu.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         }
     }
 }
